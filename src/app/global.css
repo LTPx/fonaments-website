@@ -35,6 +35,16 @@ a {
   font-weight: 500;
 }
 
+h1 {
+  font-size: 80px;
+  line-height: 130px;
+}
+
+h2 {
+  font-size: 42px;
+  line-height: 42px;
+}
+
 .container {
   max-width: 100% !important;
   width: 100% !important;

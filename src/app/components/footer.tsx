@@ -75,8 +75,20 @@ export function Footer(props: FooterProps) {
             </Link>
           </div>
           <div className="flex flex-col">
-            <Link href={'/'} target='_blank' className="underline text-[20px] leading-[26px]">Instagram</Link>
-            <Link href={'/'} target='_blank'  className="underline text-[20px] leading-[26px]">LinkedIn</Link>
+            <Link
+              href={"/"}
+              target="_blank"
+              className="underline text-[20px] leading-[26px]"
+            >
+              Instagram
+            </Link>
+            <Link
+              href={"/"}
+              target="_blank"
+              className="underline text-[20px] leading-[26px]"
+            >
+              LinkedIn
+            </Link>
           </div>
           <div className="flex gap-[22px]">
             <img
@@ -91,7 +103,7 @@ export function Footer(props: FooterProps) {
         </div>
         <hr className="border-t border-black border-1 mt-[30px] mb-[40px]" />
         <div className="pb-[25px]">
-          <img src="/images/logo-footer.svg" className="" />
+          <img src="/images/logo-footer.svg" />
         </div>
       </div>
       <div className="h-[50px] px-[30px] text-white bg-black flex justify-between items-center">
