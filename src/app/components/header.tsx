@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 interface LinksHeader {
@@ -14,7 +14,6 @@ interface Props {
 
 export function Header(props: Props) {
   const { links} = props;
-  const [isSticky, setIsSticky] = useState(false);
   const [currentLocale, setCurrentLocale] = useState<string>("en");
 
   return (

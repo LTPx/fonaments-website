@@ -47,11 +47,8 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        var: ['Ottertype-Var', 'sans-serif'],
-        regular: ['Ottertype-Regular', 'sans-serif'],
-        bold: ['Ottertype-Bold', 'sans-serif'],
-        black: ['Ottertype-Black', 'sans-serif'],
+        medium: ['Montreal-Medium', 'sans-serif'],
+        regular: ['Montreal-Regular', 'sans-serif'],
       },
     },
   },

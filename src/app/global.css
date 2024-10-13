@@ -1,11 +1,36 @@
-.aspect-16-9 {
-  aspect-ratio: 16 / 9;
+/* ---------------------------------------------
+   Fonts
+--------------------------------------------- */
+
+@font-face {
+  font-family: 'Montreal-Medium';
+  src: url('/fonts/PPNeueMontreal-Medium.woff') format('woff');
+  font-weight: 500 !important ;
+  font-style: normal;
 }
 
-.aspect-4-3 {
-  aspect-ratio: 4 / 3;
+@font-face {
+  font-family: 'Montreal-Regular';
+  src: url('/fonts/PPNeueMontreal-Regular.woff') format('woff');
+  font-weight: 400 !important;
+  font-style: normal;
 }
 
-.aspect-1-1 {
-  aspect-ratio: 1 / 1;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montreal-Medium', sans-serif;
+  font-weight: 500;
+}
+
+label {
+  font-family: "Montreal-Medium", sans-serif;
+  font-weight: 500;
+}
+
+p {
+  font-family: "Montreal-Regular", sans-serif;
+}
+
+a {
+  font-family: "Montreal-Medium", sans-serif;
+  font-weight: 500;
 }

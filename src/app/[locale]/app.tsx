@@ -1,4 +1,5 @@
 import { getWordPressPage } from "../_services/api";
+import Footer from "../components/footer";
 import Header from "../components/header";
 
 interface Props {
@@ -18,6 +19,7 @@ async function App(props: Props) {
     <>
     <Header  links={linksHeader} />
     <div>{children}</div>
+    <Footer/>
     </>
   );
 }
