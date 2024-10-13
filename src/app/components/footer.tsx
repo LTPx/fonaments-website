@@ -10,7 +10,7 @@ export function Footer(props: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer>
+    <footer className="bg-body">
       <div className="mx-auto container flex flex-col">
         <label className="lg:text-[20px] lg:leading-[20px] mb-[32px]">
           Nuestras oficinas
@@ -26,7 +26,7 @@ export function Footer(props: FooterProps) {
               <p>07620 Llucmajor</p>
               <p>T. (+34) 971 660 823</p>
               <Link
-                className="underline"
+                className="font-regular underline"
                 target="_blank"
                 href="/https://www.google.com/maps/place/C.+del+Obispo+Taxaquet,+110,+07620+Llucmajor,+Illes+Balears,+Espa%C3%B1a/@39.487999,2.8882161,17z/data=!3m1!4b1!4m6!3m5!1s0x1297bb0619c587b5:0x366ce29d583e0cb1!8m2!3d39.487999!4d2.8882161!16s%2Fg%2F11c17433lc?entry=ttu&g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D"
               >
@@ -44,7 +44,7 @@ export function Footer(props: FooterProps) {
               <p>07620 Llucmajor</p>
               <p>T. (+34) 971 660 823</p>
               <Link
-                className="underline"
+                className="font-regular underline"
                 target="_blank"
                 href="/https://www.google.com/maps/place/C.+del+Obispo+Taxaquet,+110,+07620+Llucmajor,+Illes+Balears,+Espa%C3%B1a/@39.487999,2.8882161,17z/data=!3m1!4b1!4m6!3m5!1s0x1297bb0619c587b5:0x366ce29d583e0cb1!8m2!3d39.487999!4d2.8882161!16s%2Fg%2F11c17433lc?entry=ttu&g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D"
               >

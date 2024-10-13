@@ -34,3 +34,12 @@ a {
   font-family: "Montreal-Medium", sans-serif;
   font-weight: 500;
 }
+
+.container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}

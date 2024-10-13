@@ -18,7 +18,7 @@ async function App(props: Props) {
   return (
     <>
     <Header  links={linksHeader} />
-    <div>{children}</div>
+    <div className="bg-body">{children}</div>
     <Footer/>
     </>
   );
