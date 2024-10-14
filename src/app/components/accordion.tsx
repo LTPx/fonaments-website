@@ -24,7 +24,7 @@ export function Accordion(props: AccordionProps) {
         <h1>{title}</h1>
         {isOpen ? (
           <p className="font-medium text-[18px] leading-[20px] ml-auto">
-            Close
+            close
           </p>
         ) : (
           <p className="font-medium text-[18px] leading-[20px] ml-auto">

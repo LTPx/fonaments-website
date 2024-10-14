@@ -10,6 +10,8 @@ export default async function Page(nextParams: {
   } = nextParams;
 
   return (
-    <Home data={undefined}/>
+    <Suspense fallback="Loading...">
+      <Home data={undefined} />
+    </Suspense>
   );
 }

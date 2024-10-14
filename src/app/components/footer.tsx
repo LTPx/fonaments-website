@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface FooterProps {
   address?: string;
@@ -8,14 +11,19 @@ interface FooterProps {
 export function Footer(props: FooterProps) {
   const { address, logoFooter } = props;
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
 
   return (
     <footer className="bg-body">
       <div className="mx-auto container flex flex-col">
-        <label className="lg:text-[20px] lg:leading-[20px] mb-[32px]">
-          Nuestras oficinas
-        </label>
-        <div className="grid grid-cols-2 gap-[20px]">
+          <label className="lg:text-[20px] lg:leading-[20px] mb-[32px]">
+            Nuestras oficinas
+          </label>
+        <div
+          className={`grid grid-cols-2 gap-[20px] ${
+            pathname !== "/es" ? "pb-[20px]" : ""
+          }`}
+        >
           <div className="flex flex-col">
             <label className="lg:text-[32px] lg:leading-[38px] mb-[10px]">
               Llucmajor
@@ -53,16 +61,18 @@ export function Footer(props: FooterProps) {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-[20px] pt-[24px]">
-          <img
-            src="https://s3-alpha-sig.figma.com/img/5479/27dc/fda7eadfe11baba44c94413f4f46f76e?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=CvxMVWGAVChk2upd7HN2cHEcHYmVJ4qmKMz7Js5ThJNZj8m9I9zC0s0hCstyPgvaSOx53VKlaGQCFUvMc1~kl3d11zqJkbuskCVSEz~NsBCSSqVctd~guFqHZ7DnK~0j-VrZ~GTHf2cvWAhUYCnAlaZG3yhf6Rx2VJFGUbihsF5UDGlDWOR8Lc8tGCa9lsZu0f5mkuE3NyjOnVSETWKbW62HadXBl5oOGcH1~R6amjfCh4stvnXd9PfbQ1atcYaO8RngYGHBNBVW8~QUeKva77-i7vTchZno1ONghDAXNO1Yvn7vyBSSxAyud11H2mwclqDAOFRs7Bm6DCHNkFKgog__"
-            className="h-[716px] w-[716px] object-cover"
-          />
-          <img
-            src="https://s3-alpha-sig.figma.com/img/462e/3ec0/0e74abc5e579f1e5468d06b1b7038083?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ExvtZqaMqE8RpJ07IaW-iscShnBKlTo78Ed2rqO59kiqyjnFHsCPWrYLTSkb5lMrdwH~O4dzWBMRvfXAh9wpTTR7IFQLl-pc6bt4SSlKob~H7bnaOhUc0Zi1crAh0AAMbSL~YOlXfgSfdMG3Kz9GQ7M8qVok0gYY~V1DRi4neRe161RHsiCY2OiuxrcE4OuY7ngPPtiUcTX1CSV8b74s1aI5Uh8MXwTNzKnVZLnrOS2Ar2nwqtqwUKqa85iZJ37E3XaJ37jNwAMDy4lcN-AFBYL6W7Fuk~T7OlooEUYqQfRpHg9jBkIqtoAgk1vb7UqtCuU79708uK07z0Oo4rPNYg__"
-            className="h-[716px] w-[716px] object-cover"
-          />
-        </div>
+        {pathname === "/es" && (
+          <div className="grid grid-cols-2 gap-[20px] pt-[24px]">
+            <img
+              src="https://s3-alpha-sig.figma.com/img/5479/27dc/fda7eadfe11baba44c94413f4f46f76e?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=CvxMVWGAVChk2upd7HN2cHEcHYmVJ4qmKMz7Js5ThJNZj8m9I9zC0s0hCstyPgvaSOx53VKlaGQCFUvMc1~kl3d11zqJkbuskCVSEz~NsBCSSqVctd~guFqHZ7DnK~0j-VrZ~GTHf2cvWAhUYCnAlaZG3yhf6Rx2VJFGUbihsF5UDGlDWOR8Lc8tGCa9lsZu0f5mkuE3NyjOnVSETWKbW62HadXBl5oOGcH1~R6amjfCh4stvnXd9PfbQ1atcYaO8RngYGHBNBVW8~QUeKva77-i7vTchZno1ONghDAXNO1Yvn7vyBSSxAyud11H2mwclqDAOFRs7Bm6DCHNkFKgog__"
+              className="h-[716px] w-full object-cover"
+            />
+            <img
+              src="https://s3-alpha-sig.figma.com/img/462e/3ec0/0e74abc5e579f1e5468d06b1b7038083?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ExvtZqaMqE8RpJ07IaW-iscShnBKlTo78Ed2rqO59kiqyjnFHsCPWrYLTSkb5lMrdwH~O4dzWBMRvfXAh9wpTTR7IFQLl-pc6bt4SSlKob~H7bnaOhUc0Zi1crAh0AAMbSL~YOlXfgSfdMG3Kz9GQ7M8qVok0gYY~V1DRi4neRe161RHsiCY2OiuxrcE4OuY7ngPPtiUcTX1CSV8b74s1aI5Uh8MXwTNzKnVZLnrOS2Ar2nwqtqwUKqa85iZJ37E3XaJ37jNwAMDy4lcN-AFBYL6W7Fuk~T7OlooEUYqQfRpHg9jBkIqtoAgk1vb7UqtCuU79708uK07z0Oo4rPNYg__"
+              className="h-[716px] w-full object-cover"
+            />
+          </div>
+        )}
         <hr className="border-t border-black border-1 mt-[25px] mb-[17px]" />
         <div className="flex justify-between">
           <div className="flex flex-col gap-[8px]">

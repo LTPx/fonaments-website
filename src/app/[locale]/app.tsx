@@ -4,22 +4,23 @@ import Header from "../components/header";
 
 interface Props {
   children: any;
-  locale: 'en' | 'es' | 'de';
+  locale: "en" | "es" | "de";
 }
 
 async function App(props: Props) {
   const { children, locale } = props;
   const linksHeader = [
-    { title: 'Proyectos', url: '/' },
-    { title: 'Estudio', url: `/` },
-    { title: 'Contacto', url: '/' },
+    { title: "Fonaments", url: "/" },
+    { title: "Proyectos", url: `es/projects` },
+    { title: "Estudio", url: "es/study" },
+    { title: "Contacto", url: "es/contact" },
   ];
 
   return (
     <>
-    <Header  links={linksHeader} />
-    <div className="bg-body">{children}</div>
-    <Footer/>
+      <Header links={linksHeader} />
+      <div className="bg-body">{children}</div>
+      <Footer />
     </>
   );
 }
