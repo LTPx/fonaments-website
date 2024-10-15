@@ -1,4 +1,5 @@
 import { getWordPressPage } from "../_services/api";
+import AppHeader from "../components/app-header";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
@@ -9,16 +10,10 @@ interface Props {
 
 async function App(props: Props) {
   const { children, locale } = props;
-  const linksHeader = [
-    { title: "Fonaments", url: "/" },
-    { title: "Proyectos", url: `es/projects` },
-    { title: "Estudio", url: "es/study" },
-    { title: "Contacto", url: "es/contact" },
-  ];
 
   return (
     <>
-      <Header links={linksHeader} />
+      <AppHeader/>
       <div className="bg-body">{children}</div>
       <Footer />
     </>

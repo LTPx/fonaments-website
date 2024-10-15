@@ -76,20 +76,20 @@ function Home(props: Props) {
     // },
   ];
   return (
-    <div className="container mx-auto flex flex-col pt-[30px] pb-[80px]">
+    <div className="container mx-auto flex flex-col pt-[30px] pb-[100px] lg:pb-[80px]">
       <HeaderCarousel items={headerCarousel} />
-      <section className="pb-[78px] pt-[82px]">
+      <section className="pb-[45px] lg:pb-[78px] pt-[90px] lg:pt-[82px]">
         <img src="/images/fonaments.svg" />
       </section>
       <section>
-        <div className="grid grid-cols-3">
-          <div className="col-span-1"></div>
+        <div className="flex flex-col lg:grid lg:grid-cols-3">
+          <div className="hidden lg:block col-span-1"></div>
           <div className="col-span-2 flex flex-col gap-[23px]">
-            <h2 className="w-[719px]">
+            <h2 className="lg:w-[719px]">
               Estudio de arquitectura en Mallorca, con oficinas en Llucmajor y
               Santanyí.
             </h2>
-            <p className="w-[692px] text-[20px] leading-[28px]">
+            <p className="lg:w-[692px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]">
               En Fonaments, entendemos que cada proyecto es una oportunidad para
               contar una historia y crear una experiencia única. Nuestro equipo
               está dedicado a diseñar espacios que no solo cumplan con los
@@ -103,13 +103,13 @@ function Home(props: Props) {
           </div>
         </div>
       </section>
-      <section className="pt-[58px]">
+      <section className="pt-[30px] lg:pt-[58px]">
         <img
           src="https://s3-alpha-sig.figma.com/img/2b6c/d974/730ade5a9bea39546ad9d412fd805f56?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=URHUMg~8eMeRjmb7jearMV4jAJkpKi~lkhPsLczsszmAVn7Ofn0fmZoKFn5hHtkKz-67TVPi1SYNNw3GOy29tJR9EKjNODQFOjZTcmw3brWCC~16wTCmAd0r6buZn4~zGBiBlfgZy2HjQCyjxbFJC2Ts3SAWm9vyKX9UuHsPc6ME4z0OdbuI4vQaj4EYPJNhsQSbgatYsSfjTzP~-6hAgyM8FDSXC6JM4rSzEgaCY3rDfcDKfPLGMVVvzrVH14A~VHClaC2mIbjd0ywMpXSJb4oE9U~7RUVUqAxkrDf2TKY0V3WeOO0~uTfHHm3aKQ9m~uEyr0Q9lCWEThZBGEMRGQ__"
-          className="h-[800px] w-full object-cover"
+          className="h-[450px] lg:h-[800px] w-full object-cover"
         />
       </section>
-      <section className="pt-[20px]">
+      <section className="pt-[30px] lg:pt-[20px]">
         <OurServices
           title={"Servicios integrales: de la idea a la ejecución"}
           description={

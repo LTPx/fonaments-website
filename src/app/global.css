@@ -53,3 +53,22 @@ h2 {
   margin-left: auto;
   margin-right: auto;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  h1 {
+    font-size: 42px;
+    line-height: 45px;
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 30px;
+  }
+  
+  
+}

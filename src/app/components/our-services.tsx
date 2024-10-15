@@ -17,21 +17,21 @@ export function OurServices(props: OurServicesProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col gap-[39px]">
-        <h2 className="w-[422px]">{title}</h2>
-        <p className="w-[565px] text-[20px] leading-[28px]">{description}</p>
+      <div className="flex flex-col gap-[29px] lg:gap-[39px]">
+        <h2 className="lg:w-[422px]">{title}</h2>
+        <p className="lg:w-[565px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]">{description}</p>
       </div>
-      <div className="pt-[80px]">
+      <div className="pt-[30px] lg:pt-[80px]">
         {accordionItems.map((item, index) => (
           <Accordion key={index} title={item.title}>
             <div>
-              <p className="w-[1025px] text-[26px] leading-[34px]">
+              <p className="lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]">
                 {item.description}
               </p>
               {item.imageUrl && (
                 <img
                   src={item.imageUrl}
-                  className="h-[754px] w-full pt-[75px]"
+                  className="h-[200px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
                 />
               )}
             </div>

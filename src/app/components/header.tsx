@@ -23,7 +23,7 @@ export function Header(props: Props) {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-white transition-all duration-300`}
+      className={`sticky hidden lg:block top-0 z-50 bg-white transition-all duration-300`}
     >
       <div className="border-b border-black mx-auto flex items-center justify-between">
         <div className="flex">

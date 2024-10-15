@@ -104,7 +104,7 @@ export function Carousel(props: CarouselProps) {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1.1,
+          slidesToShow: 1,
           slidesToScroll: 1,
           infinite: false,
         },
@@ -115,7 +115,7 @@ export function Carousel(props: CarouselProps) {
   return shouldShowSlider ? (
     <Slider {...settings}>
       {React.Children.map(children, (child, index) => (
-        <div className="pr-[10px] lg:pr-[15px]" key={index}>
+        <div className="lg:pr-[15px]" key={index}>
           {child}
         </div>
       ))}
