@@ -16,9 +16,11 @@ export function Footer(props: FooterProps) {
   return (
     <footer className="bg-body">
       <div className="mx-auto container flex flex-col">
+        {pathname !== "/es/contact" && (
           <label className="lg:text-[20px] lg:leading-[20px] mb-[32px]">
             Nuestras oficinas
           </label>
+        )}
         <div
           className={`grid grid-cols-2 gap-[20px] ${
             pathname !== "/es" ? "pb-[20px]" : ""
