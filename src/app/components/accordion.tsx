@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import AnimateHeight from "react-animate-height";
 
 interface AccordionProps {
   title: string;
@@ -51,20 +52,14 @@ export function Accordion(props: AccordionProps) {
           setIsOpen(!isOpen);
         }}
       >
-        <h1 className="text-[42px] leading-[45px] lg:text-[80px] lg:leading-[130px] py-[20px] lg:py-[0px] text-start">{title}</h1>
+        <h1 className="text-[42px] leading-[45px] lg:text-[80px] lg:leading-[130px] py-[20px] lg:py-[0px] text-start">
+          {title}
+        </h1>
         {toggleContent}
       </button>
-      {isOpen && (
-        <div>
-          <div
-            style={{
-              height: isOpen ? "auto" : "0",
-            }}
-          >
-            <div className="lg:pt-[15px] pb-[20px] lg:pb-[30px]">{children}</div>
-          </div>
-        </div>
-      )}
+      <AnimateHeight duration={300} height={isOpen ? "auto" : 0}>
+        <div className="lg:pt-[15px] pb-[20px] lg:pb-[30px]">{children}</div>
+      </AnimateHeight>
     </div>
   );
 }
