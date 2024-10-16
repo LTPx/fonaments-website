@@ -76,7 +76,7 @@ function Home(props: Props) {
     // },
   ];
   return (
-    <div className="container mx-auto flex flex-col pt-[30px] pb-[100px] lg:pb-[80px]">
+    <div className="container mx-auto flex flex-col pt-[7px] lg:pt-[30px] pb-[100px] lg:pb-[80px]">
       <HeaderCarousel items={headerCarousel} />
       <section className="pb-[45px] lg:pb-[78px] pt-[90px] lg:pt-[82px]">
         <img src="/images/fonaments.svg" />

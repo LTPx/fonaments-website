@@ -46,9 +46,9 @@ async function Projects(nextParams: {
 
   return (
     <div className="container page-projects">
-      <section className="flex justify-between">
-        <h1>Proyectos</h1>
-        <p className="pt-[37px] lg:w-[804px] text-[26px] leading-[32px]">
+      <section className="flex flex-col lg:flex-row lg:justify-between">
+        <h1 className="pt-[4px] lg:pt-[0px]">Proyectos</h1>
+        <p className="pt-[14px] lg:pt-[37px] lg:w-[804px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px]">
           Desde nuestros dos estudios, uno ubicado en Llucmajor y otro en
           Santanyí, abordamos cada proyecto de manera personalizada y única,
           asegurándonos de que cada diseño sea un reflejo fiel de nuestros
@@ -65,17 +65,17 @@ async function Projects(nextParams: {
           experiencia más rica y completa.
         </p>
       </section>
-      <section className="pt-[49px]">
+      <section className="pt-[59px] lg:pt-[49px]">
         <ProjectSection options={btns} projects={projects} />
       </section>
-      <section className="pt-[180px] pb-[94px]">
+      <section className="pt-[30px] lg:pt-[180px] pb-[80px] lg:pb-[94px]">
         <hr className="border-t border-black border-1 mb-[10px]" />
-        <div className="grid grid-cols-2">
-          <p className="w-[263px] text-[18px] leading-[20px]">
+        <div className="flex gap-[15px] lg:gap-[0px] flex-col lg:grid lg:grid-cols-2">
+          <p className="lg:w-[263px] text-[16px] lg:text-[18px] leading-[20px]">
             Nuestros valores son claros y trabajamos para que se reflejen en
             cada uno de nuestros proyectos:
           </p>
-          <h2 className="w-[429px] leading-[46px]">
+          <h2 className="lg:w-[429px] lg:leading-[46px]">
             Diseño personalizado Enfoque sostenible Innovación y creatividad
             Calidad y detalle
           </h2>

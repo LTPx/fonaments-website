@@ -35,7 +35,7 @@ export function Footer(props: FooterProps) {
 
   return (
     <footer className="bg-body">
-      <div className="mx-auto container flex flex-col pb-[30px] lg:pb-[0px]">
+      <div className="mx-auto container flex flex-col">
         {isMobile && (
           <div className="block lg:hidden pb-[30px]">
             <p className="font-medium text-[20px] leading-[20px] pb-[31px]">
@@ -173,8 +173,8 @@ export function Footer(props: FooterProps) {
             />
           </div>
         </div>
-        <hr className="hidden lg:block border-t border-black border-1 mt-[30px] mb-[40px]" />
-        <div className="hidden lg:block pb-[25px]">
+        <hr className="border-t border-black border-1 mt-[30px] mb-[35px] lg:mb-[40px]" />
+        <div className="pb-[12px] lg:pb-[25px]">
           <img src="/images/logo-footer.svg" />
         </div>
       </div>

@@ -4,16 +4,16 @@ import MenuMobile from "./menu-mobile";
 async function AppHeader() {
   const linksHeader = [
     { title: "Fonaments", url: "/" },
-    { title: "Proyectos", url: `es/projects` },
-    { title: "Estudio", url: "es/study" },
-    { title: "Contacto", url: "es/contact" },
+    { title: "Proyectos", url: `/projects` },
+    { title: "Estudio", url: "/study" },
+    { title: "Contacto", url: "/contact" },
   ];
 
   const menuLinks = [
     { title: "Inicio", url: "/" },
-    { title: "Proyectos", url: `es/projects` },
-    { title: "Estudio", url: "es/study" },
-    { title: "Contacto", url: "es/contact" },
+    { title: "Proyectos", url: `/projects` },
+    { title: "Estudio", url: "/study" },
+    { title: "Contacto", url: "/contact" },
   ];
 
   const languages = ["ESP", "ENG", "DEU"];

@@ -34,7 +34,7 @@ export function StudySection(props: StudySectionProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex gap-[10px] pb-[20px]">
+      <div className="flex gap-[10px] pb-[22px] lg:pb-[20px]">
         {btns.map((option, index) => (
           <button
             key={index}

@@ -82,9 +82,9 @@ async function Study(nextParams: { params: { locale: "en" | "es" | "de" } }) {
 
   return (
     <div className="container page-study">
-      <section className="flex justify-between">
-        <h1>Estudio</h1>
-        <p className="pt-[37px] lg:w-[803px] text-[26px] leading-[32px]">
+      <section className="flex flex-col lg:flex-row lg:justify-between">
+      <h1 className="pt-[4px] lg:pt-[0px]">Estudio</h1>
+        <p className="pt-[14px] lg:pt-[37px] lg:w-[803px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px]">
           En Fonaments Arquitectura, cada proyecto es una colaboración en la que
           la comunicación y la transparencia son clave. Nuestro equipo
           multidisciplinario trabaja de manera coordinada para ofrecer
@@ -94,7 +94,7 @@ async function Study(nextParams: { params: { locale: "en" | "es" | "de" } }) {
           superado.
         </p>
       </section>
-      <section className="pt-[367px]">
+      <section className="pt-[50px] lg:pt-[367px]">
         <StudySection services={services} membersTeam={membersTeam}/>
       </section>
     </div>

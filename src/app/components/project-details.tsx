@@ -37,7 +37,7 @@ export function ProjectDetails(props: ProjectDetailsProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="grid grid-cols-2 gap-[28px]">
+      <div className="flex flex-col lg:grid lg:grid-cols-2 gap-[28px]">
         <div className="flex flex-col justify-between">
           <div></div>
           <div className="flex gap-[14px]">
@@ -57,7 +57,7 @@ export function ProjectDetails(props: ProjectDetailsProps) {
           </div>
         </div>
         <div>
-          <p className="text-[20px] leading-[26px]">
+          <p className="text-[16px] leading-[22px] lg:text-[20px] lg:leading-[26px]">
             En este proyecto nos encontramos con un edificio de alto valor
             arquitectónico e histórico, al que le sumamos el reto añadido de
             convertir su antiguo uso industrial en vivienda. El objetivo

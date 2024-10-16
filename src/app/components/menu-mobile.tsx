@@ -2,7 +2,7 @@
 
 import styles from "./header.module.scss";
 import React, { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/navigation";
 
 interface Link {
   title: string;
@@ -37,6 +37,7 @@ export function MenuMobile(props: MenuMobileProps) {
             onClick={() => setMenuOpen(true)}
           />
         </div>
+        <hr className="border-t border-black border-1" />
       </header>
       {menuOpen && (
         <div
