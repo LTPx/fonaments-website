@@ -9,7 +9,7 @@ interface TruncatedTextProps {
 
 const TruncatedText: React.FC<TruncatedTextProps> = ({
   content,
-  className = "",
+  className,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isTruncated, setIsTruncated] = useState(false);
@@ -26,10 +26,10 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
   return (
-    <div className={`${className}`}>
+    <div>
       <p
         ref={contentRef}
-        className={`pt-[14px] lg:pt-[37px] lg:w-[804px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] ${
+        className={`${className} ${
           isExpanded ? "" : "line-clamp-[14]"
         }`}
       >
@@ -40,7 +40,7 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
         <div className="flex items-center block mt-4">
           <button
             onClick={toggleExpand}
-            className="text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] font-medium underline cursor-pointer"
+            className={`text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] font-medium underline cursor-pointer`}
           >
             {isExpanded ? "Show Less" : "Read On"}
           </button>

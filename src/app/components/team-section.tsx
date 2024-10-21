@@ -19,7 +19,7 @@ export function TeamSection(props: TeamSectionProps) {
     <div className="flex flex-col pb-[56px] lg:pb-[32px]">
       <img
         src={coverImage}
-        className="h-[194px] lg:h-[800px] w-full object-cover"
+        className="h-[194px] md:h-[600px] lg:h-[800px] w-full object-cover"
       />
       <div className="flex flex-col pt-[23px] lg:pt-[37px]">
         {membersTeam.map((member, index) => (

@@ -18,7 +18,7 @@ export function ServiceSections(props: ServiceSectionsProps) {
     <div className="flex flex-col pb-[200px]">
       <img
         src={coverImage}
-        className="h-[194px] lg:h-[800px] w-full object-cover"
+        className="h-[194px] md:h-[600px] lg:h-[800px] w-full object-cover"
       />
       <div className="flex flex-col pt-[23px] lg:pt-[37px]">
         {services.map((service, index) => (
@@ -30,7 +30,7 @@ export function ServiceSections(props: ServiceSectionsProps) {
               {service.imageUrl && (
                 <img
                   src={service.imageUrl}
-                  className="h-[200px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
+                  className="h-[200px] md:h-[450px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
                 />
               )}
             </div>

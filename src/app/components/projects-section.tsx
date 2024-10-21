@@ -39,12 +39,12 @@ export function ProjectSection(props: ProjectSectionProps) {
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-y-[32px] lg:grid-cols-3 lg:gap-y-[20px] lg:gap-x-[15px] pt-[22px] lg:pt-[20px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-4 gap-y-[32px] lg:grid-cols-3 lg:gap-y-[20px] lg:gap-x-[15px] pt-[22px] lg:pt-[20px]">
         {projects.map((item, index) => (
           <div key={index}>
             <img
               src={item.imageUrl}
-              className="h-[600px] object-cover w-full"
+              className="h-[600px] md:h-[450px] xl:h-[600px] object-cover w-full"
             />
             <p className="font-medium text-[14px] leading-[26px]">
               {item.title}

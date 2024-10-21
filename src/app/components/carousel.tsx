@@ -100,22 +100,32 @@ export function Carousel(props: CarouselProps) {
           nextArrow: <SampleNextArrow disabled={isNextDisabled} />,
           prevArrow: <SamplePrevArrow disabled={isPrevDisabled} />,
         }),
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: false,
-        },
-      },
-    ],
+        responsive: [
+          {
+            // Tablet vertical (768px - 1023px)
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2, // Mostrar 2 elementos
+              slidesToScroll: 1,
+              infinite: false,
+            },
+          },
+          {
+            // Pantallas pequeñas (celulares <= 768px)
+            breakpoint: 750,
+            settings: {
+              slidesToShow: 1, // Mostrar 1 elemento
+              slidesToScroll: 1,
+              infinite: false,
+            },
+          },
+        ],
   };
 
   return shouldShowSlider ? (
     <Slider {...settings}>
       {React.Children.map(children, (child, index) => (
-        <div className="lg:pr-[15px]" key={index}>
+        <div className="md:pr-[10px] lg:pr-[15px]" key={index}>
           {child}
         </div>
       ))}

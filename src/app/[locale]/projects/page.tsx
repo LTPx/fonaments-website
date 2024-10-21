@@ -50,6 +50,7 @@ async function Projects(nextParams: {
       <section className="flex flex-col lg:flex-row lg:justify-between">
         <h1 className="pt-[4px] lg:pt-[0px]">Proyectos</h1>
         <TruncatedText
+        className="text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] pt-[14px] lg:pt-[37px] lg:w-[550px] xl:w-[804px]"
           content={`
             Desde nuestros dos estudios, uno ubicado en Llucmajor y otro en
             Santanyí, abordamos cada proyecto de manera personalizada y única,

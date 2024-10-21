@@ -85,11 +85,11 @@ function Home(props: Props) {
         <div className="flex flex-col lg:grid lg:grid-cols-3">
           <div className="hidden lg:block col-span-1"></div>
           <div className="col-span-2 flex flex-col gap-[23px]">
-            <h2 className="lg:w-[719px]">
+            <h2 className="xl:w-[719px]">
               Estudio de arquitectura en Mallorca, con oficinas en Llucmajor y
               Santanyí.
             </h2>
-            <p className="lg:w-[692px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]">
+            <p className="xl:w-[692px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]">
               En Fonaments, entendemos que cada proyecto es una oportunidad para
               contar una historia y crear una experiencia única. Nuestro equipo
               está dedicado a diseñar espacios que no solo cumplan con los
