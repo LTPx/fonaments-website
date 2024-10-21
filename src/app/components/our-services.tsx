@@ -31,7 +31,7 @@ export function OurServices(props: OurServicesProps) {
               {item.imageUrl && (
                 <img
                   src={item.imageUrl}
-                  className="h-[200px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
+                  className="h-[200px] md:h-[400px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
                 />
               )}
             </div>

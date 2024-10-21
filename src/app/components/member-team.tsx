@@ -25,7 +25,7 @@ export function MemberTeam(props: MemberTeamProps) {
             <h2 className="text-[30px] leading-[32px] lg:text-[42px] lg:leading-[42px]">
               {memberTeam.name}
             </h2>
-            <h2 className="lg:hidden text-[30px] leading-[32px]">
+            <h2 className="md:hidden text-[30px] leading-[32px]">
               {memberTeam.profession}
             </h2>
           </div>
@@ -34,8 +34,8 @@ export function MemberTeam(props: MemberTeamProps) {
             className="h-[359px] xl:h-[600px] lg:h-[500px] lg:w-[589px] object-cover"
           />
         </div>
-        <div className="md:col-span-3 lg:col-span-1 flex flex-col lg:gap-[42px]">
-          <h2 className="hidden lg:block">{memberTeam.profession}</h2>
+        <div className="md:col-span-3 lg:col-span-1 flex flex-col md:gap-[10px] lg:gap-[42px]">
+          <h2 className="hidden md:block">{memberTeam.profession}</h2>
           <p className="xl:w-[767px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[26px]">
             {memberTeam.description}
           </p>
