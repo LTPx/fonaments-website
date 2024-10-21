@@ -8,7 +8,8 @@ export default async function Page(nextParams: {
   const {
     params: { locale },
   } = nextParams;
-
+  const data = await getWordPressPage(locale, 'home');
+  console.log(data);
   return (
     <Suspense fallback="Loading...">
       <Home data={undefined} />
