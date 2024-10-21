@@ -73,7 +73,7 @@ export function ProjectDetails(props: ProjectDetailsProps) {
               </div>
             </div>
           </div>
-          <div className="flex gap-[14px]">
+          <div className="pt-[30px] lg:pt-[0px] flex gap-[14px]">
             {btns.map((option, index) => (
               <button
                 key={index}

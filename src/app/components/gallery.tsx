@@ -26,7 +26,7 @@ export function Gallery({ images }: GalleryProps) {
         >
           <img
             src={images[startIndex]}
-            className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] lg:h-[800px] w-full"
+            className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] md:h-[500px] lg:h-[800px] w-full"
             alt={`Gallery image ${startIndex + 1}`}
             data-fancybox="gallery"
           />
@@ -43,7 +43,7 @@ export function Gallery({ images }: GalleryProps) {
           >
             <img
               src={image}
-              className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] lg:h-[1001px] w-full"
+              className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
               alt={`Gallery image ${startIndex + index + 2}`}
               data-fancybox="gallery"
             />
@@ -70,7 +70,7 @@ export function Gallery({ images }: GalleryProps) {
               >
                 <img
                   src={image}
-                  className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] lg:h-[800px] w-full"
+                  className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] md:h-[500px] lg:h-[800px] w-full"
                   alt={`Gallery image ${index + 10}`}
                   data-fancybox="gallery"
                 />
