@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { getWordPressPage } from "@/app/_services/api";
 import ProjectSection from "@/app/components/projects-section";
+import TruncatedText from "@/app/components/truncated-text";
 
 async function Projects(nextParams: {
   params: { locale: "en" | "es" | "de" };
@@ -48,22 +49,24 @@ async function Projects(nextParams: {
     <div className="container page-projects">
       <section className="flex flex-col lg:flex-row lg:justify-between">
         <h1 className="pt-[4px] lg:pt-[0px]">Proyectos</h1>
-        <p className="pt-[14px] lg:pt-[37px] lg:w-[804px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px]">
-          Desde nuestros dos estudios, uno ubicado en Llucmajor y otro en
-          Santanyí, abordamos cada proyecto de manera personalizada y única,
-          asegurándonos de que cada diseño sea un reflejo fiel de nuestros
-          valores y de las expectativas de nuestros clientes. Trabajamos para
-          que todo el proceso, desde el primer boceto hasta el día en que los
-          clientes reciban las llaves de su casa, sea un camino ilusionante y
-          colaborativo. Nos esforzamos para que cada cliente conozca y entienda
-          el proceso de creación de su proyecto, cómo se gestiona, cómo se
-          construye y que, en todo momento, sea parte activa de este proceso.
-          Colaboramos con una amplia red de profesionales locales, incluyendo
-          interioristas, ingenieros, topógrafos, almacenes de materiales de
-          construcción y constructores. Estos colaboradores forman parte de
-          nuestros equipos, lo que permite ofrecer a nuestros clientes una
-          experiencia más rica y completa.
-        </p>
+        <TruncatedText
+          content={`
+            Desde nuestros dos estudios, uno ubicado en Llucmajor y otro en
+            Santanyí, abordamos cada proyecto de manera personalizada y única,
+            asegurándonos de que cada diseño sea un reflejo fiel de nuestros
+            valores y de las expectativas de nuestros clientes. Trabajamos para
+            que todo el proceso, desde el primer boceto hasta el día en que los
+            clientes reciban las llaves de su casa, sea un camino ilusionante y
+            colaborativo. Nos esforzamos para que cada cliente conozca y entienda
+            el proceso de creación de su proyecto, cómo se gestiona, cómo se
+            construye y que, en todo momento, sea parte activa de este proceso.
+            Colaboramos con una amplia red de profesionales locales, incluyendo
+            interioristas, ingenieros, topógrafos, almacenes de materiales de
+            construcción y constructores. Estos colaboradores forman parte de
+            nuestros equipos, lo que permite ofrecer a nuestros clientes una
+            experiencia más rica y completa.
+          `}
+        />
       </section>
       <section className="pt-[59px] lg:pt-[49px]">
         <ProjectSection options={btns} projects={projects} />

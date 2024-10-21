@@ -39,7 +39,40 @@ export function ProjectDetails(props: ProjectDetailsProps) {
     <div className="flex flex-col">
       <div className="flex flex-col lg:grid lg:grid-cols-2 gap-[28px]">
         <div className="flex flex-col justify-between">
-          <div></div>
+          <div>
+            <div className="grid grid-cols-3 border-b border-black border-1 pb-[46px]">
+              <div className="col-span-1">
+                <p className="text-[20px] leading-[26px]">Proyecto:</p>
+              </div>
+              <div className="col-span-2">
+                <p className="text-[20px] leading-[26px]">REF0098</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 border-b border-black border-1 pb-[46px]">
+              <div className="col-span-1">
+                <p className="text-[20px] leading-[26px]">Tipo de obra:</p>
+              </div>
+              <div className="col-span-2">
+                <p className="text-[20px] leading-[26px]">Reforma</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 border-b border-black border-1 pb-[46px]">
+              <div className="col-span-1">
+                <p className="text-[20px] leading-[26px]">Ubicación:</p>
+              </div>
+              <div className="col-span-2">
+                <p className="text-[20px] leading-[26px]">Petra, Mallorca</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 border-b border-black border-1 pb-[46px]">
+              <div className="col-span-1">
+                <p className="text-[20px] leading-[26px]">Superficie construida:</p>
+              </div>
+              <div className="col-span-2">
+                <p className="text-[20px] leading-[26px]">426 m²</p>
+              </div>
+            </div>
+          </div>
           <div className="flex gap-[14px]">
             {btns.map((option, index) => (
               <button
