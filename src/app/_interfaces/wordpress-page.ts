@@ -9,11 +9,14 @@ import {
 } from "./wordpress";
 import {
   HomeWp,
+  InformationWp,
   OfficesFootertWp,
   ProjectPostWp,
   ProjectWp,
   ServiceHomeWp,
   ServiceSectionHomeWp,
+  ServicesSectionWp,
+  TeamWp,
 } from "./wordpress-components";
 
 export interface WordPressFrontendPage {
@@ -44,6 +47,10 @@ export interface AcfComponents {
   service_section: ServiceSectionHomeWp;
   feature_projects: ProjectWp[];
   offices: OfficesFootertWp;
+  information: InformationWp;
+  section: InformationWp;
+  team_section: TeamWp;
+  services_section: ServicesSectionWp;
 }
 
 export interface Links {

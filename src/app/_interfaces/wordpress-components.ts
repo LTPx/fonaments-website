@@ -6,6 +6,28 @@ export interface HomeWp {
   image: ImageAcf;
 }
 
+export interface InformationWp {
+  title: string;
+  description: string;
+}
+
+export interface TeamWp {
+  cover_image: ImageAcf;
+  members_team: MemberTeamWp[];
+}
+
+export interface ServicesSectionWp {
+  cover_image: ImageAcf;
+  services: ServiceHomeWp[];
+}
+
+export interface MemberTeamWp {
+  name: string;
+  profession: string;
+  image: ImageAcf;
+  description: string;
+}
+
 export interface ServiceHomeWp {
   title: string;
   description: string;

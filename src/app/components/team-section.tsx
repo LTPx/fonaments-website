@@ -1,15 +1,9 @@
+import { MemberTeamWp } from "../_interfaces/wordpress-components";
 import MemberTeam from "./member-team";
-
-interface Props {
-  name: string;
-  image: string;
-  profession: string;
-  description: string;
-}
 
 interface TeamSectionProps {
   coverImage: string;
-  membersTeam: Props[];
+  membersTeam: MemberTeamWp[];
 }
 
 export function TeamSection(props: TeamSectionProps) {

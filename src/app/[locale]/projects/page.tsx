@@ -9,6 +9,9 @@ async function Projects(nextParams: {
   const {
     params: { locale },
   } = nextParams;
+  const data = await getWordPressPage(locale, "projects");
+  const { acf } = data;
+  const { information, section } = acf;
 
   const projects = [
     {
@@ -48,25 +51,10 @@ async function Projects(nextParams: {
   return (
     <div className="container page-projects">
       <section className="flex flex-col lg:flex-row lg:justify-between">
-        <h1 className="pt-[4px] lg:pt-[0px]">Proyectos</h1>
+        <h1 className="pt-[4px] lg:pt-[0px]">{information.title}</h1>
         <TruncatedText
-        className="text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] pt-[14px] lg:pt-[37px] lg:w-[550px] xl:w-[804px]"
-          content={`
-            Desde nuestros dos estudios, uno ubicado en Llucmajor y otro en
-            Santanyí, abordamos cada proyecto de manera personalizada y única,
-            asegurándonos de que cada diseño sea un reflejo fiel de nuestros
-            valores y de las expectativas de nuestros clientes. Trabajamos para
-            que todo el proceso, desde el primer boceto hasta el día en que los
-            clientes reciban las llaves de su casa, sea un camino ilusionante y
-            colaborativo. Nos esforzamos para que cada cliente conozca y entienda
-            el proceso de creación de su proyecto, cómo se gestiona, cómo se
-            construye y que, en todo momento, sea parte activa de este proceso.
-            Colaboramos con una amplia red de profesionales locales, incluyendo
-            interioristas, ingenieros, topógrafos, almacenes de materiales de
-            construcción y constructores. Estos colaboradores forman parte de
-            nuestros equipos, lo que permite ofrecer a nuestros clientes una
-            experiencia más rica y completa.
-          `}
+          className="text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] pt-[14px] lg:pt-[37px] lg:w-[550px] xl:w-[804px]"
+          content={information.description}
         />
       </section>
       <section className="pt-[59px] lg:pt-[49px]">
@@ -75,14 +63,11 @@ async function Projects(nextParams: {
       <section className="pt-[30px] lg:pt-[180px] pb-[80px] lg:pb-[94px]">
         <hr className="border-t border-black border-1 mb-[10px]" />
         <div className="flex gap-[15px] lg:gap-[0px] flex-col lg:grid lg:grid-cols-2">
-          <p className="lg:w-[263px] text-[16px] lg:text-[18px] leading-[20px]">
-            Nuestros valores son claros y trabajamos para que se reflejen en
-            cada uno de nuestros proyectos:
-          </p>
-          <h2 className="lg:w-[429px] lg:leading-[46px]">
-            Diseño personalizado Enfoque sostenible Innovación y creatividad
-            Calidad y detalle
-          </h2>
+          <div
+            className="lg:w-[263px] text-[16px] lg:text-[18px] leading-[20px]"
+            dangerouslySetInnerHTML={{ __html: section.description }}
+          />
+          <h2 className="lg:w-[429px] lg:leading-[46px]">{section.title}</h2>
         </div>
       </section>
     </div>
