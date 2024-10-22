@@ -1,15 +1,10 @@
+import { ServiceHomeWp } from "../_interfaces/wordpress-components";
 import Accordion from "./accordion";
-
-interface ItemsProps {
-  title: string;
-  description: string;
-  imageUrl?: string;
-}
 
 interface OurServicesProps {
   title: string;
   description: string;
-  accordionItems: ItemsProps[];
+  accordionItems: ServiceHomeWp[];
 }
 
 export function OurServices(props: OurServicesProps) {
@@ -19,18 +14,22 @@ export function OurServices(props: OurServicesProps) {
     <div className="flex flex-col">
       <div className="flex flex-col gap-[29px] lg:gap-[39px]">
         <h2 className="lg:w-[422px]">{title}</h2>
-        <p className="lg:w-[565px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]">{description}</p>
+        <div
+          className="lg:w-[565px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
       <div className="pt-[30px] lg:pt-[80px]">
         {accordionItems.map((item, index) => (
           <Accordion key={index} title={item.title}>
             <div>
-              <p className="lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]">
-                {item.description}
-              </p>
-              {item.imageUrl && (
+              <div
+                className="lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"
+                dangerouslySetInnerHTML={{ __html: item.description }}
+              />
+              {item.image && (
                 <img
-                  src={item.imageUrl}
+                  src={item.image.url}
                   className="h-[200px] md:h-[400px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
                 />
               )}

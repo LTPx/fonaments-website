@@ -3,14 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { OfficesFootertWp } from "../_interfaces/wordpress-components";
 
 interface FooterProps {
   address?: string;
   logoFooter?: string;
+  footer?: OfficesFootertWp;
 }
 
 export function Footer(props: FooterProps) {
-  const { address, logoFooter } = props;
+  const { address, logoFooter, footer } = props;
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
@@ -73,7 +75,7 @@ export function Footer(props: FooterProps) {
           {(selectedOption === "Llucmajor" || !isMobile) && (
             <div className="flex flex-col">
               <label className="hidden lg:block lg:text-[32px] lg:leading-[38px] mb-[10px]">
-                Llucmajor
+                {footer?.first_office.title}
               </label>
               <hr className="border-t border-black border-1 mb-[10px]" />
               <div className="flex flex-col text-[20px] leading-[26px]">
@@ -83,13 +85,15 @@ export function Footer(props: FooterProps) {
                 <Link
                   className="font-regular underline"
                   target="_blank"
-                  href="/https://www.google.com/maps/place/C.+del+Obispo+Taxaquet,+110,+07620+Llucmajor,+Illes+Balears,+Espa%C3%B1a/@39.487999,2.8882161,17z/data=!3m1!4b1!4m6!3m5!1s0x1297bb0619c587b5:0x366ce29d583e0cb1!8m2!3d39.487999!4d2.8882161!16s%2Fg%2F11c17433lc?entry=ttu&g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D"
+                  href={
+                    "https://s3-alpha-sig.figma.com/img/5479/27dc/fda7eadfe11baba44c94413f4f46f76e?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NUjn2La5QcNBH~c8HVEHLgcn42QMGL7Seqf1Z~PeQQv8LCnrxNgMd3aFO25-gs8crM-v6bqMRSp-JbMUtEQcA3BcyfzfNm9q6dPcf8CzjxRaGlqoLWibi9mnd8JKowuFkw4EcYxOCYtVP-qzb9QwcSL9YHMxW8vXGqAO~QpG5zDsHZBPZQ~F5LF~dfAXlBCCJaR5V43DUHu-1eKeKFG8bgBh3aCAHSZtK62xLzgui5FfZxWnZEl8NYM~1Kk3dLZ2S1pouAhNpYclCfB1KIldnxzAiWeAQdeQBLWeA9doSz3FQxFCi6Ybqjy3sAmXP6czmDpIUTnJh4DbYVOAbbD1cQ__"
+                  }
                 >
                   Ver localización
                 </Link>
               </div>
               <img
-                src="https://s3-alpha-sig.figma.com/img/5479/27dc/fda7eadfe11baba44c94413f4f46f76e?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=CvxMVWGAVChk2upd7HN2cHEcHYmVJ4qmKMz7Js5ThJNZj8m9I9zC0s0hCstyPgvaSOx53VKlaGQCFUvMc1~kl3d11zqJkbuskCVSEz~NsBCSSqVctd~guFqHZ7DnK~0j-VrZ~GTHf2cvWAhUYCnAlaZG3yhf6Rx2VJFGUbihsF5UDGlDWOR8Lc8tGCa9lsZu0f5mkuE3NyjOnVSETWKbW62HadXBl5oOGcH1~R6amjfCh4stvnXd9PfbQ1atcYaO8RngYGHBNBVW8~QUeKva77-i7vTchZno1ONghDAXNO1Yvn7vyBSSxAyud11H2mwclqDAOFRs7Bm6DCHNkFKgog__"
+                src={footer?.first_office.image.url}
                 className="lg:hidden pt-[20px] h-[450px] w-full object-cover"
               />
             </div>
@@ -98,7 +102,7 @@ export function Footer(props: FooterProps) {
           {(selectedOption === "Santanyí" || !isMobile) && (
             <div className="flex flex-col">
               <label className="hidden lg:block lg:text-[32px] lg:leading-[38px] mb-[10px]">
-                Santanyí
+                {footer?.second_office.title}
               </label>
               <hr className="border-t border-black border-1 mb-[10px]" />
               <div className="flex flex-col text-[20px] leading-[26px]">
@@ -114,7 +118,7 @@ export function Footer(props: FooterProps) {
                 </Link>
               </div>
               <img
-                src="https://s3-alpha-sig.figma.com/img/462e/3ec0/0e74abc5e579f1e5468d06b1b7038083?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ExvtZqaMqE8RpJ07IaW-iscShnBKlTo78Ed2rqO59kiqyjnFHsCPWrYLTSkb5lMrdwH~O4dzWBMRvfXAh9wpTTR7IFQLl-pc6bt4SSlKob~H7bnaOhUc0Zi1crAh0AAMbSL~YOlXfgSfdMG3Kz9GQ7M8qVok0gYY~V1DRi4neRe161RHsiCY2OiuxrcE4OuY7ngPPtiUcTX1CSV8b74s1aI5Uh8MXwTNzKnVZLnrOS2Ar2nwqtqwUKqa85iZJ37E3XaJ37jNwAMDy4lcN-AFBYL6W7Fuk~T7OlooEUYqQfRpHg9jBkIqtoAgk1vb7UqtCuU79708uK07z0Oo4rPNYg__"
+                src={footer?.second_office.image.url}
                 className="lg:hidden pt-[20px] h-[450px] w-full object-cover"
               />
             </div>
@@ -124,11 +128,11 @@ export function Footer(props: FooterProps) {
         {pathname === "/es" && !isMobile && (
           <div className="hidden lg:grid lg:grid-cols-2 gap-[20px] pt-[24px]">
             <img
-              src="https://s3-alpha-sig.figma.com/img/5479/27dc/fda7eadfe11baba44c94413f4f46f76e?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=CvxMVWGAVChk2upd7HN2cHEcHYmVJ4qmKMz7Js5ThJNZj8m9I9zC0s0hCstyPgvaSOx53VKlaGQCFUvMc1~kl3d11zqJkbuskCVSEz~NsBCSSqVctd~guFqHZ7DnK~0j-VrZ~GTHf2cvWAhUYCnAlaZG3yhf6Rx2VJFGUbihsF5UDGlDWOR8Lc8tGCa9lsZu0f5mkuE3NyjOnVSETWKbW62HadXBl5oOGcH1~R6amjfCh4stvnXd9PfbQ1atcYaO8RngYGHBNBVW8~QUeKva77-i7vTchZno1ONghDAXNO1Yvn7vyBSSxAyud11H2mwclqDAOFRs7Bm6DCHNkFKgog__"
+              src={footer?.first_office.image.url}
               className="h-[716px] w-full object-cover"
             />
             <img
-              src="https://s3-alpha-sig.figma.com/img/462e/3ec0/0e74abc5e579f1e5468d06b1b7038083?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ExvtZqaMqE8RpJ07IaW-iscShnBKlTo78Ed2rqO59kiqyjnFHsCPWrYLTSkb5lMrdwH~O4dzWBMRvfXAh9wpTTR7IFQLl-pc6bt4SSlKob~H7bnaOhUc0Zi1crAh0AAMbSL~YOlXfgSfdMG3Kz9GQ7M8qVok0gYY~V1DRi4neRe161RHsiCY2OiuxrcE4OuY7ngPPtiUcTX1CSV8b74s1aI5Uh8MXwTNzKnVZLnrOS2Ar2nwqtqwUKqa85iZJ37E3XaJ37jNwAMDy4lcN-AFBYL6W7Fuk~T7OlooEUYqQfRpHg9jBkIqtoAgk1vb7UqtCuU79708uK07z0Oo4rPNYg__"
+              src={footer?.second_office.image.url}
               className="h-[716px] w-full object-cover"
             />
           </div>

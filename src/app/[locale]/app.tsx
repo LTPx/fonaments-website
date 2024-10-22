@@ -1,4 +1,5 @@
 import { getWordPressPage } from "../_services/api";
+import AppFooter from "../components/app-footer";
 import AppHeader from "../components/app-header";
 import Footer from "../components/footer";
 import Header from "../components/header";
@@ -15,7 +16,9 @@ async function App(props: Props) {
     <>
       <AppHeader/>
       <div className="bg-body">{children}</div>
-      <Footer />
+      <AppFooter params={{
+        locale: "en"
+      }}/>
     </>
   );
 }

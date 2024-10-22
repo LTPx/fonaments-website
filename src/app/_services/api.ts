@@ -2,16 +2,18 @@ import { WordPressFrontendPage } from "../_interfaces/wordpress-page";
 
 export async function getWordPressPage(
   locale: "en" | "es" | "de",
-  page: string
+  slug: string
 ): Promise<WordPressFrontendPage> {
-  const url = `${process.env.WORDPRESS_API_URL}/wp/v2/pages?slug=${page}`;
+  const WORDPRESS_API_URL= 'http://www.staging.fonamentsarch.com/wp-json';
+  const url = `${WORDPRESS_API_URL}/wp/v2/pages?slug=${slug}&acf_format=standard`;
   console.log("url: ", url);
   const response = await fetch(url, {
     next: {
       revalidate: 0,
     },
   });
-  const dataJson = await response.json();
-  if (!response.ok) throw new Error(dataJson.message);
-  return dataJson;
+  const pages = await response.json();
+  if (!response.ok) throw new Error(pages.message);
+  const page = pages.length ? pages[0] : undefined;
+  return page;
 }
