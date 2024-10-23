@@ -61,6 +61,7 @@ export interface AcfComponents {
   description_project: string;
   cover_image_project: ImageAcf;
   information_project: InformationProjectWp;
+  hover_image: ImageAcf;
 }
 
 export interface Links {

@@ -2,6 +2,7 @@ import { Link } from "@/navigation";
 import Carousel from "./carousel";
 import { ProjectWp } from "../_interfaces/wordpress-components";
 import { getAllProjects } from "../_services/api";
+import ProjectCard from "./project-card";
 
 interface HeaderCarouselProps {
   items: ProjectWp[];
@@ -15,17 +16,17 @@ export async function HeaderCarousel(props: HeaderCarouselProps) {
     return projectsIdsSelected.includes(project.id);
   });
 
+  console.log(projects)
+
   return (
     <Carousel slidesNumber={3}>
       {projects.map((item, index) => (
         <Link href={`/projects/${item.slug}`} key={index}>
-          <img
-            src={item._embedded["wp:featuredmedia"][0].source_url}
-            className="h-[456px] xl:h-[600px] object-cover w-full"
+          <ProjectCard
+            title={item.title.rendered}
+            image={item._embedded["wp:featuredmedia"][0].source_url}
+            imageHover={'https://s3-alpha-sig.figma.com/img/b0ec/1da8/205f0bec1ed743c9339f5dc9d99bb8e9?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NhcIzXBMUi8I10tWwPeCV-7SnXiEEWlil1kByWeJwAvW6Go8OdGINKhq6DnFb6vajTT~~yI0yXMVTDdrnMm~rQXzpFjt603UHXNsTbSXmuv~NZoFDVb9NtyL0~btkFw9iOgzGZzP2OMeh60V49-XYVIq98MCKrlyQcbyr~jGAEPWreinUczNftiiTrPawOyoKxaHSB~xFjZdcqixBH1aClRSH~p0YRjumHiWJw7MLHAeLAwpAcvQcNF-O-7AFePVS1YawDQ731qqI33Wr9XtRXgUHzbYMzHbOv7cdRRudYZwoNLbqln9us9xmsXo3j7GwpLZSAKZF7S6LUwynBfb8g__'}
           />
-          <p className="font-medium text-[14px] leading-[26px]">
-            {item.title.rendered}
-          </p>
         </Link>
       ))}
     </Carousel>
