@@ -2,12 +2,13 @@
 import React, { useState } from "react";
 import Lightbox from "react-18-image-lightbox";
 import "react-18-image-lightbox/style.css";
+import { GalleryProjectWp } from "../_interfaces/wordpress-components";
 
 export interface GalleryProps {
-  images: string[];
+  gallery: GalleryProjectWp[];
 }
 
-export function Gallery({ images }: GalleryProps) {
+export function Gallery({ gallery }: GalleryProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
 
@@ -18,6 +19,7 @@ export function Gallery({ images }: GalleryProps) {
 
   const renderGroup = (startIndex: number) => (
     <>
+      {/* Imagen principal que ocupa toda la fila */}
       <div className="grid grid-cols-1 gap-3">
         <button
           type="button"
@@ -25,7 +27,7 @@ export function Gallery({ images }: GalleryProps) {
           onClick={() => openLightbox(startIndex)}
         >
           <img
-            src={images[startIndex]}
+            src={gallery[startIndex].image.url}
             className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] md:h-[500px] lg:h-[800px] w-full"
             alt={`Gallery image ${startIndex + 1}`}
             data-fancybox="gallery"
@@ -33,8 +35,9 @@ export function Gallery({ images }: GalleryProps) {
         </button>
       </div>
 
+      {/* Dos imágenes en la siguiente fila */}
       <div className="grid grid-cols-2 gap-3">
-        {images.slice(startIndex + 1, startIndex + 3).map((image, index) => (
+        {gallery.slice(startIndex + 1, startIndex + 3).map((image, index) => (
           <button
             key={startIndex + index + 1}
             type="button"
@@ -42,7 +45,7 @@ export function Gallery({ images }: GalleryProps) {
             onClick={() => openLightbox(startIndex + index + 1)}
           >
             <img
-              src={image}
+              src={image.image.url}
               className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
               alt={`Gallery image ${startIndex + index + 2}`}
               data-fancybox="gallery"
@@ -56,12 +59,13 @@ export function Gallery({ images }: GalleryProps) {
   return (
     <section className="flex flex-col gap-3">
       {renderGroup(0)}
-      {images.length > 3 && renderGroup(3)}
-      {images.length > 6 && renderGroup(6)}
+      {gallery.length > 3 && renderGroup(3)}
+      {gallery.length > 6 && renderGroup(6)}
 
-      {images.length > 9 && (
+      {/* Si hay más imágenes después de la novena */}
+      {gallery.length > 9 && (
         <>
-          {images.slice(9).map((image, index) => (
+          {gallery.slice(9).map((image, index) => (
             <div key={index + 9} className="grid grid-cols-1 gap-3">
               <button
                 type="button"
@@ -69,7 +73,7 @@ export function Gallery({ images }: GalleryProps) {
                 onClick={() => openLightbox(index + 9)}
               >
                 <img
-                  src={image}
+                  src={image.image.url}
                   className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] md:h-[500px] lg:h-[800px] w-full"
                   alt={`Gallery image ${index + 10}`}
                   data-fancybox="gallery"
@@ -80,26 +84,18 @@ export function Gallery({ images }: GalleryProps) {
         </>
       )}
 
-      {/* <div className="flex justify-center">
-        <p
-          className="text-[14px] leading-[14px] lg:text-[20px] lg:leading-[28px] text-primary underline cursor-pointer"
-          onClick={() => openLightbox(0)}
-        >
-          More images
-        </p>
-      </div> */}
-
+      {/* Lightbox para visualizar las imágenes */}
       {isOpen && (
         <Lightbox
-          mainSrc={images[photoIndex]}
-          nextSrc={images[(photoIndex + 1) % images.length]}
-          prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+          mainSrc={gallery[photoIndex].image.url} 
+          nextSrc={gallery[(photoIndex + 1) % gallery.length].image.url}
+          prevSrc={gallery[(photoIndex + gallery.length - 1) % gallery.length].image.url}
           onCloseRequest={() => setIsOpen(false)}
           onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % images.length)
+            setPhotoIndex((photoIndex + 1) % gallery.length)
           }
           onMovePrevRequest={() =>
-            setPhotoIndex((photoIndex + images.length - 1) % images.length)
+            setPhotoIndex((photoIndex + gallery.length - 1) % gallery.length)
           }
         />
       )}

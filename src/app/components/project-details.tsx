@@ -3,20 +3,19 @@
 import { useState } from "react";
 import Gallery from "./gallery";
 import { Link } from "@/navigation";
-import { InformationProjectWp } from "../_interfaces/wordpress-components";
-
-interface Props {
-  imageUrl: string;
-  title: string;
-}
+import {
+  GalleryProjectWp,
+  InformationProjectWp,
+} from "../_interfaces/wordpress-components";
 
 interface ProjectDetailsProps {
   description_project: string;
   information_project: InformationProjectWp;
+  gallery_project: GalleryProjectWp[];
 }
 
 export function ProjectDetails(props: ProjectDetailsProps) {
-  const { description_project, information_project } = props;
+  const { description_project, information_project, gallery_project } = props;
   const images = [
     "https://s3-alpha-sig.figma.com/img/c425/9d7c/756094684b52a1933a88d0a202f6e33d?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Rfggrr~iUqShbB9f6tfX~3Hw5lgTDF0x1kjCN-pAv9WmUNbIjLipFWDmY4fV7M88DNEtmOi641nn2C3Qtph2CLHN9hrMTZmjf~inCVPhcJWIG34mcB6pssDeQXhn7QB1oNvkXoZLxxlKG~b02bpwPkcMbee94UKQ6i2TeCz7eQV8rsXaoe8TPbmF55KQCQ~pT3D~4AnW0y4lcSCpKaWW-Drdi~0-r04WatT205YgOTFRY-kKYwNSShpjEKKqFbQB6pKbJ4zJMoIWnUVwcXR803gBy-VD~Rd7ZZG5bHPgFLFcNLXXRYy31pZItCU-ef1uQCiVo7HGxoKExt~0zzmaTQ__",
     "https://s3-alpha-sig.figma.com/img/c425/9d7c/756094684b52a1933a88d0a202f6e33d?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Rfggrr~iUqShbB9f6tfX~3Hw5lgTDF0x1kjCN-pAv9WmUNbIjLipFWDmY4fV7M88DNEtmOi641nn2C3Qtph2CLHN9hrMTZmjf~inCVPhcJWIG34mcB6pssDeQXhn7QB1oNvkXoZLxxlKG~b02bpwPkcMbee94UKQ6i2TeCz7eQV8rsXaoe8TPbmF55KQCQ~pT3D~4AnW0y4lcSCpKaWW-Drdi~0-r04WatT205YgOTFRY-kKYwNSShpjEKKqFbQB6pKbJ4zJMoIWnUVwcXR803gBy-VD~Rd7ZZG5bHPgFLFcNLXXRYy31pZItCU-ef1uQCiVo7HGxoKExt~0zzmaTQ__",
@@ -115,10 +114,12 @@ export function ProjectDetails(props: ProjectDetailsProps) {
           />
         </div>
       </div>
-      <section className="pt-[88px]">
-        <Gallery images={images} />
-      </section>
-      <section className="pt-[7px] pb-[53px]">
+      {gallery_project.length > 0 && (
+        <section className="pt-[88px]">
+          <Gallery gallery={gallery_project} />
+        </section>
+      )}
+      <section className="pt-[15px] pb-[53px]">
         <div className="flex justify-between">
           <div className="flex gap-[6px] items-center">
             <img className="cursor-pointer" src="/images/icons/left.svg" />

@@ -46,7 +46,7 @@ export function ProjectSection(props: ProjectSectionProps) {
           <Link href={`/projects/${item.slug}`} key={index}>
             <img
               src={item._embedded["wp:featuredmedia"][0].source_url}
-              className="h-[600px] md:h-[450px] xl:h-[600px] object-cover w-full"
+              className="h-[446px] md:h-[450px] xl:h-[600px] object-cover w-full"
             />
             <p className="font-medium text-[14px] leading-[26px]">
               {item.title.rendered}

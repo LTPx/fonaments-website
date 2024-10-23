@@ -3,14 +3,14 @@ import { getProjectBySlug, getWordPressPage } from "@/app/_services/api";
 import ProjectDetails from "@/app/components/project-details";
 
 async function ProjectSlugPage(nextParams: {
-  params: { locale: "en" | "es" | "de", slug: string };
+  params: { locale: "en" | "es" | "de"; slug: string };
 }) {
   const {
     params: { locale, slug },
   } = nextParams;
 
   const data = await getProjectBySlug(locale, slug);
-  const { acf, yoast_head_json  } = data
+  const { acf, yoast_head_json } = data;
 
   const {
     cover_image_project,
@@ -27,7 +27,11 @@ async function ProjectSlugPage(nextParams: {
         className="pt-[20px] lg:pt-[0px] h-[456px] lg:h-[800px] w-full object-cover"
       />
       <section className="pt-[20px]">
-        <ProjectDetails information_project={information_project} description_project={description_project} />
+        <ProjectDetails
+          gallery_project={gallery_project}
+          information_project={information_project}
+          description_project={description_project}
+        />
       </section>
     </div>
   );
