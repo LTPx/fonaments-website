@@ -1,13 +1,15 @@
 import { Suspense } from "react";
-import { getWordPressPage } from "@/app/_services/api";
+import { getProjectBySlug, getWordPressPage } from "@/app/_services/api";
 import ProjectDetails from "@/app/components/project-details";
 
 async function ProjectSlugPage(nextParams: {
-  params: { locale: "en" | "es" | "de" };
+  params: { locale: "en" | "es" | "de", slug: string };
 }) {
   const {
-    params: { locale },
+    params: { locale, slug },
   } = nextParams;
+
+  const project = await getProjectBySlug(locale, slug);
 
   return (
     <div className="container project-slug-page">
