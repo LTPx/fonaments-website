@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { WordPressPost } from "../_interfaces/wordpress";
+import { Link } from "@/navigation";
 
 interface Props {
   imageUrl: string;
@@ -9,7 +11,7 @@ interface Props {
 
 interface ProjectSectionProps {
   options: string[];
-  projects: Props[];
+  projects: WordPressPost[];
 }
 
 export function ProjectSection(props: ProjectSectionProps) {
@@ -41,15 +43,15 @@ export function ProjectSection(props: ProjectSectionProps) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-4 gap-y-[32px] lg:grid-cols-3 lg:gap-y-[20px] lg:gap-x-[15px] pt-[22px] lg:pt-[20px]">
         {projects.map((item, index) => (
-          <div key={index}>
+          <Link href={`/projects/${item.slug}`} key={index}>
             <img
-              src={item.imageUrl}
+              src={item._embedded["wp:featuredmedia"][0].source_url}
               className="h-[600px] md:h-[450px] xl:h-[600px] object-cover w-full"
             />
             <p className="font-medium text-[14px] leading-[26px]">
-              {item.title}
+              {item.title.rendered}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

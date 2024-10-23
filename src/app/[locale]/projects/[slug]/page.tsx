@@ -9,17 +9,25 @@ async function ProjectSlugPage(nextParams: {
     params: { locale, slug },
   } = nextParams;
 
-  const project = await getProjectBySlug(locale, slug);
+  const data = await getProjectBySlug(locale, slug);
+  const { acf, yoast_head_json  } = data
+
+  const {
+    cover_image_project,
+    description_project,
+    information_project,
+    gallery_project,
+  } = acf;
 
   return (
     <div className="container project-slug-page">
-      <h1 className="pt-[4px] lg:pt-[0px]">Proyecto 0098</h1>
+      <h1 className="pt-[4px] lg:pt-[0px]">{yoast_head_json.title}</h1>
       <img
-        src="https://s3-alpha-sig.figma.com/img/13e9/c36e/22cb64722351b977206c2b1e78a61953?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aYbmhmQiWg~K1offIUs33PwCP9XMv60tVpOVBAQzVg6N8PUN-W-n3j8vqQCFzwJr-~c4Z2C1T~qjpFJ~RvpJP44rDcJ4oFn7Yof0MrSsk4ENsVLOfKXNlhGhCgfzv-qLtITpAhRrnh-OyjJHx9ykxmEw01NZfcQZJF~~yTaVgPsujHeayZ~XKaGZY76lhi3iRiO76myR1jLIiq3HaT6wCM2ylPbRZtSfHR1oLZ5Nz~h-OrQz5i7Ou8PyOJOkP3gma6ErQhs2FzZB9hM3NrQzfExE3jXxWUWNcs~Ci-1zykJq499flZBAyoQ8kk0J1irIM3Sa7GijWuuVVq7A4PKsGw__"
+        src={cover_image_project.url}
         className="pt-[20px] lg:pt-[0px] h-[456px] lg:h-[800px] w-full object-cover"
       />
       <section className="pt-[20px]">
-        <ProjectDetails />
+        <ProjectDetails information_project={information_project} description_project={description_project} />
       </section>
     </div>
   );

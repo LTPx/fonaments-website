@@ -34,7 +34,7 @@ export function MenuMobile(props: MenuMobileProps) {
           <div className="border-l border-black h-[50px] flex justify-center items-center">
             <img
               className="pl-[11px] cursor-pointer"
-              src="/images/icons/less.svg"
+              src="/images/icons/add.svg"
               onClick={() => setMenuOpen(true)}
             />
           </div>

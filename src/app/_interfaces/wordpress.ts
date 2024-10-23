@@ -1,3 +1,5 @@
+import { AcfComponents } from "./wordpress-page";
+
 export interface WordPressPost {
   id: number;
   date: Date;
@@ -22,7 +24,7 @@ export interface WordPressPost {
   meta: Meta;
   categories: number[];
   tags: number[];
-  acf: any[];
+  acf: AcfComponents;
   yoast_head: string;
   yoast_head_json: TopLevelYoastHeadJSON;
   _links: TopLevelLinks;

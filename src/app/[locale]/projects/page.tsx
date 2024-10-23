@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getWordPressPage } from "@/app/_services/api";
+import { getAllProjects, getWordPressPage } from "@/app/_services/api";
 import ProjectSection from "@/app/components/projects-section";
 import TruncatedText from "@/app/components/truncated-text";
 
@@ -12,7 +12,7 @@ async function Projects(nextParams: {
   const data = await getWordPressPage(locale, "projects");
   const { acf } = data;
   const { information, section } = acf;
-
+  const allProjects = await getAllProjects("en");
   const projects = [
     {
       imageUrl:
@@ -58,7 +58,7 @@ async function Projects(nextParams: {
         />
       </section>
       <section className="pt-[59px] lg:pt-[49px]">
-        <ProjectSection options={btns} projects={projects} />
+        <ProjectSection options={btns} projects={allProjects} />
       </section>
       <section className="pt-[30px] lg:pt-[180px] pb-[80px] lg:pb-[94px]">
         <hr className="border-t border-black border-1 mb-[10px]" />

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Gallery from "./gallery";
+import { Link } from "@/navigation";
+import { InformationProjectWp } from "../_interfaces/wordpress-components";
 
 interface Props {
   imageUrl: string;
@@ -9,11 +11,12 @@ interface Props {
 }
 
 interface ProjectDetailsProps {
-  projects?: Props[];
+  description_project: string;
+  information_project: InformationProjectWp;
 }
 
 export function ProjectDetails(props: ProjectDetailsProps) {
-  const { projects } = props;
+  const { description_project, information_project } = props;
   const images = [
     "https://s3-alpha-sig.figma.com/img/c425/9d7c/756094684b52a1933a88d0a202f6e33d?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Rfggrr~iUqShbB9f6tfX~3Hw5lgTDF0x1kjCN-pAv9WmUNbIjLipFWDmY4fV7M88DNEtmOi641nn2C3Qtph2CLHN9hrMTZmjf~inCVPhcJWIG34mcB6pssDeQXhn7QB1oNvkXoZLxxlKG~b02bpwPkcMbee94UKQ6i2TeCz7eQV8rsXaoe8TPbmF55KQCQ~pT3D~4AnW0y4lcSCpKaWW-Drdi~0-r04WatT205YgOTFRY-kKYwNSShpjEKKqFbQB6pKbJ4zJMoIWnUVwcXR803gBy-VD~Rd7ZZG5bHPgFLFcNLXXRYy31pZItCU-ef1uQCiVo7HGxoKExt~0zzmaTQ__",
     "https://s3-alpha-sig.figma.com/img/c425/9d7c/756094684b52a1933a88d0a202f6e33d?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Rfggrr~iUqShbB9f6tfX~3Hw5lgTDF0x1kjCN-pAv9WmUNbIjLipFWDmY4fV7M88DNEtmOi641nn2C3Qtph2CLHN9hrMTZmjf~inCVPhcJWIG34mcB6pssDeQXhn7QB1oNvkXoZLxxlKG~b02bpwPkcMbee94UKQ6i2TeCz7eQV8rsXaoe8TPbmF55KQCQ~pT3D~4AnW0y4lcSCpKaWW-Drdi~0-r04WatT205YgOTFRY-kKYwNSShpjEKKqFbQB6pKbJ4zJMoIWnUVwcXR803gBy-VD~Rd7ZZG5bHPgFLFcNLXXRYy31pZItCU-ef1uQCiVo7HGxoKExt~0zzmaTQ__",
@@ -42,34 +45,50 @@ export function ProjectDetails(props: ProjectDetailsProps) {
           <div>
             <div className="grid grid-cols-3 border-b border-black border-1 pb-[46px]">
               <div className="col-span-1">
-                <p className="text-[20px] leading-[26px]">Proyecto:</p>
+                <p className="text-[20px] leading-[26px]">
+                  {information_project.code_project.title}
+                </p>
               </div>
               <div className="col-span-2">
-                <p className="text-[20px] leading-[26px]">REF0098</p>
+                <p className="text-[20px] leading-[26px]">
+                  {information_project.code_project.code}
+                </p>
               </div>
             </div>
             <div className="grid grid-cols-3 border-b border-black border-1 pb-[46px]">
-              <div className="col-span-1">
-                <p className="text-[20px] leading-[26px]">Tipo de obra:</p>
+              <div className="pt-[10px] col-span-1">
+                <p className=" text-[20px] leading-[26px]">
+                  {information_project.type_work.title}
+                </p>
               </div>
-              <div className="col-span-2">
-                <p className="text-[20px] leading-[26px]">Reforma</p>
-              </div>
-            </div>
-            <div className="grid grid-cols-3 border-b border-black border-1 pb-[46px]">
-              <div className="col-span-1">
-                <p className="text-[20px] leading-[26px]">Ubicación:</p>
-              </div>
-              <div className="col-span-2">
-                <p className="text-[20px] leading-[26px]">Petra, Mallorca</p>
+              <div className="pt-[10px] col-span-2">
+                <p className="text-[20px] leading-[26px]">
+                  {information_project.type_work.description}
+                </p>
               </div>
             </div>
             <div className="grid grid-cols-3 border-b border-black border-1 pb-[46px]">
-              <div className="col-span-1">
-                <p className="text-[20px] leading-[26px]">Superficie construida:</p>
+              <div className="pt-[10px] col-span-1">
+                <p className="text-[20px] leading-[26px]">
+                  {information_project.location.title}
+                </p>
               </div>
-              <div className="col-span-2">
-                <p className="text-[20px] leading-[26px]">426 m²</p>
+              <div className="pt-[10px] col-span-2">
+                <p className="text-[20px] leading-[26px]">
+                  {information_project.location.description}
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 pb-[46px]">
+              <div className="pt-[10px] col-span-1">
+                <p className="text-[20px] leading-[26px]">
+                  {information_project.built_area.title}
+                </p>
+              </div>
+              <div className="pt-[10px] col-span-2">
+                <p className="text-[20px] leading-[26px]">
+                  {information_project.built_area.area}
+                </p>
               </div>
             </div>
           </div>
@@ -90,33 +109,10 @@ export function ProjectDetails(props: ProjectDetailsProps) {
           </div>
         </div>
         <div>
-          <p className="text-[16px] leading-[22px] lg:text-[20px] lg:leading-[26px]">
-            En este proyecto nos encontramos con un edificio de alto valor
-            arquitectónico e histórico, al que le sumamos el reto añadido de
-            convertir su antiguo uso industrial en vivienda. El objetivo
-            principal es hacer de este espacio una vivienda confortable y
-            práctica, siempre respetando y resaltando al máximo todos los
-            elementos existentes sobre los que estamos actuando. Se trata de un
-            ejercicio casi quirúrgico en el cual los nuevos espacios se
-            articulan siempre entorno a la arquitectura existente y cediéndole a
-            ésta todo el protagonismo. El resultado es una vivienda dividida en
-            dos plantas, entre las cuales hemos abierto un gran hueco a doble
-            altura que permite que nada más entrar en el edificio ya se perciba
-            el imponente espacio de la primera planta, sus columnas y techos de
-            madera. Con un estilo actual pero adaptado al espacio existente, el
-            mobiliario y la iluminación son casi los únicos elementos que
-            articulan la distribución de los espacios en planta piso. En este
-            proyecto nos encontramos con un edificio de alto valor
-            arquitectónico e histórico, al que le sumamos el reto añadido de
-            convertir su antiguo uso industrial en vivienda. El objetivo
-            principal es hacer de este espacio una vivienda confortable y
-            práctica, siempre respetando y resaltando al máximo todos los
-            elementos existentes sobre los que estamos actuando. Se trata de un
-            ejercicio casi quirúrgico en el cual los nuevos espacios se
-            articulan siempre entorno a la arquitectura existente y cediéndole a
-            ésta todo el protagonismo.En colaboracion con el estudio de
-            interiorismo DKAT Design.
-          </p>
+          <div
+            className="text-[16px] leading-[22px] lg:text-[20px] lg:leading-[26px]"
+            dangerouslySetInnerHTML={{ __html: description_project }}
+          />
         </div>
       </div>
       <section className="pt-[88px]">
@@ -130,9 +126,11 @@ export function ProjectDetails(props: ProjectDetailsProps) {
               Anterior
             </p>
           </div>
-          <p className="underline text-[20px] leading-[38px] cursor-pointer">
-            Todos los proyectos
-          </p>
+          <Link href={"/projects"}>
+            <p className="underline text-[20px] leading-[38px] cursor-pointer">
+              Todos los proyectos
+            </p>
+          </Link>
           <div className="flex gap-[6px] items-center">
             <p className="text-[20px] leading-[38px] cursor-pointer">
               Siguiente

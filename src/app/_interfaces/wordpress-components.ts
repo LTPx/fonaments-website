@@ -83,6 +83,33 @@ export interface GalleryProjectWp {
   image: ImageAcf;
 }
 
+export interface InformationProjectWp {
+  code_project: InformationCodeWp;
+  type_work: InformationWorkWp;
+  location: InformationLocationWp;
+  built_area: InformationAreaWp;
+}
+
+export interface InformationCodeWp {
+  title: string;
+  code: string;
+}
+
+export interface InformationWorkWp {
+  title: string;
+  description: string;
+}
+
+export interface InformationLocationWp {
+  title: string;
+  description: string;
+}
+
+export interface InformationAreaWp {
+  title: string;
+  area: string;
+}
+
 export interface ContactImagesWp {
   first_image: ImageAcf;
   second_image: ImageAcf;

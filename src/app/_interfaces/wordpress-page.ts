@@ -12,6 +12,7 @@ import {
   ContactWp,
   GalleryProjectWp,
   HomeWp,
+  InformationProjectWp,
   InformationWp,
   OfficesFootertWp,
   ProjectPostWp,
@@ -56,6 +57,10 @@ export interface AcfComponents {
   team_section: TeamWp;
   services_section: ServicesSectionWp;
   contact: ContactWp;
+  gallery_project: GalleryProjectWp[];
+  description_project: string;
+  cover_image_project: ImageAcf;
+  information_project: InformationProjectWp;
 }
 
 export interface Links {
