@@ -22,20 +22,24 @@ export function OurServices(props: OurServicesProps) {
       </div>
       <div className="pt-[30px] lg:pt-[80px]">
         {accordionItems.map((item, index) => (
-          <Accordion key={index} title={item.title}>
-            <div>
-              <div
-                className="lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"
-                dangerouslySetInnerHTML={{ __html: item.description }}
+          <Accordion
+          key={index}
+          title={item.title}
+          image={item.image?.url}
+        >
+          <div>
+            <div
+              className="lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"
+              dangerouslySetInnerHTML={{ __html: item.description }}
+            />
+            {item.image && (
+              <img
+                src={item.image.url}
+                className="h-[200px] md:h-[400px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
               />
-              {item.image && (
-                <img
-                  src={item.image.url}
-                  className="h-[200px] md:h-[400px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
-                />
-              )}
-            </div>
-          </Accordion>
+            )}
+          </div>
+        </Accordion>
         ))}
       </div>
       <div className="pt-[30px]">

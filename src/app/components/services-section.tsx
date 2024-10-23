@@ -17,7 +17,10 @@ export function ServiceSections(props: ServiceSectionsProps) {
       />
       <div className="flex flex-col pt-[23px] lg:pt-[37px]">
         {services.map((service, index) => (
-          <Accordion key={index} title={service.title}>
+            <Accordion
+            key={index}
+            title={service.title}
+            image={service.image?.url}>
             <div>
               <div
                 className="lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"

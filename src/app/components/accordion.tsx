@@ -7,11 +7,13 @@ interface AccordionProps {
   children: React.ReactNode;
   expanded?: boolean;
   icon?: string;
+  image?: string; // Añadir propiedad para la imagen
 }
 
 export function Accordion(props: AccordionProps) {
-  const { title, children, expanded, icon } = props;
+  const { title, children, expanded, icon, image } = props;
   const [isOpen, setIsOpen] = useState(!!expanded);
+  const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -44,19 +46,33 @@ export function Accordion(props: AccordionProps) {
   );
 
   return (
-    <div className="border border-t-[#000000] last:border-b-[#000000]">
+    <div className="relative border border-t-[#000000] last:border-b-[#000000]">
       <button
-        className={`w-full flex items-center`}
+        className="w-full flex items-center relative z-10"
         onClick={(e) => {
           e.preventDefault();
           setIsOpen(!isOpen);
         }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <h1 className="text-[42px] leading-[45px] lg:text-[80px] lg:leading-[130px] py-[20px] lg:py-[0px] text-start">
           {title}
         </h1>
         {toggleContent}
       </button>
+
+      {!isOpen && isHovered && image && (
+        <div className="absolute top-0 left-0 w-full h-auto z-20">
+          <img
+            src={image}
+            className="object-cover h-[200px] md:h-[400px] lg:h-[464px] w-[478px] mx-auto"
+            alt={`Imagen de ${title}`}
+            style={{ position: 'absolute', top: '-150%', right: '-12%', transform: 'translateX(-50%)' }} // Ajustar posición
+          />
+        </div>
+      )}
+
       <AnimateHeight duration={300} height={isOpen ? "auto" : 0}>
         <div className="lg:pt-[15px] pb-[20px] lg:pb-[30px]">{children}</div>
       </AnimateHeight>
