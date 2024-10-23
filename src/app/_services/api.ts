@@ -6,7 +6,7 @@ export async function getWordPressPage(
   locale: "en" | "es" | "de",
   slug: string
 ): Promise<WordPressFrontendPage> {
-  const WORDPRESS_API_URL = "http://www.staging.fonamentsarch.com/wp-json";
+  const WORDPRESS_API_URL = "https://www.staging.fonamentsarch.com/wp-json";
   const url = `${WORDPRESS_API_URL}/wp/v2/pages?slug=${slug}&acf_format=standard`;
   console.log("url: ", url);
   const response = await fetch(url, {
@@ -23,7 +23,7 @@ export async function getWordPressPage(
 export async function getAllProjects(
   locale: "en" | "es" | "de"
 ): Promise<WordPressPost[]> {
-  const WORDPRESS_API_URL = "http://www.staging.fonamentsarch.com/wp-json";
+  const WORDPRESS_API_URL = "https://www.staging.fonamentsarch.com/wp-json";
   const url = `${WORDPRESS_API_URL}/wp/v2/all_projects?_embed`;
   console.log("url projects: ", url);
   const response = await fetch(url, {
@@ -40,7 +40,7 @@ export async function getProjectBySlug(
   locale: "en" | "es" | "de",
   slug: string
 ): Promise<WordPressPost[]> {
-  const WORDPRESS_API_URL = "http://www.staging.fonamentsarch.com/wp-json";
+  const WORDPRESS_API_URL = "https://www.staging.fonamentsarch.com/wp-json";
   const url = `${WORDPRESS_API_URL}/wp/v2/all_projects?slug=${slug}&acf_format=standard`;
   console.log("url project: ", url);
   const response = await fetch(url, {
