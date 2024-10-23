@@ -7,7 +7,7 @@ interface AccordionProps {
   children: React.ReactNode;
   expanded?: boolean;
   icon?: string;
-  image?: string; // Añadir propiedad para la imagen
+  image?: string;
 }
 
 export function Accordion(props: AccordionProps) {
@@ -62,13 +62,18 @@ export function Accordion(props: AccordionProps) {
         {toggleContent}
       </button>
 
-      {!isOpen && isHovered && image && (
-        <div className="absolute top-0 left-0 w-full h-auto z-20">
+      {!isOpen && image && !isMobile && (
+        <div
+          className={`absolute top-0 left-0 w-full h-auto z-20 transition-opacity duration-500 ease-in-out transform ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }`}
+          style={{ transitionProperty: "opacity, transform" }}
+        >
           <img
             src={image}
             className="object-cover h-[200px] md:h-[400px] lg:h-[464px] w-[478px] mx-auto"
             alt={`Imagen de ${title}`}
-            style={{ position: 'absolute', top: '-150%', right: '-12%', transform: 'translateX(-50%)' }} // Ajustar posición
+            style={{ position: "absolute", top: "-150%", right: "6%" }}
           />
         </div>
       )}
