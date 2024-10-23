@@ -35,7 +35,7 @@ export function OurServices(props: OurServicesProps) {
             {item.image && (
               <img
                 src={item.image.url}
-                className="h-[200px] md:h-[400px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
+                className="object-cover h-[200px] md:h-[400px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
               />
             )}
           </div>
