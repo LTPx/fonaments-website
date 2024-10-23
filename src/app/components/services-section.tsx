@@ -26,7 +26,7 @@ export function ServiceSections(props: ServiceSectionsProps) {
               {service.image.url && (
                 <img
                   src={service.image.url}
-                  className="h-[200px] md:h-[450px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
+                  className="object-cover h-[200px] md:h-[450px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
                 />
               )}
             </div>
