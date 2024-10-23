@@ -12,7 +12,7 @@ function ProjectCard(props: ProjectCardProps) {
       <div className="relative h-[456px] xl:h-[600px]">
         <img
           src={image}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-in-out transform ${
             imageHover ? "opacity-100 group-hover:opacity-0" : ""
           }`}
         />
@@ -20,7 +20,7 @@ function ProjectCard(props: ProjectCardProps) {
           <img
             src={imageHover}
             alt="image-hover"
-            className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           />
         )}
       </div>

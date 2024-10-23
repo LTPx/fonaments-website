@@ -31,7 +31,7 @@ export function ProjectSection(props: ProjectSectionProps) {
             <button
               key={index}
               onClick={() => handleClick(option)}
-              className={`font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
+              className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
                 selectedOption === option
                   ? "bg-black text-white rounded-none"
                   : "text-black rounded-full"

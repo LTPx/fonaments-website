@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@/navigation";
 
 interface LinksHeader {
@@ -15,10 +15,17 @@ interface Props {
 export function Header(props: Props) {
   const { links } = props;
   const [selectedLink, setSelectedLink] = useState<string>("");
-  const [currentLocale, setCurrentLocale] = useState<string>("en");
+
+  useEffect(() => {
+    const savedLink = localStorage.getItem("selectedLink");
+    if (savedLink) {
+      setSelectedLink(savedLink);
+    }
+  }, []);
 
   const handleClick = (url: string) => {
     setSelectedLink(url);
+    localStorage.setItem("selectedLink", url);
   };
 
   return (

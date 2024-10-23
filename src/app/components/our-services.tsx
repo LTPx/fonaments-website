@@ -22,29 +22,25 @@ export function OurServices(props: OurServicesProps) {
       </div>
       <div className="pt-[30px] lg:pt-[80px]">
         {accordionItems.map((item, index) => (
-          <Accordion
-          key={index}
-          title={item.title}
-          image={item.image?.url}
-        >
-          <div>
-            <div
-              className="lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"
-              dangerouslySetInnerHTML={{ __html: item.description }}
-            />
-            {item.image && (
-              <img
-                src={item.image.url}
-                className="object-cover h-[200px] md:h-[400px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
+          <Accordion key={index} title={item.title} image={item.image?.url}>
+            <div>
+              <div
+                className="lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"
+                dangerouslySetInnerHTML={{ __html: item.description }}
               />
-            )}
-          </div>
-        </Accordion>
+              {item.image && (
+                <img
+                  src={item.image.url}
+                  className="object-cover h-[200px] md:h-[400px] lg:h-[754px] w-full pt-[20px] lg:pt-[75px]"
+                />
+              )}
+            </div>
+          </Accordion>
         ))}
       </div>
       <div className="pt-[30px]">
         <Link href={"/study"}>
-          <p className="flex items-center w-[145px] justify-center font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] rounded-full">
+          <p className="hover:bg-black hover:text-white hover:rounded-none flex items-center w-[145px] justify-center font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] rounded-full transition-colors duration-300 ease-in-out">
             Más servicios
           </p>
         </Link>
