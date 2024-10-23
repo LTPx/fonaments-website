@@ -3,16 +3,18 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { OfficesFootertWp } from "../_interfaces/wordpress-components";
+import {
+  ContactFooterWp,
+  OfficesFootertWp,
+} from "../_interfaces/wordpress-components";
 
 interface FooterProps {
-  address?: string;
-  logoFooter?: string;
   footer?: OfficesFootertWp;
+  contact_information: ContactFooterWp;
 }
 
 export function Footer(props: FooterProps) {
-  const { address, logoFooter, footer } = props;
+  const { contact_information, footer } = props;
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
@@ -79,15 +81,14 @@ export function Footer(props: FooterProps) {
               </label>
               <hr className="border-t border-black border-1 mb-[10px]" />
               <div className="flex flex-col text-[20px] leading-[26px]">
-                <p>c/ Bisbe Taixequet, 110</p>
-                <p>07620 Llucmajor</p>
-                <p>T. (+34) 971 660 823</p>
+                <p className="w-[185px]">{footer?.first_office.address}</p>
+                <Link href={`tel:${footer?.first_office.phone}`}>
+                  <p>{footer?.first_office.phone}</p>
+                </Link>
                 <Link
                   className="font-regular underline"
                   target="_blank"
-                  href={
-                    "https://s3-alpha-sig.figma.com/img/5479/27dc/fda7eadfe11baba44c94413f4f46f76e?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NUjn2La5QcNBH~c8HVEHLgcn42QMGL7Seqf1Z~PeQQv8LCnrxNgMd3aFO25-gs8crM-v6bqMRSp-JbMUtEQcA3BcyfzfNm9q6dPcf8CzjxRaGlqoLWibi9mnd8JKowuFkw4EcYxOCYtVP-qzb9QwcSL9YHMxW8vXGqAO~QpG5zDsHZBPZQ~F5LF~dfAXlBCCJaR5V43DUHu-1eKeKFG8bgBh3aCAHSZtK62xLzgui5FfZxWnZEl8NYM~1Kk3dLZ2S1pouAhNpYclCfB1KIldnxzAiWeAQdeQBLWeA9doSz3FQxFCi6Ybqjy3sAmXP6czmDpIUTnJh4DbYVOAbbD1cQ__"
-                  }
+                  href={footer?.first_office.link_location || "/"}
                 >
                   Ver localización
                 </Link>
@@ -106,13 +107,14 @@ export function Footer(props: FooterProps) {
               </label>
               <hr className="border-t border-black border-1 mb-[10px]" />
               <div className="flex flex-col text-[20px] leading-[26px]">
-                <p>c/ Bisbe Taixequet, 110</p>
-                <p>07620 Llucmajor</p>
-                <p>T. (+34) 971 660 823</p>
+                <p className="w-[185px]">{footer?.second_office.address}</p>
+                <Link href={`tel:${footer?.second_office.phone}`}>
+                  <p>{footer?.second_office.phone}</p>
+                </Link>
                 <Link
                   className="font-regular underline"
                   target="_blank"
-                  href="/https://www.google.com/maps/place/C.+del+Obispo+Taxaquet,+110,+07620+Llucmajor,+Illes+Balears,+Espa%C3%B1a/@39.487999,2.8882161,17z/data=!3m1!4b1!4m6!3m5!1s0x1297bb0619c587b5:0x366ce29d583e0cb1!8m2!3d39.487999!4d2.8882161!16s%2Fg%2F11c17433lc?entry=ttu&g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D"
+                  href={footer?.second_office.link_location || "/"}
                 >
                   Ver localización
                 </Link>
@@ -143,22 +145,22 @@ export function Footer(props: FooterProps) {
           <div className="flex flex-col gap-[8px]">
             <p className="text-[20px] leading-[20px]">¡Escríbenos!</p>
             <Link
-              href="mailto:info@fonamentsarch.com"
+              href={`mailto:${contact_information.email}`}
               className="lg:underline text-[30px] leading-[32px] lg:text-[42px] lg:leading-[45px]"
             >
-              info@fonamentsarch.com
+              {contact_information.email}
             </Link>
           </div>
           <div className="flex gap-[10px] lg:gap-[0px] lg:flex-col">
             <Link
-              href={"/"}
+              href={contact_information.link_instagram}
               target="_blank"
               className="lg:underline text-[30px] leading-[32px] lg:text-[20px] lg:leading-[26px]"
             >
               Instagram
             </Link>
             <Link
-              href={"/"}
+              href={contact_information.link_linkedIn}
               target="_blank"
               className="lg:underline text-[30px] leading-[32px] lg:text-[20px] lg:leading-[26px]"
             >

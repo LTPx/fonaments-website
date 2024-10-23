@@ -4,6 +4,7 @@ import { useState } from "react";
 import TeamSection from "./team-section";
 import ServiceSections from "./services-section";
 import {
+  GalleryProjectWp,
   ServicesSectionWp,
   TeamWp,
 } from "../_interfaces/wordpress-components";
@@ -11,10 +12,11 @@ import {
 interface StudySectionProps {
   teamSection: TeamWp;
   services: ServicesSectionWp;
+  gallery: GalleryProjectWp[];
 }
 
 export function StudySection(props: StudySectionProps) {
-  const { teamSection, services } = props;
+  const { teamSection, services, gallery } = props;
 
   const handleClick = (option: string) => {
     setSelectedOption(option);
@@ -42,8 +44,9 @@ export function StudySection(props: StudySectionProps) {
       </div>
       {selectedOption === "Equipo" ? (
         <TeamSection
-          coverImage={teamSection.cover_Image.url}
+          coverImage={teamSection.image_cover.url}
           membersTeam={teamSection.members_team}
+          gallery={gallery}
         />
       ) : (
         <ServiceSections

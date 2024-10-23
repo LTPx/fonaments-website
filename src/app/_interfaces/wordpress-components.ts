@@ -12,8 +12,9 @@ export interface InformationWp {
 }
 
 export interface TeamWp {
-  cover_image: ImageAcf;
+  image_cover: ImageAcf;
   members_team: MemberTeamWp[];
+  gallery: GalleryProjectWp[];
 }
 
 export interface ServicesSectionWp {
@@ -62,4 +63,27 @@ export interface OfficesFootertWp {
 export interface OfficetWp {
   title: string;
   image: ImageAcf;
+  address: string;
+  phone: string;
+  link_location: string;
+}
+
+export interface ContactFooterWp {
+  email: string;
+  link_instagram: string;
+  link_linkedIn: string;
+}
+
+export interface ContactWp {
+  title: string;
+  images: ContactImagesWp;
+}
+
+export interface GalleryProjectWp {
+  image: ImageAcf;
+}
+
+export interface ContactImagesWp {
+  first_image: ImageAcf;
+  second_image: ImageAcf;
 }

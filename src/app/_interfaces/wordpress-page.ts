@@ -8,6 +8,9 @@ import {
   TargetClass,
 } from "./wordpress";
 import {
+  ContactFooterWp,
+  ContactWp,
+  GalleryProjectWp,
   HomeWp,
   InformationWp,
   OfficesFootertWp,
@@ -47,10 +50,12 @@ export interface AcfComponents {
   service_section: ServiceSectionHomeWp;
   feature_projects: ProjectWp[];
   offices: OfficesFootertWp;
+  contact_information: ContactFooterWp;
   information: InformationWp;
   section: InformationWp;
   team_section: TeamWp;
   services_section: ServicesSectionWp;
+  contact: ContactWp;
 }
 
 export interface Links {

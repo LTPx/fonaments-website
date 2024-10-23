@@ -21,7 +21,7 @@ async function Study(nextParams: { params: { locale: "en" | "es" | "de" } }) {
         />
       </section>
       <section className="pt-[50px] lg:pt-[300px] xl:pt-[367px]">
-        <StudySection services={services_section} teamSection={team_section} />
+        <StudySection gallery={team_section.gallery} services={services_section} teamSection={team_section} />
       </section>
     </div>
   );

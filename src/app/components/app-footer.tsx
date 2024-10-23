@@ -10,9 +10,9 @@ async function AppFooter(nextParams: {
   } = nextParams;
   const data = await getWordPressPage(locale, "footer");
   const { acf } = data;
-  const { offices } = acf;
+  const { offices, contact_information } = acf;
 
-  return <Footer footer={offices} />;
+  return <Footer footer={offices} contact_information={contact_information} />;
 }
 
 export default AppFooter;
