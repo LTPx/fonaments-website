@@ -50,7 +50,7 @@ export interface ProjectWp {
 }
 
 export interface ProjectPostWp {
-  id: number;
+  ID: number;
   post_title: string;
   imageUrl: string;
 }
