@@ -24,7 +24,7 @@ function SampleNextArrow(props: any) {
         }`}
         style={{
           ...style,
-          right: "0px",
+          right: "10px",
           position: "relative",
           width: "45px",
           zIndex: 500,
@@ -64,9 +64,11 @@ export function Carousel(props: CarouselProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth <= 1023);
       setIsMobile(window.innerWidth <= 640);
     };
     window.addEventListener("resize", handleResize);
@@ -104,19 +106,17 @@ export function Carousel(props: CarouselProps) {
         }),
     responsive: [
       {
-        // Tablet vertical (768px - 1023px)
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2, // Mostrar 2 elementos
-          slidesToScroll: 1,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: false,
         },
       },
       {
-        // Pantallas pequeñas (celulares <= 768px)
         breakpoint: 750,
         settings: {
-          slidesToShow: 1, // Mostrar 1 elemento
+          slidesToShow: 1,
           slidesToScroll: 1,
           infinite: false,
         },
@@ -126,20 +126,27 @@ export function Carousel(props: CarouselProps) {
 
   return shouldShowSlider ? (
     <Slider {...settings}>
-      {React.Children.map(children, (child, index) => {
-        const isLastInRow = (index + 1) % slidesNumber === 0;
-        const isLastElement = index === React.Children.count(children) - 1;
+    {React.Children.map(children, (child, index) => {
+      const totalChildren = React.Children.count(children);
 
-        return (
-          <div
-            key={index}
-            className={!isLastInRow && !isLastElement ? "md:pr-[10px] lg:pr-[15px]" : ""}
-          >
-            {child}
-          </div>
-        );
-      })}
-    </Slider>
+      const tabletCondition = isTablet && (totalChildren - index) % 2 === 0;
+
+      const desktopCondition = !isTablet && (totalChildren - index) % 3 === 0;
+
+      return (
+        <div
+          key={index}
+          className={`
+            ${index === 0 || isMobile ? "pl-0" : "pl-[15px]"} 
+            ${tabletCondition ? "pl-[0px]" : ""} 
+            ${desktopCondition ? "pl-[0px]" : ""}
+          `}
+        >
+          {child}
+        </div>
+      );
+    })}
+  </Slider>
   ) : (
     <div className={`grid grid-cols-${slidesNumber} gap-[15px]`}>
       {React.Children.map(children, (child, index) => (
