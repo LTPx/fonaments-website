@@ -5,34 +5,29 @@
 @font-face {
   font-family: 'Montreal-Medium';
   src: url('/fonts/PPNeueMontreal-Medium.woff') format('woff');
-  font-weight: 500 !important ;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montreal-Regular';
   src: url('/fonts/PPNeueMontreal-Regular.woff') format('woff');
-  font-weight: 400 !important;
   font-style: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montreal-Medium', sans-serif;
-  font-weight: 500;
+  font-family: 'Montreal-Medium';
 }
 
 label {
-  font-family: "Montreal-Medium", sans-serif;
-  font-weight: 500;
+  font-family: "Montreal-Medium";
 }
 
 p {
-  font-family: "Montreal-Regular", sans-serif;
+  font-family: "Montreal-Regular";
 }
 
 a {
-  font-family: "Montreal-Medium", sans-serif;
-  font-weight: 500;
+  font-family: "Montreal-Medium";
 }
 
 h1 {

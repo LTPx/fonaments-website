@@ -38,7 +38,7 @@ export function Header(props: Props) {
             <Link
               key={index}
               href={link.url}
-              className={`h-[50px] px-[30px] border-r border-black flex items-center justify-center cursor-pointer text-[20px]  first:border-l-0 ${
+              className={`h-[40px] px-[30px] border-r border-black flex items-center justify-center cursor-pointer text-[18px] leading-[20px]  first:border-l-0 ${
                 selectedLink === link.url
                   ? "bg-black text-white"
                   : "bg-white text-black"
@@ -49,16 +49,16 @@ export function Header(props: Props) {
             </Link>
           ))}
         </div>
-        <div className="flex lg:flex lg:flex-1 lg:justify-end items-center gap-6">
+        <div className="flex lg:flex lg:flex-1 lg:justify-end items-center">
           <Link
             href={"/"}
-            className="h-[50px] pr-[26px] border-r border-black flex items-center cursor-pointer text-[20px]"
+            className="h-[40px] pr-[26px] border-r border-black flex items-center cursor-pointer text-[18px] leading-[26px]"
           >
             Local Architecture Studio.
           </Link>
           <Link
             href={"/"}
-            className="h-[50px] px-[30px] flex items-center cursor-pointer text-[20px]"
+            className="h-[40px] pl-[35px] pr-[30px] flex items-center cursor-pointer text-[18px] leading-[26px]"
           >
             ESP
           </Link>

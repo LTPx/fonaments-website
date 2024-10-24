@@ -2,14 +2,15 @@ interface ProjectCardProps {
   imageHover?: string;
   image?: string;
   title?: string;
+  className?: string;
 }
 
 function ProjectCard(props: ProjectCardProps) {
-  const { imageHover, image, title } = props;
+  const { imageHover, image, title, className } = props;
 
   return (
     <div className="flex flex-col group">
-      <div className="relative h-[456px] xl:h-[600px]">
+      <div className={`relative ${className}`}>
         <img
           src={image}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-in-out transform ${
