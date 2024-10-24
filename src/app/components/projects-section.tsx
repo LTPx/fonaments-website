@@ -46,6 +46,7 @@ export function ProjectSection(props: ProjectSectionProps) {
         {projects.map((item, index) => (
           <Link href={`/projects/${item.slug}`} key={index}>
             <ProjectCard
+              className="h-[456px] xl:h-[600px]"
               title={item.title.rendered}
               image={item._embedded["wp:featuredmedia"][0].source_url}
               imageHover={
