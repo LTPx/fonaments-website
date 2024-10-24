@@ -24,7 +24,7 @@ function SampleNextArrow(props: any) {
         }`}
         style={{
           ...style,
-          right: "10px",
+          right: "0px",
           position: "relative",
           width: "45px",
           zIndex: 500,
@@ -88,6 +88,8 @@ export function Carousel(props: CarouselProps) {
   const settings: any = {
     dots: false,
     infinite: false,
+    autoplay: true,
+    autoplaySpeed: 4000,
     speed: 500,
     slidesToShow: slidesNumber ? slidesNumber || 3 : 4,
     slidesToScroll: shouldShowSlider ? slidesToScroll || 1 : 1,
@@ -100,35 +102,43 @@ export function Carousel(props: CarouselProps) {
           nextArrow: <SampleNextArrow disabled={isNextDisabled} />,
           prevArrow: <SamplePrevArrow disabled={isPrevDisabled} />,
         }),
-        responsive: [
-          {
-            // Tablet vertical (768px - 1023px)
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2, // Mostrar 2 elementos
-              slidesToScroll: 1,
-              infinite: false,
-            },
-          },
-          {
-            // Pantallas pequeñas (celulares <= 768px)
-            breakpoint: 750,
-            settings: {
-              slidesToShow: 1, // Mostrar 1 elemento
-              slidesToScroll: 1,
-              infinite: false,
-            },
-          },
-        ],
+    responsive: [
+      {
+        // Tablet vertical (768px - 1023px)
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2, // Mostrar 2 elementos
+          slidesToScroll: 1,
+          infinite: false,
+        },
+      },
+      {
+        // Pantallas pequeñas (celulares <= 768px)
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 1, // Mostrar 1 elemento
+          slidesToScroll: 1,
+          infinite: false,
+        },
+      },
+    ],
   };
 
   return shouldShowSlider ? (
     <Slider {...settings}>
-      {React.Children.map(children, (child, index) => (
-        <div className="md:pr-[10px] lg:pr-[15px]" key={index}>
-          {child}
-        </div>
-      ))}
+      {React.Children.map(children, (child, index) => {
+        const isLastInRow = (index + 1) % slidesNumber === 0;
+        const isLastElement = index === React.Children.count(children) - 1;
+
+        return (
+          <div
+            key={index}
+            className={!isLastInRow && !isLastElement ? "md:pr-[10px] lg:pr-[15px]" : ""}
+          >
+            {child}
+          </div>
+        );
+      })}
     </Slider>
   ) : (
     <div className={`grid grid-cols-${slidesNumber} gap-[15px]`}>

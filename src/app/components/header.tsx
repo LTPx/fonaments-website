@@ -38,7 +38,7 @@ export function Header(props: Props) {
             <Link
               key={index}
               href={link.url}
-              className={`h-[40px] px-[30px] border-r border-black flex items-center justify-center cursor-pointer text-[18px] leading-[20px]  first:border-l-0 ${
+              className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out h-[40px] px-[30px] border-r border-black flex items-center justify-center cursor-pointer text-[18px] leading-[20px]  first:border-l-0 ${
                 selectedLink === link.url
                   ? "bg-black text-white"
                   : "bg-white text-black"

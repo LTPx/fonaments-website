@@ -20,7 +20,7 @@ export async function HeaderCarousel(props: HeaderCarouselProps) {
 
   return (
     <div className="relative flex flex-col lg:h-[100vh]">
-      <Carousel slidesNumber={3}>
+      <Carousel slidesNumber={3} slidesToScroll={3}>
         {projects.map((item, index) => (
           <Link href={`/projects/${item.slug}`} key={index}>
             <ProjectCard
