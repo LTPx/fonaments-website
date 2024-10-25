@@ -4,6 +4,7 @@ import { ProjectWp } from "../_interfaces/wordpress-components";
 import { getAllProjects } from "../_services/api";
 import ProjectCard from "./project-card";
 import HomeImage from "./home-image";
+import MotionLogo from "./motion-logo";
 
 interface HeaderCarouselProps {
   items: ProjectWp[];
@@ -16,8 +17,6 @@ export async function HeaderCarousel(props: HeaderCarouselProps) {
   const projects = allProjects.filter((project) => {
     return projectsIdsSelected.includes(project.id);
   });
-
-  console.log(projects);
 
   return (
     <div className="relative flex flex-col lg:h-[100vh]">
@@ -35,7 +34,7 @@ export async function HeaderCarousel(props: HeaderCarouselProps) {
           </Link>
         ))}
       </Carousel>
-      <HomeImage/>
+      <MotionLogo />
     </div>
   );
 }

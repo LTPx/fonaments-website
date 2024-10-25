@@ -4,7 +4,7 @@ import Header from "./header";
 import MenuMobile from "./menu-mobile";
 import { usePathname } from "next/navigation";
 
-async function AppHeader() {
+function AppHeader() {
   const pathname = usePathname();
 
   const linksHeader = [
