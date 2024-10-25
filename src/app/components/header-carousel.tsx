@@ -3,6 +3,7 @@ import Carousel from "./carousel";
 import { ProjectWp } from "../_interfaces/wordpress-components";
 import { getAllProjects } from "../_services/api";
 import ProjectCard from "./project-card";
+import HomeImage from "./home-image";
 
 interface HeaderCarouselProps {
   items: ProjectWp[];
@@ -34,11 +35,7 @@ export async function HeaderCarousel(props: HeaderCarouselProps) {
           </Link>
         ))}
       </Carousel>
-      <div className="hidden lg:block">
-        <div className="fixed lg:z-[2000] bottom-[30px] left-[30px] right-[30px]">
-          <img src="/images/fonaments.svg" className="w-full" />
-        </div>
-      </div>
+      <HomeImage/>
     </div>
   );
 }
