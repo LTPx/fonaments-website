@@ -180,7 +180,11 @@ export function Footer(props: FooterProps) {
           </div>
         </div>
         <hr className="border-t border-black border-1 mt-[30px] mb-[35px] lg:mb-[40px]" />
-        <div className="pb-[12px] lg:pb-[25px] lg:opacity-0">
+        <div
+          className={`pb-[12px] lg:pb-[25px] ${
+            pathname === "/es" ? "lg:opacity-0" : ""
+          }`}
+        >
           <img src="/images/logo-footer.svg" />
         </div>
       </div>

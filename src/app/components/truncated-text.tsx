@@ -29,16 +29,16 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
     <div>
       <div
         ref={contentRef}
-        className={`${className} ${isExpanded ? "" : "line-clamp-[14] lg:line-clamp-[18]"}`}
+        className={`${className} ${isExpanded ? "" : "line-clamp-[14] lg:line-clamp-[10]"}`}
         dangerouslySetInnerHTML={{ __html: content }}
       />
       {isTruncated && (
-        <div className="flex items-center block mt-4">
+        <div className="flex items-center block mt-[32px]">
           <button
             onClick={toggleExpand}
-            className={`text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] font-medium underline cursor-pointer`}
+            className={`text-[16px] leading-[22px] lg:text-[14px] lg:leading-[14px] font-medium underline cursor-pointer`}
           >
-            {isExpanded ? "Show Less" : "Read On"}
+            {isExpanded ? "Leer Menos" : "Leer Mas"}
           </button>
         </div>
       )}

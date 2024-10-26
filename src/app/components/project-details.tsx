@@ -105,23 +105,17 @@ export function ProjectDetails(props: ProjectDetailsProps) {
           <Gallery gallery={gallery_project} />
         </section>
       )}
-      <section className="pt-[15px] pb-[53px]">
-        <div className="flex justify-between">
-          <div className="flex gap-[6px] items-center">
+      <section className="pt-[20px] pb-[53px]">
+        <div className="flex justify-between items-center">
+          <div className="flex items-start">
             <img className="cursor-pointer" src="/images/icons/left.svg" />
-            <p className="text-[20px] leading-[38px] cursor-pointer">
-              Anterior
-            </p>
           </div>
           <Link href={"/projects"}>
-            <p className="underline text-[20px] leading-[38px] cursor-pointer">
+            <p className="flex items-start underline text-[20px] leading-[0px] cursor-pointer">
               Todos los proyectos
             </p>
           </Link>
-          <div className="flex gap-[6px] items-center">
-            <p className="text-[20px] leading-[38px] cursor-pointer">
-              Siguiente
-            </p>
+          <div className="flex items-start">
             <img className="cursor-pointer" src="/images/icons/right.svg" />
           </div>
         </div>

@@ -52,12 +52,14 @@ async function Projects(nextParams: {
     <div className="container page-projects">
       <section className="flex flex-col lg:flex-row lg:justify-between">
         <h1 className="pt-[4px] lg:pt-[0px]">{information.title}</h1>
+        <div className="pt-[14px] lg:pt-[37px]">
         <TruncatedText
-          className="text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] pt-[14px] lg:pt-[37px] lg:w-[550px] xl:w-[804px]"
+          className=" text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] lg:w-[550px] xl:w-[815px]"
           content={information.description}
         />
+        </div>
       </section>
-      <section className="pt-[59px] lg:pt-[49px]">
+      <section className="pt-[59px] lg:pt-[90px]">
         <ProjectSection options={btns} projects={allProjects} />
       </section>
       <section className="pt-[30px] lg:pt-[180px] pb-[80px] lg:pb-[94px]">

@@ -15,12 +15,14 @@ async function Study(nextParams: { params: { locale: "en" | "es" | "de" } }) {
     <div className="container page-study">
       <section className="flex flex-col lg:flex-row lg:justify-between">
         <h1 className="pt-[4px] lg:pt-[0px]">{information.title}</h1>
+        <div className="pt-[14px] lg:pt-[37px]">
         <div
-          className="pt-[14px] lg:pt-[37px] lg:w-[620px] xl:w-[803px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px]"
+          className="xl:h-[366px] lg:w-[620px] xl:w-[803px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px]"
           dangerouslySetInnerHTML={{ __html: information.description }}
         />
+        </div>
       </section>
-      <section className="pt-[50px] lg:pt-[300px] xl:pt-[367px]">
+      <section className="pt-[50px] lg:pt-[300px] xl:pt-[90px]">
         <StudySection gallery={team_section.gallery} services={services_section} teamSection={team_section} />
       </section>
     </div>
