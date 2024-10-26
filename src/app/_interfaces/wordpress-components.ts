@@ -83,6 +83,16 @@ export interface GalleryProjectWp {
   image: ImageAcf;
 }
 
+export interface InformationPageWp {
+  study_section: InfoWp;
+  service_section: InfoWp;
+}
+
+export interface InfoWp {
+  title: string;
+  description: string;
+}
+
 export interface InformationProjectWp {
   code_project: InformationCodeWp;
   type_work: InformationWorkWp;

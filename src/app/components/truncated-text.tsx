@@ -26,10 +26,12 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
   return (
-    <div>
+    <div className="lg:min-h-[366px]">
       <div
         ref={contentRef}
-        className={`${className} ${isExpanded ? "" : "line-clamp-[14] lg:line-clamp-[10]"}`}
+        className={`${className} ${
+          isExpanded ? "" : "line-clamp-[12] lg:line-clamp-[10]"
+        }`}
         dangerouslySetInnerHTML={{ __html: content }}
       />
       {isTruncated && (
@@ -38,7 +40,7 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
             onClick={toggleExpand}
             className={`text-[16px] leading-[22px] lg:text-[14px] lg:leading-[14px] font-medium underline cursor-pointer`}
           >
-            {isExpanded ? "Leer Menos" : "Leer Mas"}
+            {isExpanded ? "Leer menos" : "Leer más"}
           </button>
         </div>
       )}

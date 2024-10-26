@@ -5,18 +5,21 @@ import TeamSection from "./team-section";
 import ServiceSections from "./services-section";
 import {
   GalleryProjectWp,
+  InformationPageWp,
   ServicesSectionWp,
   TeamWp,
 } from "../_interfaces/wordpress-components";
+import TruncatedText from "./truncated-text";
 
 interface StudySectionProps {
   teamSection: TeamWp;
   services: ServicesSectionWp;
   gallery: GalleryProjectWp[];
+  information_section: InformationPageWp;
 }
 
 export function StudySection(props: StudySectionProps) {
-  const { teamSection, services, gallery } = props;
+  const { teamSection, services, gallery, information_section } = props;
 
   const handleClick = (option: string) => {
     setSelectedOption(option);
@@ -27,7 +30,24 @@ export function StudySection(props: StudySectionProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex gap-[10px] pb-[22px] lg:pb-[20px]">
+      <section className="flex flex-col lg:flex-row lg:justify-between">
+        <h1 className="pt-[4px] lg:pt-[0px]">
+          {selectedOption === "Equipo"
+            ? information_section.study_section.title
+            : information_section.service_section.title}
+        </h1>
+        <div className="pt-[14px] lg:pt-[37px]">
+          <TruncatedText
+            className="lg:w-[550px] xl:w-[803px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px]"
+            content={
+              selectedOption === "Equipo"
+                ? information_section.study_section.description
+                : information_section.service_section.description
+            }
+          />
+        </div>
+      </section>
+      <div className="pt-[50px] lg:pt-[90px] flex gap-[10px] pb-[22px] lg:pb-[20px]">
         {btns.map((option, index) => (
           <button
             key={index}
