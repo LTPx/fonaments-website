@@ -15,15 +15,24 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
   const [isTruncated, setIsTruncated] = useState(false);
   const contentRef = useRef<HTMLParagraphElement>(null);
 
+  const toggleExpand = () => setIsExpanded(!isExpanded);
+
+  const cleanContent = (html: string) => {
+    return html
+      .replace(/<p>\s*<\/p>/g, "")
+      .replace(/<br\s*\/?>/g, "")
+      .replace(/\n\s*\n/g, "\n");
+  };
+
+  const cleanedContent = cleanContent(content);
+
   useEffect(() => {
     const element = contentRef.current;
     if (element) {
       const isOverflowing = element.scrollHeight > element.clientHeight;
       setIsTruncated(isOverflowing);
     }
-  }, [content]);
-
-  const toggleExpand = () => setIsExpanded(!isExpanded);
+  }, [cleanedContent]);
 
   return (
     <div className="lg:min-h-[366px]">
@@ -32,7 +41,7 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
         className={`${className} ${
           isExpanded ? "" : "line-clamp-[12] lg:line-clamp-[10]"
         }`}
-        dangerouslySetInnerHTML={{ __html: content }}
+        dangerouslySetInnerHTML={{ __html: cleanedContent }}
       />
       {isTruncated && (
         <div className="flex items-center block mt-[32px]">

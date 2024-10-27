@@ -126,27 +126,31 @@ export function Carousel(props: CarouselProps) {
 
   return shouldShowSlider ? (
     <Slider {...settings}>
-    {React.Children.map(children, (child, index) => {
-      const totalChildren = React.Children.count(children);
+      {React.Children.map(children, (child, index) => {
+        const totalChildren = React.Children.count(children);
 
-      const tabletCondition = isTablet && (totalChildren - index) % 2 === 0;
+        const tabletCondition = isTablet && (totalChildren - index) % 2 === 0;
 
-      const desktopCondition = !isTablet && (totalChildren - index) % 3 === 0;
+        const desktopCondition = !isTablet && (totalChildren - index) % 3 === 0;
 
-      return (
-        <div
-          key={index}
-          className={`
-            ${index === 0 || isMobile ? "pl-0" : "pl-[15px]"} 
-            ${tabletCondition ? "pl-[0px]" : ""} 
-            ${desktopCondition ? "pl-[0px]" : ""}
-          `}
-        >
-          {child}
-        </div>
-      );
-    })}
-  </Slider>
+        return (
+          <div
+            key={index}
+            className={`
+          ${
+            index === 0 || isMobile
+              ? "pl-0"
+              : tabletCondition || desktopCondition
+              ? "pl-0"
+              : "pl-[15px]"
+          }
+        `}
+          >
+            {child}
+          </div>
+        );
+      })}
+    </Slider>
   ) : (
     <div className={`grid grid-cols-${slidesNumber} gap-[15px]`}>
       {React.Children.map(children, (child, index) => (
