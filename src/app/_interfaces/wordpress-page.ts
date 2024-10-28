@@ -15,6 +15,7 @@ import {
   InformationPageWp,
   InformationProjectWp,
   InformationWp,
+  InfoWp,
   OfficesFootertWp,
   ProjectPostWp,
   ProjectWp,
@@ -64,6 +65,7 @@ export interface AcfComponents {
   information_project: InformationProjectWp;
   hover_image: ImageAcf;
   information_section: InformationPageWp;
+  information_page: InfoWp;
 }
 
 export interface Links {

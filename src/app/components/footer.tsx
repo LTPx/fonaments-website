@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import {
   ContactFooterWp,
   OfficesFootertWp,
 } from "../_interfaces/wordpress-components";
+import { Link } from "@/navigation";
 
 interface FooterProps {
   footer?: OfficesFootertWp;
@@ -194,9 +194,12 @@ export function Footer(props: FooterProps) {
           © Fonaments Architecture Studio.
         </p>
         <div className="font-medium flex gap-[5px] text-[12px] leading-[14px] lg:text-[16px] lg:leading-[19.2px]">
-          <p>Aviso legal |</p>
-          <p>Política de cookies |</p>
-          <p>Política de privacidad</p>
+          <p className="cursor-pointer">Aviso legal |</p>
+          <p className="cursor-pointer">Política de cookies |</p>
+          <p className="cursor-pointer">Política de privacidad |</p>
+          <Link href={"/accessibility-statement"}>
+            <p className="cursor-pointer">Declaración de accesibilidad</p>
+          </Link>
         </div>
       </div>
     </footer>
