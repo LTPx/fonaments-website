@@ -31,7 +31,7 @@ export function StudySection(props: StudySectionProps) {
   return (
     <div className="flex flex-col">
       <section className="flex flex-col lg:flex-row lg:justify-between">
-        <h1 className="pt-[4px] lg:pt-[0px]">
+        <h1 className="font-regular pt-[4px] lg:pt-[0px]">
           {selectedOption === "Equipo"
             ? information_section.study_section.title
             : information_section.service_section.title}

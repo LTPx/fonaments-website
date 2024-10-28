@@ -56,7 +56,7 @@ export function Accordion(props: AccordionProps) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <h1 className="text-[42px] leading-[45px] lg:text-[80px] lg:leading-[130px] py-[20px] lg:py-[0px] text-start">
+        <h1 className="font-regular text-[42px] leading-[45px] lg:text-[80px] lg:leading-[130px] py-[20px] lg:py-[0px] text-start">
           {title}
         </h1>
         {toggleContent}

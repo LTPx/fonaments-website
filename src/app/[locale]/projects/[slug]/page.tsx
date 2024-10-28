@@ -21,7 +21,7 @@ async function ProjectSlugPage(nextParams: {
 
   return (
     <div className="container project-slug-page">
-      <h1 className="pt-[4px] lg:pt-[0px]">{title.rendered}</h1>
+      <h1 className="font-regular pt-[4px] lg:pt-[0px]">{title.rendered}</h1>
       <img
         src={cover_image_project.url}
         className="pt-[20px] lg:pt-[0px] h-[456px] lg:h-[800px] w-full object-cover"

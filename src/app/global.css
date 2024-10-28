@@ -14,8 +14,16 @@
   font-style: normal;
 }
 
+
+body, p, .figma-text-style, h1, h2, h3, h4, h5, h6 {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} 
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montreal-Medium';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 label {
@@ -24,10 +32,18 @@ label {
 
 p {
   font-family: "Montreal-Regular";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   font-family: "Montreal-Medium";
+}
+
+.project-info {
+  p {
+    font-family: "Montreal-Medium" !important;
+  }
 }
 
 h1 {

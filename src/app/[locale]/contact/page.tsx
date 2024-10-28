@@ -12,8 +12,8 @@ async function Contact(nextParams: { params: { locale: "en" | "es" | "de" } }) {
   return (
     <div className="container page-contact">
       <section>
-        <h1 className="lg:block hidden">{contact.title}</h1>
-        <h1 className="pb-[17px] pt-[4px] lg:hidden text-[50px] leading-[58px]">
+        <h1 className="font-regular lg:block hidden">{contact.title}</h1>
+        <h1 className="font-regular pb-[17px] pt-[4px] lg:hidden text-[50px] leading-[58px]">
           Contacto
         </h1>
         <div className="hidden lg:grid lg:grid-cols-2 gap-[20px] pb-[36px]">

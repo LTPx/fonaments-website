@@ -29,7 +29,7 @@ function Home(props: Props) {
         <div className="flex flex-col lg:grid lg:grid-cols-3">
           <div className="hidden lg:block col-span-1"></div>
           <div className="col-span-2 flex flex-col gap-[23px]">
-            <h2 className="xl:w-[719px]">{home_information.title}</h2>
+            <h2 className="leading-[44px] xl:w-[719px]">{home_information.title}</h2>
             <div
               className="xl:w-[692px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]"
               dangerouslySetInnerHTML={{ __html: home_information.description }}

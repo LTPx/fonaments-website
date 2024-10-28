@@ -1,8 +1,8 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import "./globals.scss";
-import "tailwindcss/tailwind.css";
 import "../global.css"
+import "./globals.scss";
+// import "tailwindcss/tailwind.css";
 import { Metadata } from "next";
 import App from "./app";
 
