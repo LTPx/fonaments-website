@@ -31,7 +31,7 @@ export default function MotionLogo() {
   return (
     <div className="lg:block hidden">
       <div
-        className="logo-container fixed bottom-0 left-0 right-0 z-[200] w-full transition-all duration-300 ease-in-out"
+        className="lottie-container fixed bottom-0 left-0 right-0 w-full transition-all duration-300 ease-in-out"
         style={{ bottom: `${bottomOffset}px` }}
       >
         <Lottie

@@ -46,9 +46,9 @@ export function Accordion(props: AccordionProps) {
   );
 
   return (
-    <div className="relative border border-t-[#000000] last:border-b-[#000000]">
+    <div className="relative border border-t-[#000000] last:border-b-[#000000] z-2">
       <button
-        className="w-full flex items-center relative z-10"
+        className="w-full flex items-center relative z-40"
         onClick={(e) => {
           e.preventDefault();
           setIsOpen(!isOpen);

@@ -46,6 +46,10 @@ a {
   }
 }
 
+.lottie-container { 
+  z-index: 30;
+}
+
 h1 {
   font-size: 80px;
   line-height: 130px;

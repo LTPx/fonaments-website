@@ -38,7 +38,7 @@ export function Footer(props: FooterProps) {
   };
 
   return (
-    <footer className="bg-body">
+    <footer className="bg-body relative">
       <div className="mx-auto container flex flex-col">
         {isMobile && (
           <div className="block lg:hidden pb-[30px]">
@@ -75,23 +75,27 @@ export function Footer(props: FooterProps) {
           } gap-[20px] ${!isMobile && pathname !== "/es" ? "pb-[20px]" : ""}`}
         >
           {(selectedOption === "Llucmajor" || !isMobile) && (
-            <div className="flex flex-col">
+            <div className="flex flex-col z-30">
               <label className="hidden lg:block lg:text-[32px] lg:leading-[38px] mb-[10px]">
                 {footer?.first_office.title}
               </label>
               <hr className="border-t border-black border-1 mb-[10px]" />
               <div className="flex flex-col text-[20px] leading-[26px]">
                 <p className="w-[185px]">{footer?.first_office.address}</p>
-                <Link href={`tel:${footer?.first_office.phone}`}>
-                  <p>{footer?.first_office.phone}</p>
-                </Link>
-                <Link
-                  className="font-regular underline"
-                  target="_blank"
-                  href={footer?.first_office.link_location || "/"}
-                >
-                  Ver localización
-                </Link>
+                <div className="w-auto">
+                  <Link className="w-auto" href={`tel:${footer?.first_office.phone}`}>
+                    <p>{footer?.first_office.phone}</p>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    className="font-regular underline"
+                    target="_blank"
+                    href={footer?.first_office.link_location || "/"}
+                  >
+                    Ver localización
+                  </Link>
+                </div>
               </div>
               <img
                 src={footer?.first_office.image.url}
@@ -102,22 +106,26 @@ export function Footer(props: FooterProps) {
 
           {(selectedOption === "Santanyí" || !isMobile) && (
             <div className="flex flex-col">
-              <label className="hidden lg:block lg:text-[32px] lg:leading-[38px] mb-[10px]">
+              <label className="hidden z-30 lg:block lg:text-[32px] lg:leading-[38px] mb-[10px]">
                 {footer?.second_office.title}
               </label>
               <hr className="border-t border-black border-1 mb-[10px]" />
-              <div className="flex flex-col text-[20px] leading-[26px]">
+              <div className="flex flex-col text-[20px] leading-[26px] z-30">
                 <p className="w-[185px]">{footer?.second_office.address}</p>
-                <Link href={`tel:${footer?.second_office.phone}`}>
-                  <p>{footer?.second_office.phone}</p>
-                </Link>
-                <Link
-                  className="font-regular underline"
-                  target="_blank"
-                  href={footer?.second_office.link_location || "/"}
-                >
-                  Ver localización
-                </Link>
+                <div>
+                  <Link href={`tel:${footer?.second_office.phone}`}>
+                    <p>{footer?.second_office.phone}</p>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    className="font-regular underline w-auto"
+                    target="_blank"
+                    href={footer?.second_office.link_location || "/"}
+                  >
+                    Ver localización
+                  </Link>
+                </div>
               </div>
               <img
                 src={footer?.second_office.image.url}
@@ -141,7 +149,7 @@ export function Footer(props: FooterProps) {
         )}
 
         <hr className="hidden lg:block border-t border-black border-1 mt-[25px] mb-[17px]" />
-        <div className="flex flex-col lg:flex-row lg:justify-between pt-[44px] lg:pt-[0px]">
+        <div className="flex flex-col lg:flex-row lg:justify-between pt-[44px] lg:pt-[0px] z-30">
           <div className="flex flex-col gap-[8px]">
             <p className="text-[20px] leading-[20px]">¡Escríbenos!</p>
             <Link
