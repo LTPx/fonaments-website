@@ -7,10 +7,11 @@ import React, { useEffect, useState } from "react";
 
 type CarouselProps = {
   className?: string;
-  children: any;
+  children: React.ReactNode;
   slidesToScroll?: number;
   slidesNumber: number;
   hideArrows?: boolean;
+  onFinish?: () => void;
 };
 
 function SampleNextArrow(props: any) {
@@ -60,7 +61,8 @@ function SamplePrevArrow(props: any) {
 }
 
 export function Carousel(props: CarouselProps) {
-  const { children, slidesToScroll, slidesNumber, hideArrows } = props;
+  const { children, slidesToScroll, slidesNumber, hideArrows, onFinish } =
+    props;
   const [isMobile, setIsMobile] = useState(false);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
@@ -85,6 +87,10 @@ export function Carousel(props: CarouselProps) {
     const maxIndex = totalSlides - slidesToShow;
     setIsPrevDisabled(current === 0);
     setIsNextDisabled(current >= maxIndex);
+
+    if (current >= maxIndex) {
+      onFinish && onFinish();
+    }
   };
 
   const settings: any = {
@@ -128,23 +134,21 @@ export function Carousel(props: CarouselProps) {
     <Slider {...settings}>
       {React.Children.map(children, (child, index) => {
         const totalChildren = React.Children.count(children);
-
         const tabletCondition = isTablet && (totalChildren - index) % 2 === 0;
-
         const desktopCondition = !isTablet && (totalChildren - index) % 3 === 0;
 
         return (
           <div
             key={index}
             className={`
-          ${
-            index === 0 || isMobile
-              ? "pl-0"
-              : tabletCondition || desktopCondition
-              ? "pl-0"
-              : "pl-[15px]"
-          }
-        `}
+              ${
+                index === 0 || isMobile
+                  ? "pl-0"
+                  : tabletCondition || desktopCondition
+                  ? "pl-0"
+                  : "pl-[15px]"
+              }
+            `}
           >
             {child}
           </div>

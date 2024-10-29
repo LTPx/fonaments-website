@@ -13,18 +13,33 @@ interface AnimationCarouselProps {
 export function AnimationCarousel(props: AnimationCarouselProps) {
   const { projects } = props;
   const [isVisible, setIsVisible] = useState(false);
+  const [isCarouselFinished, setIsCarouselFinished] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
-  
+
+  useEffect(() => {
+    if (isCarouselFinished) {
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
+  }, [isCarouselFinished]);
+
   return (
     <div className="relative z-40">
-      <Carousel slidesNumber={3} slidesToScroll={3}>
+      <Carousel
+        slidesNumber={3}
+        slidesToScroll={3}
+        onFinish={() => setIsCarouselFinished(true)}
+      >
         {projects.map((item, index) => (
           <Link href={`/projects/${item.slug}`} key={index}>
             <div
-              className={`transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
+              className={`transition-opacity duration-700 ${
+                isVisible ? "opacity-100" : "opacity-0"
+              }`}
               style={{
                 transitionDelay: `${index * 300}ms`,
               }}
