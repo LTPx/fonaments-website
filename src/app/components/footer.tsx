@@ -201,12 +201,12 @@ export function Footer(props: FooterProps) {
         <p className="font-medium text-[12px] leading-[14px] lg:text-[16px] lg:leading-[19.2px]">
           © Fonaments Architecture Studio.
         </p>
-        <div className="font-medium flex gap-[5px] text-[12px] leading-[14px] lg:text-[16px] lg:leading-[19.2px]">
-          <p className="cursor-pointer">Aviso legal |</p>
-          <p className="cursor-pointer">Política de cookies |</p>
-          <p className="cursor-pointer">Política de privacidad |</p>
+        <div className="flex-wrap lg:flex-no-wrap flex gap-[0px] lg:gap-[5px] text-[12px] leading-[14px] lg:text-[16px] lg:leading-[19.2px]">
+          <p className="font-medium cursor-pointer">Aviso legal</p>
+          <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">| Política de cookies</p>
+          <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">| Política de privacidad</p>
           <Link href={"/accessibility-statement"}>
-            <p className="cursor-pointer">Declaración de accesibilidad</p>
+            <p className="font-medium ml-[0px] md:ml-[4px] lg:ml-[0px] cursor-pointer">| Declaración de accesibilidad</p>
           </Link>
         </div>
       </div>
