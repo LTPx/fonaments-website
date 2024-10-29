@@ -8,10 +8,11 @@ interface AccordionProps {
   expanded?: boolean;
   icon?: string;
   image?: string;
+  className?: string;
 }
 
 export function Accordion(props: AccordionProps) {
-  const { title, children, expanded, icon, image } = props;
+  const { title, children, expanded, icon, image, className } = props;
   const [isOpen, setIsOpen] = useState(!!expanded);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -50,7 +51,8 @@ export function Accordion(props: AccordionProps) {
   return (
     <div className="relative border border-t-[#000000] last:border-b-[#000000] z-2">
       <button
-        className="w-full flex items-center relative z-40"
+      className={`w-full flex items-center relative ${className}`}
+        // className="w-full flex items-center relative z-40"
         onClick={(e) => {
           e.preventDefault();
           setIsOpen(!isOpen);
