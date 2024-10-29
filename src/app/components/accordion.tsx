@@ -15,10 +15,12 @@ export function Accordion(props: AccordionProps) {
   const [isOpen, setIsOpen] = useState(!!expanded);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isXL, setIsXL] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 640);
+      setIsXL(window.innerWidth >= 1280);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -62,7 +64,7 @@ export function Accordion(props: AccordionProps) {
         {toggleContent}
       </button>
 
-      {!isOpen && image && !isMobile && (
+      {!isOpen && image && !isMobile && isXL && (
         <div
           className={`absolute top-0 left-0 w-full h-auto z-20 transition-opacity duration-500 ease-in-out transform ${
             isHovered ? "opacity-100" : "opacity-0"

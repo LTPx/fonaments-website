@@ -25,7 +25,7 @@ export function OurServices(props: OurServicesProps) {
           <Accordion key={index} title={item.title} image={item.image?.url}>
             <div>
               <div
-                className="relative lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"
+                className="relative xl:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"
                 dangerouslySetInnerHTML={{ __html: item.description }}
               />
               {item.image && (
