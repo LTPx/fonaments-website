@@ -3,12 +3,16 @@
 import Lottie from "lottie-react";
 import logoAnimation from "../../../public/lottie/motion_logo.json";
 import { useEffect, useState } from "react";
+import { throttle } from "lodash";
+import { useMediaQuery } from "react-responsive";
 
 export default function MotionLogo() {
   const [bottomOffset, setBottomOffset] = useState(0);
 
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.body.scrollHeight;
@@ -19,7 +23,7 @@ export default function MotionLogo() {
       } else {
         setBottomOffset(0);
       }
-    };
+    }, 100);
 
     window.addEventListener("scroll", handleScroll);
 
@@ -38,7 +42,7 @@ export default function MotionLogo() {
           animationData={logoAnimation}
           loop={false}
           autoplay={true}
-          className="w-full h-auto"
+          className={`w-full h-auto ${isTabletOrMobile ? "max-w-md mx-auto" : ""}`}
         />
       </div>
     </div>
