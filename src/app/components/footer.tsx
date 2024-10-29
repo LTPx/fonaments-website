@@ -206,7 +206,7 @@ export function Footer(props: FooterProps) {
           <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">| Política de cookies</p>
           <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">| Política de privacidad</p>
           <Link href={"/accessibility-statement"}>
-            <p className="font-medium ml-[0px] md:ml-[4px] lg:ml-[0px] cursor-pointer">| Declaración de accesibilidad</p>
+            <p className="relative z-40 font-medium ml-[0px] md:ml-[4px] lg:ml-[0px] cursor-pointer">| Declaración de accesibilidad</p>
           </Link>
         </div>
       </div>
