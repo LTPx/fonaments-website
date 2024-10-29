@@ -16,7 +16,7 @@ type CarouselProps = {
 function SampleNextArrow(props: any) {
   const { className, style, onClick, disabled } = props;
   return (
-    <div className="absolute bottom-[-35px] lg:bottom-[-40px] right-0">
+    <div className="absolute bottom-[-35px] lg:bottom-[-30px] right-0">
       <img
         src="/images/icons/arrow-right.svg"
         className={`${className} ${
@@ -39,7 +39,7 @@ function SampleNextArrow(props: any) {
 function SamplePrevArrow(props: any) {
   const { className, style, onClick, disabled } = props;
   return (
-    <div className="absolute bottom-[-35px] lg:bottom-[-40px] left-0">
+    <div className="absolute bottom-[-35px] lg:bottom-[-30px] left-0">
       <img
         src="/images/icons/arrow-left.svg"
         className={`${className} ${

@@ -19,7 +19,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
             key={index}
           >
             <ProjectCard
-              className="h-[456px] xl:h-[52vh]"
+              className="h-[456px] lg:h-[52vh] xl:h-[52vh]"
               title={item.title.rendered}
               image={item._embedded["wp:featuredmedia"][0].source_url}
               imageHover={
