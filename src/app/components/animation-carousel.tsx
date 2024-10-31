@@ -107,7 +107,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
                   isVisible ? "opacity-100" : "opacity-0"
                 }`}
                 style={{
-                  transitionDelay: `${index * 300}ms`,
+                  transitionDelay: `${index * 400}ms`,
                 }}
               >
                 <ProjectCard

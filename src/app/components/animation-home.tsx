@@ -2,7 +2,7 @@
 
 import MotionLogo from "./motion-logo";
 import AnimationCarousel from "./animation-carousel";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { WordPressPost } from "../_interfaces/wordpress";
 
 interface AnimationHomeProps {
@@ -11,31 +11,24 @@ interface AnimationHomeProps {
 
 export function AnimationHome(props: AnimationHomeProps) {
   const { projects } = props;
-
-  const [isVisible, setIsVisible] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const [showCarousel, setShowCarousel] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.1 } // Ajusta el valor según la visibilidad deseada
-    );
+    const timer = setTimeout(() => {
+      setShowCarousel(true);
+    }, 800);
 
-    if (carouselRef.current) {
-      observer.observe(carouselRef.current);
-    }
-
-    return () => {
-      if (carouselRef.current) {
-        observer.unobserve(carouselRef.current);
-      }
-    };
+    return () => clearTimeout(timer); 
   }, []);
 
   return (
-    <div ref={carouselRef} className="relative flex flex-col lg:h-[100vh]">
-      <AnimationCarousel projects={projects} />
+    <div className="relative flex flex-col lg:h-[100vh]">
       <MotionLogo />
+      {showCarousel && (
+        <div className={`transition-opacity duration-700 ${showCarousel ? 'opacity-100' : 'opacity-0'}`}>
+          <AnimationCarousel projects={projects} />
+        </div>
+      )}
     </div>
   );
 }
