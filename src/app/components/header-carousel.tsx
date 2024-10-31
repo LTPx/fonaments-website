@@ -1,9 +1,6 @@
 import { ProjectWp } from "../_interfaces/wordpress-components";
 import { getAllProjects } from "../_services/api";
-import MotionLogo from "./motion-logo";
-import AnimationCarousel from "./animation-carousel";
-import { useEffect, useState } from "react";
-import { WordPressPost } from "../_interfaces/wordpress";
+import AnimationHome from "./animation-home";
 
 interface HeaderCarouselProps {
   items: ProjectWp[];
@@ -19,16 +16,7 @@ export async function HeaderCarousel(props: HeaderCarouselProps) {
   });
 
   return (
-    <div className="relative flex flex-col lg:h-[100vh]">
-      {/* <div>
-      {isLoading && (
-        <div className="fixed inset-0 bg-body z-50 flex items-center justify-center">
-        </div>
-      )}
-      </div> */}
-      <AnimationCarousel projects={projects} />
-      <MotionLogo />
-    </div>
+    <AnimationHome projects={projects}/>
   );
 }
 

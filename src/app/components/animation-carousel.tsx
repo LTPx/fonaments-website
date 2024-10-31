@@ -2,7 +2,7 @@
 
 import { Link } from "@/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Mousewheel } from "swiper/modules";
+import { Navigation, Mousewheel, Keyboard } from "swiper/modules";
 import ProjectCard from "./project-card";
 import { WordPressPost } from "../_interfaces/wordpress";
 import { useEffect, useState } from "react";
@@ -79,10 +79,11 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
   return (
     <div className="relative z-40">
       <Swiper
-        modules={[Navigation, Mousewheel]}
+        modules={[Navigation, Mousewheel, Keyboard]}
         spaceBetween={15}
         navigation={{ nextEl: ".arrow-right", prevEl: ".arrow-left" }}
         mousewheel={isTablet ? false : true}
+        keyboard={{ enabled: true }}
         onSlideChange={handleSlideChange}
         breakpoints={{
           640: {
