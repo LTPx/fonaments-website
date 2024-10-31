@@ -42,7 +42,7 @@ export default function MotionLogo() {
           animationData={logoAnimation}
           loop={false}
           autoplay={true}
-          className={`w-full h-auto ${isTabletOrMobile ? "max-w-md mx-auto" : ""}`}
+          className={`w-full h-auto`}
         />
       </div>
     </div>

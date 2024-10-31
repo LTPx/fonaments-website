@@ -1,8 +1,7 @@
+import { useEffect } from "react";
 import { getWordPressPage } from "../_services/api";
 import AppFooter from "../components/app-footer";
 import AppHeader from "../components/app-header";
-import Footer from "../components/footer";
-import Header from "../components/header";
 
 interface Props {
   children: any;
@@ -14,11 +13,13 @@ async function App(props: Props) {
 
   return (
     <>
-      <AppHeader/>
+      <AppHeader />
       <div className="bg-body">{children}</div>
-      <AppFooter params={{
-        locale: "en"
-      }}/>
+      <AppFooter
+        params={{
+          locale: "en",
+        }}
+      />
     </>
   );
 }
