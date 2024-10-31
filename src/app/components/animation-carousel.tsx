@@ -122,7 +122,6 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
           </SwiperSlide>
         ))}
       </Swiper>
-      {areButtonsVisible && (
         <div className="flex justify-between">
           <button className="arrow-left arrow">
             <img
@@ -160,7 +159,6 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
             </button>
           </div>
         </div>
-      )}
     </div>
   );
 }
