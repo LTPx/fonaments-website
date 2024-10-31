@@ -16,6 +16,7 @@ interface AnimationCarouselProps {
 export function AnimationCarousel(props: AnimationCarouselProps) {
   const { projects } = props;
   const [isVisible, setIsVisible] = useState(false);
+  const [areButtonsVisible, setAreButtonsVisible] = useState(false);
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isTablet, setIsTablet] = useState(false);
@@ -31,20 +32,19 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); 
+    handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    
     if (hasReachedEndOnce && isLargeScreen) {
-      document.body.style.overflow = "auto"; 
+      document.body.style.overflow = "auto";
     } else if (isLargeScreen) {
-      document.body.style.overflow = "hidden"; 
+      document.body.style.overflow = "hidden";
     }
   }, [hasReachedEndOnce, isLargeScreen]);
-  
+
   useEffect(() => {
     const handlePopState = () => {
       history.pushState(null, document.title, location.href);
@@ -58,6 +58,9 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
 
   useEffect(() => {
     setIsVisible(true);
+    setTimeout(() => {
+      setAreButtonsVisible(true);
+    }, 700); 
   }, []);
 
   const handleSlideChange = (swiper: SwiperType) => {
@@ -119,7 +122,8 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="flex justify-between">
+      {areButtonsVisible && (
+        <div className="flex justify-between">
           <button className="arrow-left arrow">
             <img
               src="/images/icons/arrow-left.svg"
@@ -156,6 +160,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
             </button>
           </div>
         </div>
+      )}
     </div>
   );
 }
