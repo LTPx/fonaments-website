@@ -82,6 +82,7 @@ h2 {
   right: 0 !important;
 }
 
+
 @media (max-width: 768px) {
   .container {
     padding-left: 12px;
@@ -97,6 +98,9 @@ h2 {
     font-size: 28px;
     line-height: 30px;
   }
-  
-  
+
+}
+
+.carousel-right {
+  cursor: url('https://garbo-studios.com/wp-content/plugins/laytheme-carousel/frontend/assets/img/cursor_next.svg'); /* Reemplaza con la URL de tu cursor de flecha derecha */
 }
