@@ -18,6 +18,32 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isCarouselFinished, setIsCarouselFinished] = useState(false);
+  const [hasReachedEndOnce, setHasReachedEndOnce] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsTablet(width >= 768 && width <= 1023);
+      setIsLargeScreen(width >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); 
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    
+    if (hasReachedEndOnce && isLargeScreen) {
+      document.body.style.overflow = "auto"; 
+    } else if (isLargeScreen) {
+      document.body.style.overflow = "hidden"; 
+    }
+  }, [hasReachedEndOnce, isLargeScreen]);
   
   useEffect(() => {
     const handlePopState = () => {
@@ -30,7 +56,6 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
     };
   }, []);
 
-
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -40,6 +65,12 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
     const isStart = swiper.isBeginning;
     setIsLastSlide(isEnd);
     setIsFirstSlide(isStart);
+
+    if (isEnd && !hasReachedEndOnce) {
+      setHasReachedEndOnce(true);
+    }
+
+    setIsCarouselFinished(isEnd);
   };
 
   return (
@@ -48,7 +79,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
         modules={[Navigation, Mousewheel]}
         spaceBetween={15}
         navigation={{ nextEl: ".arrow-right", prevEl: ".arrow-left" }}
-        mousewheel={true}
+        mousewheel={isTablet ? false : true}
         onSlideChange={handleSlideChange}
         breakpoints={{
           640: {
@@ -87,7 +118,8 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
             </Link>
           </SwiperSlide>
         ))}
-        <div className="flex justify-between">
+      </Swiper>
+      <div className="flex justify-between">
           <button className="arrow-left arrow">
             <img
               src="/images/icons/arrow-left.svg"
@@ -98,7 +130,6 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
                 position: "relative",
                 width: "45px",
                 zIndex: 500,
-                cursor: isFirstSlide ? "not-allowed" : "cursor-pointer",
               }}
             />
           </button>
@@ -120,13 +151,11 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
                   position: "relative",
                   width: "45px",
                   zIndex: 500,
-                  cursor: isLastSlide ? "not-allowed" : "cursor-pointer",
                 }}
               />
             </button>
           </div>
         </div>
-      </Swiper>
     </div>
   );
 }
