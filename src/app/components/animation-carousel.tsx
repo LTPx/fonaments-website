@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Mousewheel, Keyboard } from "swiper/modules";
 import ProjectCard from "./project-card";
 import { WordPressPost } from "../_interfaces/wordpress";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "swiper/swiper-bundle.css";
 import type { Swiper as SwiperType } from "swiper";
 
@@ -23,6 +23,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
   const [isCarouselFinished, setIsCarouselFinished] = useState(false);
   const [hasReachedEndOnce, setHasReachedEndOnce] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,14 +37,6 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  useEffect(() => {
-    if (hasReachedEndOnce && isLargeScreen) {
-      document.body.style.overflow = "auto";
-    } else if (isLargeScreen) {
-      document.body.style.overflow = "hidden";
-    }
-  }, [hasReachedEndOnce, isLargeScreen]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -60,21 +53,38 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
     setIsVisible(true);
     setTimeout(() => {
       setAreButtonsVisible(true);
-    }, 700); 
+    }, 700);
   }, []);
 
-  const handleSlideChange = (swiper: SwiperType) => {
+  const handleSlideChange = useCallback((swiper: SwiperType) => {
     const isEnd = swiper.isEnd;
     const isStart = swiper.isBeginning;
-    setIsLastSlide(isEnd);
     setIsFirstSlide(isStart);
 
-    if (isEnd && !hasReachedEndOnce) {
+    if (isEnd) {
       setHasReachedEndOnce(true);
+      setTimeout(() => {
+        setIsLastSlide(true);
+      }, 1000);
+    } else {
+      setIsLastSlide(false);
     }
 
     setIsCarouselFinished(isEnd);
-  };
+  }, []);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      const mousewheel = swiperRef.current.params.mousewheel;
+      if (typeof mousewheel === "object" && mousewheel !== null) {
+        mousewheel.forceToAxis = isLastSlide;
+      } else {
+        swiperRef.current.params.mousewheel = {
+          forceToAxis: isLastSlide,
+        };
+      }
+    }
+  }, [isLastSlide]);
 
   return (
     <div className="relative z-40">
@@ -82,8 +92,11 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
         modules={[Navigation, Mousewheel, Keyboard]}
         spaceBetween={15}
         navigation={{ nextEl: ".arrow-right", prevEl: ".arrow-left" }}
-        mousewheel={isTablet ? false : true}
         keyboard={{ enabled: true }}
+        mousewheel={{
+          forceToAxis: isLastSlide,
+        }}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={handleSlideChange}
         breakpoints={{
           640: {
@@ -123,43 +136,41 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
           </SwiperSlide>
         ))}
       </Swiper>
-        <div className="flex justify-between">
-          <button className="arrow-left arrow">
+      <div className="flex justify-between">
+        <button className="arrow-left arrow">
+          <img
+            src="/images/icons/arrow-left.svg"
+            className={`${isFirstSlide ? "opacity-25 cursor-not-allowed" : ""}`}
+            style={{
+              position: "relative",
+              width: "45px",
+              zIndex: 500,
+            }}
+          />
+        </button>
+        <div className="carousel-right">
+          <button
+            className={`arrow-right arrow`}
+            disabled={isLastSlide}
+            onClick={(e) => {
+              if (isLastSlide) e.preventDefault();
+            }}
+          >
             <img
-              src="/images/icons/arrow-left.svg"
+              src="/images/icons/arrow-right.svg"
               className={`${
-                isFirstSlide ? "opacity-25 cursor-not-allowed" : ""
+                isLastSlide ? "opacity-25 cursor-not-allowed" : ""
               }`}
               style={{
+                right: "10px",
                 position: "relative",
                 width: "45px",
                 zIndex: 500,
               }}
             />
           </button>
-          <div className="carousel-right">
-            <button
-              className={`arrow-right arrow`}
-              disabled={isLastSlide}
-              onClick={(e) => {
-                if (isLastSlide) e.preventDefault();
-              }}
-            >
-              <img
-                src="/images/icons/arrow-right.svg"
-                className={`${
-                  isLastSlide ? "opacity-25 cursor-not-allowed" : ""
-                }`}
-                style={{
-                  right: "10px",
-                  position: "relative",
-                  width: "45px",
-                  zIndex: 500,
-                }}
-              />
-            </button>
-          </div>
         </div>
+      </div>
     </div>
   );
 }
