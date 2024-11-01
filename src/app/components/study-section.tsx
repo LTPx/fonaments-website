@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TeamSection from "./team-section";
 import ServiceSections from "./services-section";
 import {
@@ -20,6 +20,14 @@ interface StudySectionProps {
 
 export function StudySection(props: StudySectionProps) {
   const { teamSection, services, gallery, information_section } = props;
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    const params = new URLSearchParams(window.location.search);
+    if (hash === "#servicios" || params.get("section") === "servicios") {
+      setSelectedOption("Servicios");
+    }
+  }, []);
 
   const handleClick = (option: string) => {
     setSelectedOption(option);

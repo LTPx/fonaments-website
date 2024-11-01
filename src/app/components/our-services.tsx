@@ -39,7 +39,7 @@ export function OurServices(props: OurServicesProps) {
         ))}
       </div>
       <div className="pt-[30px] z-30">
-        <Link href={"/study"}>
+        <Link href={"/study#servicios"}>
           <p className="hover:bg-black hover:text-white hover:rounded-none flex items-center w-[145px] justify-center font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] rounded-full transition-colors duration-300 ease-in-out">
             Más servicios
           </p>
