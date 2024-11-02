@@ -5,6 +5,7 @@ import { WordPressPost } from "../_interfaces/wordpress";
 import { Link } from "@/navigation";
 import ProjectCard from "./project-card";
 import { WordPressProject } from "../_interfaces/wordpress-project";
+import { getUniqueCategories } from "../utils";
 
 interface ProjectSectionProps {
   options: string[];
@@ -13,10 +14,12 @@ interface ProjectSectionProps {
 
 export function ProjectSection(props: ProjectSectionProps) {
   const { options, projects } = props;
-  const [selectedOption, setSelectedOption] = useState<string>(options[0]);
+  const [selectedOption, setSelectedOption] = useState(-1);
   const [filteredProjects, setFilteredProjects] = useState<WordPressPost[]>([]);
+  const categories = getUniqueCategories(projects);
+  console.log("categories: ", categories);
 
-  const handleClick = (option: string) => {
+  const handleClick = (option: number) => {
     setSelectedOption(option);
   };
 
@@ -59,17 +62,27 @@ export function ProjectSection(props: ProjectSectionProps) {
     <div className="flex flex-col">
       <div className="w-full overflow-hidden">
         <div className="flex gap-[14px] lg:gap-[11px] overflow-x-scroll no-scrollbar">
-          {options.map((option, index) => (
+          <button
+            onClick={() => handleClick(-1)}
+            className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
+              selectedOption === -1
+                ? "bg-black text-white rounded-none"
+                : "text-black rounded-full"
+            } whitespace-nowrap min-w-[120px]`}
+          >
+            Todos
+          </button>
+          {categories.map((option, index) => (
             <button
               key={index}
-              onClick={() => handleClick(option)}
+              onClick={() => handleClick(option.id)}
               className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
-                selectedOption === option
+                selectedOption === option.id
                   ? "bg-black text-white rounded-none"
                   : "text-black rounded-full"
               } whitespace-nowrap min-w-[120px]`}
             >
-              {option}
+              {option.name}
             </button>
           ))}
         </div>
