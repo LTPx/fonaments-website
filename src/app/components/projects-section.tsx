@@ -1,14 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { WordPressPost } from "../_interfaces/wordpress";
 import { Link } from "@/navigation";
 import ProjectCard from "./project-card";
-
-interface Props {
-  imageUrl: string;
-  title: string;
-}
 
 interface ProjectSectionProps {
   options: string[];
@@ -18,10 +13,46 @@ interface ProjectSectionProps {
 export function ProjectSection(props: ProjectSectionProps) {
   const { options, projects } = props;
   const [selectedOption, setSelectedOption] = useState<string>(options[0]);
+  const [filteredProjects, setFilteredProjects] = useState<WordPressPost[]>([]);
 
   const handleClick = (option: string) => {
     setSelectedOption(option);
   };
+
+  useEffect(() => {
+    const filterProjects = () => {
+      if (selectedOption === "Todos") {
+        return projects;
+      }
+  
+      // Filtramos los proyectos y recogemos los nombres encontrados
+      const filteredProjects = projects.filter(post => {
+        return (
+          post._embedded &&
+          post._embedded["wp:term"] &&
+          post._embedded["wp:term"].some(termGroup =>
+            termGroup.some(term => term.name === selectedOption)
+          )
+        );
+      });
+  
+      // Extraemos los nombres de los términos que coincidieron con selectedOption
+      const matchedNames = filteredProjects.flatMap(post =>
+        post._embedded["wp:term"].flatMap(termGroup =>
+          termGroup
+            .filter(term => term.name === selectedOption)
+            .map(term => term.name)
+        )
+      );
+  
+      // Imprimimos los nombres en la consola
+      console.log("Nombres encontrados:", matchedNames);
+  
+      return filteredProjects;
+    };
+  
+    setFilteredProjects(filterProjects());
+  }, [selectedOption, projects]);
 
   return (
     <div className="flex flex-col">
@@ -43,7 +74,7 @@ export function ProjectSection(props: ProjectSectionProps) {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-4 gap-y-[32px] lg:grid-cols-3 lg:gap-y-[20px] lg:gap-x-[15px] pt-[22px] lg:pt-[20px]">
-        {projects.map((item, index) => (
+        {filteredProjects.map((item, index) => (
           <Link href={`/projects/${item.slug}`} key={index}>
             <ProjectCard
               className="h-[456px] xl:h-[600px]"
