@@ -1,6 +1,7 @@
 import { WordPressPost } from "../_interfaces/wordpress";
 import { ProjectPostWp, ProjectWp } from "../_interfaces/wordpress-components";
 import { WordPressFrontendPage } from "../_interfaces/wordpress-page";
+import { WordPressProject } from "../_interfaces/wordpress-project";
 
 export async function getWordPressPage(
   locale: "en" | "es" | "de",
@@ -22,11 +23,12 @@ export async function getWordPressPage(
 
 export async function getAllProjects(
   locale: "en" | "es" | "de"
-): Promise<WordPressPost[]> {
+): Promise<WordPressProject[]> {
   const WORDPRESS_API_URL = "https://www.staging.fonamentsarch.com/wp-json";
-  const url = `${WORDPRESS_API_URL}/wp/v2/all_projects?_embed`;
-  console.log("url projects: ", url);
-  const response = await fetch(url, {
+  const url = `${WORDPRESS_API_URL}/wp/v2/all_projects?_embed&lang=${locale}`;
+  const urlCustom = `${WORDPRESS_API_URL}/custom/v1/all_projects?lang=${locale}`;
+  console.log("url projects: ", urlCustom);
+  const response = await fetch(urlCustom, {
     next: {
       revalidate: 0,
     },
