@@ -76,18 +76,18 @@ export function ProjectSection(props: ProjectSectionProps) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-4 gap-y-[32px] lg:grid-cols-3 lg:gap-y-[20px] lg:gap-x-[15px] pt-[22px] lg:pt-[20px]">
         {projects.map((item, index) => {
-          const { acf }= item;
-          const {cover_image_project, hover_image} = acf;
+          const { acf } = item;
+          const { cover_image_project, hover_image } = acf;
           return (
             <Link href={`/projects/${item.slug}`} key={index}>
-            <ProjectCard
-              className="h-[456px] xl:h-[600px]"
-              title={item.title.rendered}
-              image={cover_image_project.sizes.large}
-              imageHover={hover_image ? hover_image.sizes.large : ''}
-            />
-          </Link>
-          )
+              <ProjectCard
+                className="h-[456px] xl:h-[600px]"
+                title={item.title.rendered}
+                image={cover_image_project.sizes.large}
+                imageHover={hover_image ? hover_image.sizes.large : ""}
+              />
+            </Link>
+          );
         })}
       </div>
     </div>

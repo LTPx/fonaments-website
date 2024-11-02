@@ -4,13 +4,13 @@ import { Link } from "@/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Mousewheel, Keyboard } from "swiper/modules";
 import ProjectCard from "./project-card";
-import { WordPressPost } from "../_interfaces/wordpress";
 import { useCallback, useEffect, useRef, useState } from "react";
 import "swiper/swiper-bundle.css";
 import type { Swiper as SwiperType } from "swiper";
+import { WordPressProject } from "../_interfaces/wordpress-project";
 
 interface AnimationCarouselProps {
-  projects: WordPressPost[];
+  projects: WordPressProject[];
 }
 
 export function AnimationCarousel(props: AnimationCarouselProps) {
@@ -126,9 +126,9 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
                 <ProjectCard
                   className="h-[456px] lg:h-[50vh] xl:h-[52vh]"
                   title={item.title.rendered}
-                  image={item._embedded["wp:featuredmedia"][0].source_url}
+                  image={item.acf.cover_image_project.sizes.large}
                   imageHover={
-                    "https://s3-alpha-sig.figma.com/img/b0ec/1da8/205f0bec1ed743c9339f5dc9d99bb8e9?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NhcIzXBMUi8I10tWwPeCV-7SnXiEEWlil1kByWeJwAvW6Go8OdGINKhq6DnFb6vajTT~~yI0yXMVTDdrnMm~rQXzpFjt603UHXNsTbSXmuv~NZoFDVb9NtyL0~btkFw9iOgzGZzP2OMeh60V49-XYVIq98MCKrlyQcbyr~jGAEPWreinUczNftiiTrPawOyoKxaHSB~xFjZdcqixBH1aClRSH~p0YRjumHiWJw7MLHAeLAwpAcvQcNF-O-7AFePVS1YawDQ731qqI33Wr9XtRXgUHzbYMzHbOv7cdRRudYZwoNLbqln9us9xmsXo3j7GwpLZSAKZF7S6LUwynBfb8g__"
+                    item.acf.hover_image ? item.acf.hover_image.sizes.large : ""
                   }
                 />
               </div>

@@ -4,9 +4,10 @@ import MotionLogo from "./motion-logo";
 import AnimationCarousel from "./animation-carousel";
 import { useEffect, useState } from "react";
 import { WordPressPost } from "../_interfaces/wordpress";
+import { WordPressProject } from "../_interfaces/wordpress-project";
 
 interface AnimationHomeProps {
-  projects: WordPressPost[];
+  projects: WordPressProject[];
 }
 
 export function AnimationHome(props: AnimationHomeProps) {
@@ -18,14 +19,18 @@ export function AnimationHome(props: AnimationHomeProps) {
       setShowCarousel(true);
     }, 800);
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="relative flex flex-col lg:h-[100vh]">
       <MotionLogo />
       {showCarousel && (
-        <div className={`transition-opacity duration-700 ${showCarousel ? 'opacity-100' : 'opacity-0'}`}>
+        <div
+          className={`transition-opacity duration-700 ${
+            showCarousel ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <AnimationCarousel projects={projects} />
         </div>
       )}
