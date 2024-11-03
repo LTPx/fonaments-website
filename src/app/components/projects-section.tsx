@@ -23,7 +23,8 @@ export function ProjectSection(props: ProjectSectionProps) {
       const categories = project._embedded["wp:term"].categories;
       return categories.find((category)=> category.id === id);
     });
-    setFilteredProjects(filterProjects);
+    const results = id === -1 ? projects : filterProjects;
+    setFilteredProjects(results);
   };
 
   return (
