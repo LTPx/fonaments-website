@@ -27,7 +27,7 @@ async function Projects(nextParams: {
         </div>
       </section>
       <section className="pt-[59px] lg:pt-[90px]">
-        <ProjectSection options={btns} projects={allProjects} />
+        <ProjectSection projects={allProjects} />
       </section>
       <section className="pt-[30px] lg:pt-[180px] pb-[80px] lg:pb-[94px]">
         <hr className="border-t border-black border-1 mb-[10px]" />
