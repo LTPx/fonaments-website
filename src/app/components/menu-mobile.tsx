@@ -11,7 +11,7 @@ interface Link {
 
 export interface MenuMobileProps {
   links: Link[];
-  languages: string[];
+  languages: { name: string; url: string }[];
 }
 
 export function MenuMobile(props: MenuMobileProps) {
@@ -90,9 +90,13 @@ export function MenuMobile(props: MenuMobileProps) {
                   </p>
                   <div className="flex gap-[10px]">
                     {languages.map((language, index) => (
-                      <p className="text-[30px] leading-[41px]" key={index}>
-                        {language}
-                      </p>
+                      <Link
+                        href={language.url}
+                        className="text-[30px] leading-[41px]"
+                        key={index}
+                      >
+                        {language.name}
+                      </Link>
                     ))}
                   </div>
                 </div>

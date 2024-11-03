@@ -25,7 +25,12 @@ function AppHeader() {
   ? linksHeader.filter(link => link.title !== "Fonaments")
   : linksHeader;
 
-  const languages = ["ESP", "ENG", "DEU"];
+  const languages = [
+    { name: "ESP", url: "es" },
+    { name: "ENG", url: "en" },
+    { name: "DEU", url: "de" }
+  ];
+
 
   return (
     <>
