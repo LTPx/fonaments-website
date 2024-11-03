@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getAllProjects, getWordPressPage } from "@/app/_services/api";
+import { getAllProjects, getWordPressCustomPage, getWordPressPage } from "@/app/_services/api";
 import ProjectSection from "@/app/components/projects-section";
 import TruncatedText from "@/app/components/truncated-text";
 
@@ -9,7 +9,7 @@ async function Projects(nextParams: {
   const {
     params: { locale },
   } = nextParams;
-  const data = await getWordPressPage(locale, "projects");
+  const data = await getWordPressCustomPage(locale, "projects");
   const { acf } = data;
   const { information, section } = acf;
   const allProjects = await getAllProjects(locale);

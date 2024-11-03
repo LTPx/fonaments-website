@@ -1,11 +1,11 @@
-import { getWordPressPage } from "@/app/_services/api";
+import { getWordPressCustomPage } from "@/app/_services/api";
 import StudySection from "@/app/components/study-section";
 
 async function Study(nextParams: { params: { locale: "en" | "es" | "de" } }) {
   const {
     params: { locale },
   } = nextParams;
-  const data = await getWordPressPage(locale, "study");
+  const data = await getWordPressCustomPage(locale, "study");
   const { acf } = data;
   const { team_section, services_section, information_section } = acf;
 

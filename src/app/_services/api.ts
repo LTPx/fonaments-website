@@ -1,7 +1,23 @@
 import { WordPressPost } from "../_interfaces/wordpress";
-import { ProjectPostWp, ProjectWp } from "../_interfaces/wordpress-components";
 import { WordPressFrontendPage } from "../_interfaces/wordpress-page";
 import { WordPressProject } from "../_interfaces/wordpress-project";
+
+export async function getWordPressCustomPage(
+  locale: "en" | "es" | "de",
+  slug: string
+): Promise<WordPressFrontendPage> {
+  const WORDPRESS_API_URL = "https://www.staging.fonamentsarch.com/wp-json";
+  const url = `${WORDPRESS_API_URL}/custom/v1/page_by_slug?slug=${slug}&parent_slug=spanish-pages&lang=${locale}`;
+  console.log("url custom page: ", url);
+  const response = await fetch(url, {
+    next: {
+      revalidate: 0,
+    },
+  });
+  const page = await response.json();
+  if (!response.ok) throw new Error(page.message);
+  return page;
+}
 
 export async function getWordPressPage(
   locale: "en" | "es" | "de",

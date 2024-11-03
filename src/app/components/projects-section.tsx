@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "@/navigation";
 import ProjectCard from "./project-card";
 import { WordPressProject } from "../_interfaces/wordpress-project";
@@ -15,7 +15,6 @@ export function ProjectSection(props: ProjectSectionProps) {
   const [selectedOption, setSelectedOption] = useState(-1);
   const [filteredProjects, setFilteredProjects] = useState<WordPressProject[]>(projects);
   const categories = getUniqueCategories(projects);
-  console.log(projects);
 
   const handleClick = (id: number) => {
     setSelectedOption(id);

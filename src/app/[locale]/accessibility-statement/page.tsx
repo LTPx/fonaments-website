@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getWordPressPage } from "@/app/_services/api";
+import { getWordPressCustomPage } from "@/app/_services/api";
 
 async function AccessibilityStatement(nextParams: {
   params: { locale: "en" | "es" | "de" };
@@ -7,7 +7,7 @@ async function AccessibilityStatement(nextParams: {
   const {
     params: { locale },
   } = nextParams;
-  const data = await getWordPressPage(locale, "accessibility-statement");
+  const data = await getWordPressCustomPage(locale, "accessibility-statement");
   const { acf } = data;
   const { information_page } = acf;
 

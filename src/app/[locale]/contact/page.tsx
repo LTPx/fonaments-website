@@ -1,11 +1,10 @@
-import { Suspense } from "react";
-import { getWordPressPage } from "@/app/_services/api";
+import { getWordPressCustomPage } from "@/app/_services/api";
 
 async function Contact(nextParams: { params: { locale: "en" | "es" | "de" } }) {
   const {
     params: { locale },
   } = nextParams;
-  const data = await getWordPressPage(locale, "contact");
+  const data = await getWordPressCustomPage(locale, "contact");
   const { acf } = data;
   const { contact } = acf;
 

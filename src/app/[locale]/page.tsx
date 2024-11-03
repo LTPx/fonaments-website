@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import Home from "./home";
-import { getWordPressPage } from "../_services/api";
+import { getWordPressCustomPage, getWordPressPage } from "../_services/api";
 import Skeleton from "../components/skeleton-home";
 
 export default async function Page(nextParams: {
@@ -9,7 +9,8 @@ export default async function Page(nextParams: {
   const {
     params: { locale },
   } = nextParams;
-  const data = await getWordPressPage(locale, "home");
+  const data = await getWordPressCustomPage(locale, "home");
+  console.log(data);
   const { acf } = data;
   const { home_information, services, service_section, feature_projects } = acf;
 
