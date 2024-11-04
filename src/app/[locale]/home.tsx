@@ -3,8 +3,6 @@ import HeaderCarousel from "../components/header-carousel";
 import OurServices from "../components/our-services";
 import {
   HomeWp,
-  ProjectPostWp,
-  ProjectWp,
   ServiceHomeWp,
   ServiceSectionHomeWp,
 } from "../_interfaces/wordpress-components";
@@ -14,7 +12,6 @@ interface Props {
   home_information: HomeWp;
   services: ServiceHomeWp[];
   service_section: ServiceSectionHomeWp;
-  feature_projects: ProjectWp[];
   projects: WordPressProject[];
 }
 

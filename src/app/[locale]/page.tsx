@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import Home from "./home";
-import { getAllProjects, getWordPressCustomPage, getWordPressPage } from "../_services/api";
+import { getAllProjects, getWordPressCustomPage } from "../_services/api";
 import Skeleton from "../components/skeleton-home";
+import Home from "./home";
 
 export default async function Page(nextParams: {
   params: { locale: "en" | "es" | "de" };
@@ -25,7 +25,6 @@ export default async function Page(nextParams: {
         home_information={home_information}
         services={services}
         service_section={service_section}
-        feature_projects={feature_projects}
       />
     </Suspense>
   );
