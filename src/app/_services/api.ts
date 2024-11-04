@@ -6,8 +6,14 @@ export async function getWordPressCustomPage(
   locale: "en" | "es" | "de",
   slug: string
 ): Promise<WordPressFrontendPage> {
+  const parentPages = {
+    en: 'english-pages',
+    es: 'spanish-pages',
+    de: 'german-pages',
+  };
+  const parentPage = parentPages[locale];
   const WORDPRESS_API_URL = "https://www.staging.fonamentsarch.com/wp-json";
-  const url = `${WORDPRESS_API_URL}/custom/v1/page_by_slug?slug=${slug}&parent_slug=spanish-pages&lang=${locale}`;
+  const url = `${WORDPRESS_API_URL}/custom/v1/page_by_slug?slug=${slug}&parent_slug=${parentPage}&lang=${locale}`;
   console.log("url custom page: ", url);
   const response = await fetch(url, {
     next: {

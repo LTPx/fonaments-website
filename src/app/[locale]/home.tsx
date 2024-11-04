@@ -8,20 +8,22 @@ import {
   ServiceHomeWp,
   ServiceSectionHomeWp,
 } from "../_interfaces/wordpress-components";
+import { WordPressProject } from "../_interfaces/wordpress-project";
 
 interface Props {
   home_information: HomeWp;
   services: ServiceHomeWp[];
   service_section: ServiceSectionHomeWp;
   feature_projects: ProjectWp[];
+  projects: WordPressProject[];
 }
 
 function Home(props: Props) {
-  const { home_information, services, service_section, feature_projects } = props;
+  const { home_information, services, service_section, projects } = props;
 
   return (
     <div className="container relative mx-auto flex flex-col pt-[7px] lg:pt-[30px] pb-[100px] lg:pb-[80px]">
-      <HeaderCarousel items={feature_projects} />
+      <HeaderCarousel projects={projects} />
       <section className="lg:hidden block pb-[45px] lg:pb-[78px] pt-[66px] lg:pt-[82px]">
         <img src="/images/fonaments.svg" />
       </section>
