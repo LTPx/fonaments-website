@@ -48,7 +48,7 @@ export function ProjectSection(props: ProjectSectionProps) {
                 selectedOption === option.id
                   ? "bg-black text-white rounded-none"
                   : "text-black rounded-full"
-              } whitespace-nowrap min-w-[120px]`}
+              } whitespace-nowrap`}
             >
               {option.name}
             </button>

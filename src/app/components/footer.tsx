@@ -131,7 +131,7 @@ export function Footer(props: FooterProps) {
                     target="_blank"
                     href={footer?.second_office.link_location || "/"}
                   >
-                    {`${t('footer.see-location')}`}
+                    {`${t('footer.write-to-us')}`}
                   </Link>
                 </div>
               </div>
@@ -159,7 +159,7 @@ export function Footer(props: FooterProps) {
         <hr className="hidden lg:block border-t border-black border-1 mt-[25px] mb-[17px]" />
         <div className="flex flex-col lg:flex-row lg:justify-between pt-[44px] lg:pt-[0px] z-30">
           <div className="flex flex-col gap-[8px]">
-            <p className="text-[20px] leading-[20px]">{`${t('footer.see-location')}`}</p>
+            <p className="text-[20px] leading-[20px]">{`${t('footer.write-to-us')}`}</p>
             <Link
               href={`mailto:${contact_information.email}`}
               className="lg:underline text-[30px] leading-[32px] lg:text-[42px] lg:leading-[45px]"

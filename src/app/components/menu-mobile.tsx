@@ -4,6 +4,7 @@ import styles from "./header.module.scss";
 import React, { useState } from "react";
 import { Link } from "@/navigation";
 import LanguagesMobile from "./languages-mobile";
+import { useTranslations } from "next-intl";
 
 interface Link {
   title: string;
@@ -18,6 +19,7 @@ export interface MenuMobileProps {
 export function MenuMobile(props: MenuMobileProps) {
   const { links, languages } = props;
   const [menuOpen, setMenuOpen] = useState(false);
+  const t = useTranslations();
 
   return (
     <>
@@ -87,14 +89,14 @@ export function MenuMobile(props: MenuMobileProps) {
                 <div className="mt-[40px]">
                   <hr className="border-t border-black border-1 mb-[0px]" />
                   <p className="font-medium text-[14px] leading-[26px] pb-[4px]">
-                    Idioma
+                    {`${t("menu.language")}`}
                   </p>
                   <LanguagesMobile languages={languages} />
                 </div>
                 <div className="mt-[70px]">
                   <hr className="border-t border-black border-1 mb-[0px]" />
                   <p className="font-medium text-[14px] leading-[26px] pb-[9px]">
-                    ¡Escríbenos!
+                    {`${t("menu.write-to-us")}`}
                   </p>
                   <Link
                     href="mailto:info@fonamentsarch.com"

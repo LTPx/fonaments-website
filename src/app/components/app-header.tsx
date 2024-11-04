@@ -23,7 +23,9 @@ function AppHeader() {
     { title: `${t('header.contact')}`, url: "/contact" },
   ];
 
-  const filteredLinksHeader = pathname === '/es' 
+  const allLanguages = ["/es", "/en", "/de"];
+
+  const filteredLinksHeader = allLanguages.includes(pathname) 
   ? linksHeader.filter(link => link.title !== "Fonaments")
   : linksHeader;
 
@@ -31,7 +33,7 @@ function AppHeader() {
     { name: "ESP", url: "/es" },
     { name: "ENG", url: "/en" },
     { name: "DEU", url: "/de" }
-  ];
+  ]; 
 
   return (
     <>

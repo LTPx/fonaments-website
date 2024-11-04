@@ -11,6 +11,9 @@
     "contact": "Contacto",
     "slogan": "Local Architecture Studio."
   },
+  "projectPage": {
+    "all": "Todos"
+  },
   "footer": {
     "our-offices": "Nuestras oficinas",
     "see-location": "Ver localización",
@@ -19,5 +22,9 @@
     "privacy-policy": "Política de privacidad",
     "legal-notice": "Aviso legal",
     "accessibility-statement": "Declaración de accesibilidad"
+  },
+  "menu": {
+    "write-to-us": "¡Escríbenos!",
+    "language": "Idioma"
   }
 }
