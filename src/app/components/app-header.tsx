@@ -26,9 +26,9 @@ function AppHeader() {
   : linksHeader;
 
   const languages = [
-    { name: "ESP", url: "es" },
-    { name: "ENG", url: "en" },
-    { name: "DEU", url: "de" }
+    { name: "ESP", url: "/es" },
+    { name: "ENG", url: "/en" },
+    { name: "DEU", url: "/de" }
   ];
 
 

@@ -37,6 +37,8 @@ export function Footer(props: FooterProps) {
     setSelectedOption(option);
   };
 
+  const languages = ["/es", "/en", "/de"];
+
   return (
     <footer className="bg-body relative">
       <div className="mx-auto container flex flex-col">
@@ -63,11 +65,12 @@ export function Footer(props: FooterProps) {
           </div>
         )}
 
-        {!isMobile && pathname !== "/es/contact" && (
-          <label className="hidden lg:block lg:text-[20px] lg:leading-[20px] mb-[32px]">
-            Nuestras oficinas
-          </label>
-        )}
+        {!isMobile &&
+          !["/es/contact", "/en/contact", "/de/contact"].includes(pathname) && (
+            <label className="hidden lg:block lg:text-[20px] lg:leading-[20px] mb-[32px]">
+              Nuestras oficinas
+            </label>
+          )}
 
         <div
           className={`grid ${
@@ -83,7 +86,10 @@ export function Footer(props: FooterProps) {
               <div className="flex flex-col text-[20px] leading-[26px]">
                 <p className="w-[185px]">{footer?.first_office.address}</p>
                 <div className="w-auto">
-                  <Link className="w-auto" href={`tel:${footer?.first_office.phone}`}>
+                  <Link
+                    className="w-auto"
+                    href={`tel:${footer?.first_office.phone}`}
+                  >
                     <p>{footer?.first_office.phone}</p>
                   </Link>
                 </div>
@@ -135,7 +141,7 @@ export function Footer(props: FooterProps) {
           )}
         </div>
 
-        {pathname === "/es" && !isMobile && (
+        {languages.includes(pathname) && !isMobile && (
           <div className="hidden lg:grid lg:grid-cols-2 gap-[20px] pt-[24px]">
             <img
               src={footer?.first_office.image.url}
@@ -190,7 +196,7 @@ export function Footer(props: FooterProps) {
         <hr className="border-t border-black border-1 mt-[30px] mb-[35px] lg:mb-[40px]" />
         <div
           className={`pb-[12px] lg:pb-[25px] ${
-            pathname === "/es" ? "lg:opacity-0" : ""
+            languages.includes(pathname) ? "lg:opacity-0" : ""
           }`}
         >
           <img src="/images/logo-footer.svg" />
@@ -203,10 +209,16 @@ export function Footer(props: FooterProps) {
         </p>
         <div className="flex-wrap lg:flex-no-wrap flex gap-[0px] lg:gap-[5px] text-[12px] leading-[14px] lg:text-[16px] lg:leading-[19.2px]">
           <p className="font-medium cursor-pointer">Aviso legal</p>
-          <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">| Política de cookies</p>
-          <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">| Política de privacidad</p>
+          <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">
+            | Política de cookies
+          </p>
+          <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">
+            | Política de privacidad
+          </p>
           <Link href={"/accessibility-statement"}>
-            <p className="relative z-40 font-medium ml-[0px] md:ml-[4px] lg:ml-[0px] cursor-pointer">| Declaración de accesibilidad</p>
+            <p className="relative z-40 font-medium ml-[0px] md:ml-[4px] lg:ml-[0px] cursor-pointer">
+              | Declaración de accesibilidad
+            </p>
           </Link>
         </div>
       </div>

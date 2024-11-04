@@ -3,6 +3,7 @@
 import styles from "./header.module.scss";
 import React, { useState } from "react";
 import { Link } from "@/navigation";
+import LanguagesMobile from "./languages-mobile";
 
 interface Link {
   title: string;
@@ -88,17 +89,7 @@ export function MenuMobile(props: MenuMobileProps) {
                   <p className="font-medium text-[14px] leading-[26px] pb-[4px]">
                     Idioma
                   </p>
-                  <div className="flex gap-[10px]">
-                    {languages.map((language, index) => (
-                      <Link
-                        href={language.url}
-                        className="text-[30px] leading-[41px]"
-                        key={index}
-                      >
-                        {language.name}
-                      </Link>
-                    ))}
-                  </div>
+                  <LanguagesMobile languages={languages} />
                 </div>
                 <div className="mt-[70px]">
                   <hr className="border-t border-black border-1 mb-[0px]" />

@@ -27,6 +27,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     <div className="relative">
       <button
         onClick={toggleLanguagePopup}
+        style={{ fontWeight: "400" }}
         className="font-medium h-[40px] pl-[35px] pr-[30px] flex items-center cursor-pointer text-[18px] leading-[26px]"
       >
         {selectedLanguage}
