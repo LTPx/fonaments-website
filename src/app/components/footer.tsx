@@ -7,6 +7,7 @@ import {
   OfficesFootertWp,
 } from "../_interfaces/wordpress-components";
 import { Link } from "@/navigation";
+import { useTranslations } from "next-intl";
 
 interface FooterProps {
   footer?: OfficesFootertWp;
@@ -18,6 +19,7 @@ export function Footer(props: FooterProps) {
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
+  const t = useTranslations();
 
   useEffect(() => {
     const handleResize = () => {
@@ -68,7 +70,7 @@ export function Footer(props: FooterProps) {
         {!isMobile &&
           !["/es/contact", "/en/contact", "/de/contact"].includes(pathname) && (
             <label className="hidden lg:block lg:text-[20px] lg:leading-[20px] mb-[32px]">
-              Nuestras oficinas
+              {`${t('footer.our-offices')}`}
             </label>
           )}
 
@@ -99,7 +101,7 @@ export function Footer(props: FooterProps) {
                     target="_blank"
                     href={footer?.first_office.link_location || "/"}
                   >
-                    Ver localización
+                    {`${t('footer.see-location')}`}
                   </Link>
                 </div>
               </div>
@@ -129,7 +131,7 @@ export function Footer(props: FooterProps) {
                     target="_blank"
                     href={footer?.second_office.link_location || "/"}
                   >
-                    Ver localización
+                    {`${t('footer.see-location')}`}
                   </Link>
                 </div>
               </div>
@@ -157,7 +159,7 @@ export function Footer(props: FooterProps) {
         <hr className="hidden lg:block border-t border-black border-1 mt-[25px] mb-[17px]" />
         <div className="flex flex-col lg:flex-row lg:justify-between pt-[44px] lg:pt-[0px] z-30">
           <div className="flex flex-col gap-[8px]">
-            <p className="text-[20px] leading-[20px]">¡Escríbenos!</p>
+            <p className="text-[20px] leading-[20px]">{`${t('footer.see-location')}`}</p>
             <Link
               href={`mailto:${contact_information.email}`}
               className="lg:underline text-[30px] leading-[32px] lg:text-[42px] lg:leading-[45px]"
@@ -208,16 +210,16 @@ export function Footer(props: FooterProps) {
           © Fonaments Architecture Studio.
         </p>
         <div className="flex-wrap lg:flex-no-wrap flex gap-[0px] lg:gap-[5px] text-[12px] leading-[14px] lg:text-[16px] lg:leading-[19.2px]">
-          <p className="font-medium cursor-pointer">Aviso legal</p>
+          <p className="font-medium cursor-pointer">{`${t('footer.legal-notice')}`}          </p>
           <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">
-            | Política de cookies
+            | {`${t('footer.cookies-policy')}`}
           </p>
           <p className="font-medium ml-[4px] lg:ml-[0px] cursor-pointer">
-            | Política de privacidad
+            | {`${t('footer.privacy-policy')}`}
           </p>
           <Link href={"/accessibility-statement"}>
             <p className="relative z-40 font-medium ml-[0px] md:ml-[4px] lg:ml-[0px] cursor-pointer">
-              | Declaración de accesibilidad
+              | {`${t('footer.accessibility-statement')}`}
             </p>
           </Link>
         </div>

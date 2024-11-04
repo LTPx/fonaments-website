@@ -1,24 +1,26 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Header from "./header";
 import MenuMobile from "./menu-mobile";
 import { usePathname } from "next/navigation";
 
 function AppHeader() {
   const pathname = usePathname();
+  const t = useTranslations();
 
   const linksHeader = [
-    { title: "Fonaments", url: "/" },
-    { title: "Proyectos", url: `/projects` },
-    { title: "Estudio", url: "/study" },
-    { title: "Contacto", url: "/contact" },
+    { title: `${t('header.brand')}`, url: "/" },
+    { title: `${t('header.projects')}`, url: `/projects` },
+    { title: `${t('header.study')}`, url: "/study" },
+    { title: `${t('header.contact')}`, url: "/contact" },
   ];
 
   const menuLinks = [
-    { title: "Inicio", url: "/" },
-    { title: "Proyectos", url: `/projects` },
-    { title: "Estudio", url: "/study" },
-    { title: "Contacto", url: "/contact" },
+    { title: `${t('header.home')}`, url: "/" },
+    { title: `${t('header.projects')}`, url: `/projects` },
+    { title: `${t('header.study')}`, url: "/study" },
+    { title: `${t('header.contact')}`, url: "/contact" },
   ];
 
   const filteredLinksHeader = pathname === '/es' 
@@ -30,7 +32,6 @@ function AppHeader() {
     { name: "ENG", url: "/en" },
     { name: "DEU", url: "/de" }
   ];
-
 
   return (
     <>

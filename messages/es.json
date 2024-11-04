@@ -1,5 +1,23 @@
 {
   "HomePage": {
-    "title": "Hello world!"
+    "title": "Hello world!",
+    "more-services": "Más servicios"
+  },
+  "header": {
+    "home": "Inicio",
+    "brand": "Fonaments",
+    "projects": "Proyectos",
+    "study": "Estudio",
+    "contact": "Contacto",
+    "slogan": "Local Architecture Studio."
+  },
+  "footer": {
+    "our-offices": "Nuestras oficinas",
+    "see-location": "Ver localización",
+    "write-to-us": "¡Escríbenos!",  
+    "cookies-policy": "Política de cookies",
+    "privacy-policy": "Política de privacidad",
+    "legal-notice": "Aviso legal",
+    "accessibility-statement": "Declaración de accesibilidad"
   }
 }
