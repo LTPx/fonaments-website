@@ -25,7 +25,7 @@ function Home(props: Props) {
       <section className="lg:hidden block pb-[45px] lg:pb-[78px] pt-[66px] lg:pt-[82px]">
         <img src="/images/fonaments.svg" />
       </section>
-      <section className="z-30 lg:-mt-[100px]">
+      <section className="z-30 lg:-mt-[78px]">
         <HomeInformation title={home_information.title} description={home_information.description}/>
       </section>
       <section className="pt-[30px] lg:pt-[58px]">
