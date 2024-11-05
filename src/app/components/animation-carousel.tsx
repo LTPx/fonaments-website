@@ -1,13 +1,14 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Mousewheel, Keyboard } from "swiper/modules";
 import ProjectCard from "./project-card";
-import { useCallback, useEffect, useRef, useState } from "react";
 import "swiper/swiper-bundle.css";
 import type { Swiper as SwiperType } from "swiper";
 import { WordPressProject } from "../_interfaces/wordpress-project";
+import MotionLogo from "./motion-logo";
 
 interface AnimationCarouselProps {
   projects: WordPressProject[];
@@ -24,6 +25,16 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
   const [hasReachedEndOnce, setHasReachedEndOnce] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const swiperRef = useRef<SwiperType | null>(null);
+  const [showCarousel, setShowCarousel] = useState(false);
+
+  useEffect(() => {
+    const logoTimer = setTimeout(() => {
+      setShowCarousel(true);
+      setTimeout(() => setIsVisible(true), 1200);
+    }, 800);
+
+    return () => clearTimeout(logoTimer);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -39,14 +50,6 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
   }, []);
 
   useEffect(() => {
-    if (hasReachedEndOnce && isLargeScreen) {
-      document.body.style.overflow = "auto";
-    } else if (isLargeScreen) {
-      document.body.style.overflow = "hidden";
-    }
-  }, [hasReachedEndOnce, isLargeScreen]);
-
-  useEffect(() => {
     const handlePopState = () => {
       history.pushState(null, document.title, location.href);
     };
@@ -55,13 +58,6 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
-  }, []);
-
-  useEffect(() => {
-    setIsVisible(true);
-    setTimeout(() => {
-      setAreButtonsVisible(true);
-    }, 700);
   }, []);
 
   const handleSlideChange = useCallback((swiper: SwiperType) => {
@@ -95,7 +91,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
   }, [isLastSlide]);
 
   return (
-    <div className="relative z-40">
+    <div>
       <Swiper
         modules={[Navigation, Mousewheel, Keyboard]}
         spaceBetween={15}
@@ -123,64 +119,81 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
         loop={false}
         speed={800}
       >
-        {projects.map((item, index) => (
-          <SwiperSlide key={index}>
-            <Link href={`/projects/${item.slug}`}>
-              <div
-                className={`transition-opacity duration-700 ${
-                  isVisible ? "opacity-100" : "opacity-0"
+        <MotionLogo />
+        {showCarousel && (
+          <>
+            <div
+              className={`transition-opacity duration-700 ${
+                showCarousel ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {projects.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <Link href={`/projects/${item.slug}`}>
+                    <div
+                      className={`transition-opacity duration-700 ${
+                        isVisible ? "opacity-100" : "opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay: `${index * 400}ms`,
+                      }}
+                    >
+                      <ProjectCard
+                        className="h-[456px] lg:h-[50vh] xl:h-[52vh]"
+                        title={item.title.rendered}
+                        image={item.acf.cover_image_project.sizes.large}
+                        imageHover={
+                          item.acf.hover_image
+                            ? item.acf.hover_image.sizes.large
+                            : ""
+                        }
+                      />
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </div>
+          </>
+        )}
+        {showCarousel && (
+          <div className="flex justify-between">
+            <button className="arrow-left arrow">
+              <img
+                src="/images/icons/arrow-left.svg"
+                className={`${
+                  isFirstSlide ? "opacity-25 cursor-not-allowed" : ""
                 }`}
                 style={{
-                  transitionDelay: `${index * 400}ms`,
+                  position: "relative",
+                  width: "45px",
+                  zIndex: 500,
+                }}
+              />
+            </button>
+            <div className="carousel-right">
+              <button
+                className={`arrow-right arrow`}
+                disabled={isLastSlide}
+                onClick={(e) => {
+                  if (isLastSlide) e.preventDefault();
                 }}
               >
-                <ProjectCard
-                  className="h-[456px] lg:h-[50vh] xl:h-[52vh]"
-                  title={item.title.rendered}
-                  image={item.acf.cover_image_project.sizes.large}
-                  imageHover={
-                    item.acf.hover_image ? item.acf.hover_image.sizes.large : ""
-                  }
+                <img
+                  src="/images/icons/arrow-right.svg"
+                  className={`${
+                    isLastSlide ? "opacity-25 cursor-not-allowed" : ""
+                  }`}
+                  style={{
+                    right: "10px",
+                    position: "relative",
+                    width: "45px",
+                    zIndex: 500,
+                  }}
                 />
-              </div>
-            </Link>
-          </SwiperSlide>
-        ))}
-      <div className="flex justify-between">
-        <button className="arrow-left arrow">
-          <img
-            src="/images/icons/arrow-left.svg"
-            className={`${isFirstSlide ? "opacity-25 cursor-not-allowed" : ""}`}
-            style={{
-              position: "relative",
-              width: "45px",
-              zIndex: 500,
-            }}
-          />
-        </button>
-        <div className="carousel-right">
-          <button
-            className={`arrow-right arrow`}
-            disabled={isLastSlide}
-            onClick={(e) => {
-              if (isLastSlide) e.preventDefault();
-            }}
-          >
-            <img
-              src="/images/icons/arrow-right.svg"
-              className={`${
-                isLastSlide ? "opacity-25 cursor-not-allowed" : ""
-              }`}
-              style={{
-                right: "10px",
-                position: "relative",
-                width: "45px",
-                zIndex: 500,
-              }}
-            />
-          </button>
-        </div>
-      </div>
+              </button>
+            </div>
+          </div>
+        )}
       </Swiper>
     </div>
   );

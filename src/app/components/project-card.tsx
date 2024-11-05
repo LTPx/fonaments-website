@@ -14,10 +14,6 @@ function ProjectCard(props: ProjectCardProps) {
 
   return (
     <div className="flex flex-col group"
-    style={{
-      position: 'relative',
-      zIndex: 500,
-    }}
     >
       <div className={`relative ${className}`}>
         <img
