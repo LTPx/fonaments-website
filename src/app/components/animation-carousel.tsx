@@ -99,8 +99,6 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
       <Swiper
         modules={[Navigation, Mousewheel, Keyboard]}
         spaceBetween={15}
-        slidesPerView={3}
-        slidesPerGroup={3}
         navigation={{ nextEl: ".arrow-right", prevEl: ".arrow-left" }}
         keyboard={{ enabled: true }}
         mousewheel={{
@@ -111,16 +109,19 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
         breakpoints={{
           640: {
             slidesPerView: 1,
+            slidesPerGroup: 1,
           },
           768: {
             slidesPerView: 2,
+            slidesPerGroup: 2,
           },
           1024: {
             slidesPerView: 3,
+            slidesPerGroup: 3,
           },
         }}
         loop={false}
-        speed={1000}
+        speed={800}
       >
         {projects.map((item, index) => (
           <SwiperSlide key={index}>
