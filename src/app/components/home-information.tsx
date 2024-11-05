@@ -46,7 +46,7 @@ export function HomeInformation(props: HomeInformationProps) {
       className="lg:mr-[7.5px] flex flex-col lg:grid lg:grid-cols-3"
       initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1.5 }}
     >
       <div className="hidden lg:block col-span-1"></div>
       <div className="col-span-2 flex flex-col gap-[23px]">
