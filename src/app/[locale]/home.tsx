@@ -22,10 +22,13 @@ function Home(props: Props) {
   return (
     <div className="container relative mx-auto flex flex-col pt-[7px] lg:pt-[30px] pb-[100px] lg:pb-[80px]">
       <HeaderCarousel projects={projects} title={home_information.title} description={home_information.description} />
-      {/* <section className="z-30">
+      <section className="lg:hidden block pb-[45px] lg:pb-[78px] pt-[66px] lg:pt-[82px]">
+        <img src="/images/fonaments.svg" />
+      </section>
+      <section className="z-30">
         <HomeInformation title={home_information.title} description={home_information.description}/>
-      </section> */}
-      <section className="pt-[0px] lg:pt-[58px]">
+      </section>
+      <section className="pt-[30px] lg:pt-[58px]">
         <img
           src={home_information.image.url}
           className="h-[450px] lg:h-[800px] w-full object-cover"

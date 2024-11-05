@@ -21,7 +21,7 @@ export function HomeInformation(props: HomeInformationProps) {
           if (entry.isIntersecting) {
             setTimeout(() => {
               setIsVisible(true);
-            }, 1000);
+            }, 900);
             observer.disconnect();
           }
         });
