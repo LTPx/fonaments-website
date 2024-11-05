@@ -49,9 +49,14 @@ export function Accordion(props: AccordionProps) {
   );
 
   return (
-    <div className="relative border border-t-[#000000] last:border-b-[#000000] z-2">
+    <div className="relative border border-t-[#000000] last:border-b-[#000000]">
       <button
       className={`w-full flex items-center relative ${className}`}
+      style={{
+        position: "relative",
+        zIndex: 10,
+        transitionProperty: "opacity, transform"
+      }}
         // className="w-full flex items-center relative z-40"
         onClick={(e) => {
           e.preventDefault();
@@ -68,10 +73,14 @@ export function Accordion(props: AccordionProps) {
 
       {!isOpen && image && !isMobile && isXL && (
         <div
-          className={`absolute top-0 left-0 w-full h-auto z-20 transition-opacity duration-500 ease-in-out transform ${
+          className={`absolute top-0 left-0 w-full h-auto transition-opacity duration-500 ease-in-out transform ${
             isHovered ? "opacity-100" : "opacity-0"
           }`}
-          style={{ transitionProperty: "opacity, transform" }}
+          style={{
+            position: "absolute",
+            zIndex: 4,
+            transitionProperty: "opacity, transform"
+          }}
         >
           <img
             src={image}

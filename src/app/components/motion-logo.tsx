@@ -33,23 +33,20 @@ export default function MotionLogo() {
   }, []);
 
   return (
-<div className="lg:block hidden relative">
-  <div
-    className="lottie-container bottom-0 left-0 right-0 w-full transition-all duration-300 ease-in-out"
-    style={{ bottom: `${bottomOffset}px`, position: "fixed", zIndex: -1 }}
-  >
-    <Lottie
-      animationData={logoAnimation}
-      style={{
-        position: "relative",
-        zIndex: -1,
-      }}
-      loop={false}
-      autoplay={true}
-      className="w-full h-auto"
-    />
-  </div>
-</div>
-
+    <div
+      className="lg:block hidden relative"
+    >
+      <div
+        className="lottie-container bottom-0 left-0 right-0 w-full transition-all duration-300 ease-in-out"
+        style={{ bottom: `${bottomOffset}px`, position: "fixed", zIndex: 5 }}
+      >
+        <Lottie
+          animationData={logoAnimation}
+          loop={false}
+          autoplay={true}
+          className="w-full h-auto"
+        />
+      </div>
+    </div>
   );
 }

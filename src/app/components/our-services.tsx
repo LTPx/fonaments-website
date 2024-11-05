@@ -22,7 +22,7 @@ export function OurServices(props: OurServicesProps) {
       </div>
       <div className="pt-[30px] lg:pt-[80px]">
         {accordionItems.map((item, index) => (
-          <Accordion className="z-40" key={index} title={item.title} image={item.image?.url}>
+          <Accordion key={index} title={item.title} image={item.image?.url}>
             <div>
               <div
                 className="relative xl:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"

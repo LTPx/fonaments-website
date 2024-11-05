@@ -97,6 +97,10 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
         spaceBetween={15}
         navigation={{ nextEl: ".arrow-right", prevEl: ".arrow-left" }}
         keyboard={{ enabled: true }}
+        style={{
+          position: "relative",
+          zIndex: 10,
+        }}
         mousewheel={{
           forceToAxis: isLastSlide,
         }}
@@ -126,15 +130,24 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
               className={`transition-opacity duration-700 ${
                 showCarousel ? "opacity-100" : "opacity-0"
               }`}
+              style={{
+                position: "relative",
+                zIndex: 20,
+              }}
             >
               {projects.map((item, index) => (
-                <SwiperSlide key={index}>
+                <SwiperSlide key={index}   style={{
+                  position: "relative",
+                  zIndex: 20,
+                }}>
                   <Link href={`/projects/${item.slug}`}>
                     <div
                       className={`transition-opacity duration-700 ${
                         isVisible ? "opacity-100" : "opacity-0"
                       }`}
                       style={{
+                        position: "relative",
+                        zIndex: 20,
                         transitionDelay: `${index * 400}ms`,
                       }}
                     >
