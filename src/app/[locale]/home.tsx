@@ -7,6 +7,7 @@ import {
   ServiceSectionHomeWp,
 } from "../_interfaces/wordpress-components";
 import { WordPressProject } from "../_interfaces/wordpress-project";
+import HomeInformation from "../components/home-information";
 
 interface Props {
   home_information: HomeWp;
@@ -20,23 +21,11 @@ function Home(props: Props) {
 
   return (
     <div className="container relative mx-auto flex flex-col pt-[7px] lg:pt-[30px] pb-[100px] lg:pb-[80px]">
-      <HeaderCarousel projects={projects} />
-      <section className="lg:hidden block pb-[45px] lg:pb-[78px] pt-[66px] lg:pt-[82px]">
-        <img src="/images/fonaments.svg" />
-      </section>
-      <section className="z-30">
-        <div className="flex flex-col lg:grid lg:grid-cols-3">
-          <div className="hidden lg:block col-span-1"></div>
-          <div className="col-span-2 flex flex-col gap-[23px]">
-            <h2 className="leading-[44px] xl:w-[719px]">{home_information.title}</h2>
-            <div
-              className="xl:w-[692px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]"
-              dangerouslySetInnerHTML={{ __html: home_information.description }}
-            />
-          </div>
-        </div>
-      </section>
-      <section className="pt-[30px] lg:pt-[58px]">
+      <HeaderCarousel projects={projects} title={home_information.title} description={home_information.description} />
+      {/* <section className="z-30">
+        <HomeInformation title={home_information.title} description={home_information.description}/>
+      </section> */}
+      <section className="pt-[0px] lg:pt-[58px]">
         <img
           src={home_information.image.url}
           className="h-[450px] lg:h-[800px] w-full object-cover"

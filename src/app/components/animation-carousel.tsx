@@ -146,7 +146,6 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
             </Link>
           </SwiperSlide>
         ))}
-      </Swiper>
       <div className="flex justify-between">
         <button className="arrow-left arrow">
           <img
@@ -182,6 +181,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
           </button>
         </div>
       </div>
+      </Swiper>
     </div>
   );
 }
