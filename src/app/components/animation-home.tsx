@@ -3,7 +3,6 @@
 import MotionLogo from "./motion-logo";
 import AnimationCarousel from "./animation-carousel";
 import { useEffect, useState } from "react";
-import { WordPressPost } from "../_interfaces/wordpress";
 import { WordPressProject } from "../_interfaces/wordpress-project";
 
 interface AnimationHomeProps {
@@ -24,7 +23,7 @@ export function AnimationHome(props: AnimationHomeProps) {
 
   return (
     <div className="relative flex flex-col lg:h-[100vh]">
-      <MotionLogo />
+      {/* <MotionLogo /> */}
       {showCarousel && (
         <div
           className={`transition-opacity duration-700 ${

@@ -1,15 +1,24 @@
+import { relative } from "path";
+
 interface ProjectCardProps {
   imageHover?: string;
   image?: string;
   title?: string;
   className?: string;
+  index?: number;
+  totalProjects?: number;
 }
 
 function ProjectCard(props: ProjectCardProps) {
   const { imageHover, image, title, className } = props;
 
   return (
-    <div className="flex flex-col group">
+    <div className="flex flex-col group"
+    style={{
+      position: 'relative',
+      zIndex: 500,
+    }}
+    >
       <div className={`relative ${className}`}>
         <img
           src={image}
@@ -26,6 +35,9 @@ function ProjectCard(props: ProjectCardProps) {
         )}
       </div>
       <p className="font-medium text-[14px] leading-[26px] mt-2">{title}</p>
+      {/* <p className="font-medium text-[14px] leading-[26px] mt-2">
+        {`(${index}/${totalProjects}) ${title}`}
+      </p>  */}
     </div>
   );
 }

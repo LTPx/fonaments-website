@@ -5,6 +5,7 @@ import { Link } from "@/navigation";
 import ProjectCard from "./project-card";
 import { WordPressProject } from "../_interfaces/wordpress-project";
 import { getUniqueCategories } from "../utils";
+import { useTranslations } from "next-intl";
 
 interface ProjectSectionProps {
   projects: WordPressProject[];
@@ -15,6 +16,7 @@ export function ProjectSection(props: ProjectSectionProps) {
   const [selectedOption, setSelectedOption] = useState(-1);
   const [filteredProjects, setFilteredProjects] = useState<WordPressProject[]>(projects);
   const categories = getUniqueCategories(projects);
+  const t = useTranslations();
 
   const handleClick = (id: number) => {
     setSelectedOption(id);
@@ -38,7 +40,7 @@ export function ProjectSection(props: ProjectSectionProps) {
                 : "text-black rounded-full"
             } whitespace-nowrap min-w-[120px]`}
           >
-            Todos
+            {`${t('projectPage.all')}`}
           </button>
           {categories.map((option, index) => (
             <button
