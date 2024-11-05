@@ -39,6 +39,14 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
   }, []);
 
   useEffect(() => {
+    if (hasReachedEndOnce && isLargeScreen) {
+      document.body.style.overflow = "auto";
+    } else if (isLargeScreen) {
+      document.body.style.overflow = "hidden";
+    }
+  }, [hasReachedEndOnce, isLargeScreen]);
+
+  useEffect(() => {
     const handlePopState = () => {
       history.pushState(null, document.title, location.href);
     };
@@ -91,6 +99,8 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
       <Swiper
         modules={[Navigation, Mousewheel, Keyboard]}
         spaceBetween={15}
+        slidesPerView={3}
+        slidesPerGroup={3}
         navigation={{ nextEl: ".arrow-right", prevEl: ".arrow-left" }}
         keyboard={{ enabled: true }}
         mousewheel={{
@@ -110,7 +120,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
           },
         }}
         loop={false}
-        speed={800}
+        speed={1000}
       >
         {projects.map((item, index) => (
           <SwiperSlide key={index}>

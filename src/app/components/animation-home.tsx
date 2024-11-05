@@ -23,7 +23,7 @@ export function AnimationHome(props: AnimationHomeProps) {
 
   return (
     <div className="relative flex flex-col lg:h-[100vh]">
-      {/* <MotionLogo /> */}
+      <MotionLogo />
       {showCarousel && (
         <div
           className={`transition-opacity duration-700 ${
