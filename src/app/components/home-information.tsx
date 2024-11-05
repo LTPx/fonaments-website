@@ -8,6 +8,7 @@ interface HomeInformationProps {
   description: string;
 }
 
+
 export function HomeInformation(props: HomeInformationProps) {
   const { title, description } = props;
   const [isVisible, setIsVisible] = useState(false);

@@ -131,7 +131,7 @@ export function Footer(props: FooterProps) {
                     target="_blank"
                     href={footer?.second_office.link_location || "/"}
                   >
-                    {`${t('footer.write-to-us')}`}
+                    {`${t('footer.see-location')}`}
                   </Link>
                 </div>
               </div>
