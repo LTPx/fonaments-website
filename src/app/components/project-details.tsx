@@ -7,6 +7,7 @@ import {
   GalleryProjectWp,
   InformationProjectWp,
 } from "../_interfaces/wordpress-components";
+import { useTranslations } from "next-intl";
 
 interface ProjectDetailsProps {
   description_project: string;
@@ -18,6 +19,7 @@ export function ProjectDetails(props: ProjectDetailsProps) {
   const { description_project, information_project, gallery_project } = props;
   const btns = ["Reforma", "Obra Nueva", "Rustico"];
   const [selectedOption, setSelectedOption] = useState<string>(btns[0]);
+  const t = useTranslations();
 
   const handleClick = (option: string) => {
     setSelectedOption(option);
@@ -112,7 +114,7 @@ export function ProjectDetails(props: ProjectDetailsProps) {
           </div>
           <Link href={"/projects"}>
             <p className="flex items-start underline text-[20px] leading-[0px] cursor-pointer">
-              Todos los proyectos
+              {`${t("projectPage.all-projects")}`}
             </p>
           </Link>
           <div className="flex items-start">

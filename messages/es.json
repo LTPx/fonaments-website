@@ -12,7 +12,8 @@
     "slogan": "Local Architecture Studio."
   },
   "projectPage": {
-    "all": "Todos"
+    "all": "Todos",
+    "all-projects": "Todos los proyectos"
   },
   "footer": {
     "our-offices": "Nuestras oficinas",

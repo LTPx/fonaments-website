@@ -19,7 +19,6 @@ export function Gallery({ gallery }: GalleryProps) {
 
   const renderGroup = (startIndex: number) => (
     <>
-      {/* Imagen principal que ocupa toda la fila */}
       <div className="grid grid-cols-1 gap-3">
         <button
           type="button"
@@ -35,7 +34,6 @@ export function Gallery({ gallery }: GalleryProps) {
         </button>
       </div>
 
-      {/* Dos imágenes en la siguiente fila */}
       <div className="grid grid-cols-2 gap-3">
         {gallery.slice(startIndex + 1, startIndex + 3).map((image, index) => (
           <button
@@ -62,7 +60,6 @@ export function Gallery({ gallery }: GalleryProps) {
       {gallery.length > 3 && renderGroup(3)}
       {gallery.length > 6 && renderGroup(6)}
 
-      {/* Si hay más imágenes después de la novena */}
       {gallery.length > 9 && (
         <>
           {gallery.slice(9).map((image, index) => (
