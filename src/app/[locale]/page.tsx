@@ -9,14 +9,22 @@ export default async function Page(nextParams: {
   const {
     params: { locale },
   } = nextParams;
+
   const data = await getWordPressCustomPage(locale, "home");
   const allProjects = await getAllProjects(locale);
+
   const { acf } = data;
   const { home_information, services, service_section, feature_projects } = acf;
+
   const projectsIdsSelected = feature_projects.map((item) => item.project.ID);
-  const projects = allProjects.filter((project) => {
-    return projectsIdsSelected.includes(project.id);
-  });
+
+  function isDefined<T>(value: T | undefined): value is T {
+    return value !== undefined;
+  }
+
+  const projects = projectsIdsSelected
+    .map((id) => allProjects.find((project) => project.id === id))
+    .filter(isDefined);
 
   return (
     <Suspense fallback={<Skeleton />}>

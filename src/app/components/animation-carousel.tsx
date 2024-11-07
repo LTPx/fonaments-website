@@ -136,10 +136,13 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
               }}
             >
               {projects.map((item, index) => (
-                <SwiperSlide key={index}   style={{
-                  position: "relative",
-                  zIndex: 20,
-                }}>
+                <SwiperSlide
+                  key={index}
+                  style={{
+                    position: "relative",
+                    zIndex: 20,
+                  }}
+                >
                   <Link href={`/projects/${item.slug}`}>
                     <div
                       className={`transition-opacity duration-700 ${
@@ -168,45 +171,45 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
             </div>
           </>
         )}
-        {showCarousel && (
-          <div className="flex justify-between">
-            <button className="arrow-left arrow">
+        <div
+          className={`flex justify-between ${showCarousel ? "" : "invisible"}`}
+        >
+          <button className="arrow-left arrow">
+            <img
+              src="/images/icons/arrow-left.svg"
+              className={`${
+                isFirstSlide ? "opacity-25 cursor-not-allowed" : ""
+              }`}
+              style={{
+                position: "relative",
+                width: "45px",
+                zIndex: 500,
+              }}
+            />
+          </button>
+          <div className="carousel-right">
+            <button
+              className={`arrow-right arrow`}
+              disabled={isLastSlide}
+              onClick={(e) => {
+                if (isLastSlide) e.preventDefault();
+              }}
+            >
               <img
-                src="/images/icons/arrow-left.svg"
+                src="/images/icons/arrow-right.svg"
                 className={`${
-                  isFirstSlide ? "opacity-25 cursor-not-allowed" : ""
+                  isLastSlide ? "opacity-25 cursor-not-allowed" : ""
                 }`}
                 style={{
+                  right: "10px",
                   position: "relative",
                   width: "45px",
                   zIndex: 500,
                 }}
               />
             </button>
-            <div className="carousel-right">
-              <button
-                className={`arrow-right arrow`}
-                disabled={isLastSlide}
-                onClick={(e) => {
-                  if (isLastSlide) e.preventDefault();
-                }}
-              >
-                <img
-                  src="/images/icons/arrow-right.svg"
-                  className={`${
-                    isLastSlide ? "opacity-25 cursor-not-allowed" : ""
-                  }`}
-                  style={{
-                    right: "10px",
-                    position: "relative",
-                    width: "45px",
-                    zIndex: 500,
-                  }}
-                />
-              </button>
-            </div>
           </div>
-        )}
+        </div>
       </Swiper>
     </div>
   );
