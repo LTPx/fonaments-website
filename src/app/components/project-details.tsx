@@ -35,10 +35,6 @@ export function ProjectDetails(props: ProjectDetailsProps) {
   );
   const t = useTranslations();
 
-  const handleClick = (categoryName: string) => {
-    setSelectedOption(categoryName);
-  };
-
   return (
     <div className="flex flex-col">
       <div className="flex flex-col lg:grid lg:grid-cols-2 gap-[28px]">
@@ -94,15 +90,17 @@ export function ProjectDetails(props: ProjectDetailsProps) {
             </div>
           </div>
           <div className="pt-[30px] lg:pt-[0px] flex gap-[14px]">
-          {allCategories.map((category, index) => (
+            {allCategories.map((category, index) => (
               <button
                 key={index}
-                onClick={() => handleClick(category)}
-                className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
+                className={`font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
                   selectedOption === category
                     ? "bg-black text-white rounded-none"
-                    : "text-black rounded-full"
+                    : "text-black rounded-full opacity-20"
                 }`}
+                style={{
+                  cursor: 'default'
+                }}
               >
                 {category}
               </button>
