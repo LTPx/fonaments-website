@@ -60,7 +60,6 @@ export interface AcfComponents {
   services_section: ServicesSectionWp;
   contact: ContactWp;
   gallery_project: GalleryProjectWp[];
-  gallery: GalleryProjectWp[];
   description_project: string;
   cover_image_project: ImageAcf;
   information_project: InformationProjectWp;

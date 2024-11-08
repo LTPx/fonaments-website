@@ -17,98 +17,76 @@ export function Gallery({ gallery }: GalleryProps) {
     setIsOpen(true);
   };
 
-  let i = 0;
+  const renderGroup = (startIndex: number) => (
+    <>
+      <div className="grid grid-cols-1 gap-3">
+        <button
+          type="button"
+          className="col-span-1"
+          onClick={() => openLightbox(startIndex)}
+        >
+          <img
+            src={gallery[startIndex].image.url}
+            className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] md:h-[500px] lg:h-[800px] w-full"
+            alt={`Gallery image ${startIndex + 1}`}
+            data-fancybox="gallery"
+          />
+        </button>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        {gallery.slice(startIndex + 1, startIndex + 3).map((image, index) => (
+          <button
+            key={startIndex + index + 1}
+            type="button"
+            className="col-span-1"
+            onClick={() => openLightbox(startIndex + index + 1)}
+          >
+            <img
+              src={image.image.url}
+              className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
+              alt={`Gallery image ${startIndex + index + 2}`}
+              data-fancybox="gallery"
+            />
+          </button>
+        ))}
+      </div>
+    </>
+  );
+
   return (
     <section className="flex flex-col gap-3">
-      {(() => {
-        const elements = [];
+      {renderGroup(0)}
+      {gallery.length > 3 && renderGroup(3)}
+      {gallery.length > 6 && renderGroup(6)}
 
-        while (i < gallery.length) {
-          const { layout, image } = gallery[i];
+      {gallery.length > 9 && (
+        <>
+          {gallery.slice(9).map((image, index) => (
+            <div key={index + 9} className="grid grid-cols-1 gap-3">
+              <button
+                type="button"
+                className="col-span-1"
+                onClick={() => openLightbox(index + 9)}
+              >
+                <img
+                  src={image.image.url}
+                  className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] md:h-[500px] lg:h-[800px] w-full"
+                  alt={`Gallery image ${index + 10}`}
+                  data-fancybox="gallery"
+                />
+              </button>
+            </div>
+          ))}
+        </>
+      )}
 
-          if (layout === "full-width") {
-            elements.push(
-              <div key={i} className="grid grid-cols-1 gap-3">
-                <button
-                  type="button"
-                  className="col-span-1"
-                  onClick={() => openLightbox(i)}
-                >
-                  <img
-                    src={image.url}
-                    className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] md:h-[500px] lg:h-[800px] w-full"
-                    alt={`Gallery image ${i + 1}`}
-                    data-fancybox="gallery"
-                  />
-                </button>
-              </div>
-            );
-            i++;
-          } else if (layout === "half-width") {
-            if (gallery[i + 1]?.layout === "half-width") {
-              elements.push(
-                <div key={i} className="grid grid-cols-2 gap-3">
-                  <button
-                    type="button"
-                    className="col-span-1"
-                    onClick={() => openLightbox(i)}
-                  >
-                    <img
-                      src={image.url}
-                      className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
-                      alt={`Gallery image ${i + 1}`}
-                      data-fancybox="gallery"
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    className="col-span-1"
-                    onClick={() => openLightbox(i + 1)}
-                  >
-                    <img
-                      src={gallery[i + 1].image.url}
-                      className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
-                      alt={`Gallery image ${i + 2}`}
-                      data-fancybox="gallery"
-                    />
-                  </button>
-                </div>
-              );
-              i += 2;
-            } else {
-              elements.push(
-                <div key={i} className="grid grid-cols-2 gap-3">
-                  <button
-                    type="button"
-                    className="col-span-1"
-                    onClick={() => openLightbox(i)}
-                  >
-                    <img
-                      src={image.url}
-                      className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
-                      alt={`Gallery image ${i + 1}`}
-                      data-fancybox="gallery"
-                    />
-                  </button>
-                  <div className="col-span-1"></div>
-                </div>
-              );
-              i++;
-            }
-          }
-        }
-
-        return elements;
-      })()}
-
+      {/* Lightbox para visualizar las imágenes */}
       {isOpen && (
         <Lightbox
-          mainSrc={gallery[photoIndex].image.url}
+          mainSrc={gallery[photoIndex].image.url} 
           nextSrc={gallery[(photoIndex + 1) % gallery.length].image.url}
-          prevSrc={
-            gallery[(photoIndex + gallery.length - 1) % gallery.length].image
-              .url
-          }
+          prevSrc={gallery[(photoIndex + gallery.length - 1) % gallery.length].image.url}
           onCloseRequest={() => setIsOpen(false)}
           onMoveNextRequest={() =>
             setPhotoIndex((photoIndex + 1) % gallery.length)

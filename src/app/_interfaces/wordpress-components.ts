@@ -81,7 +81,6 @@ export interface ContactWp {
 
 export interface GalleryProjectWp {
   image: ImageAcf;
-  layout: string;
 }
 
 export interface InformationPageWp {
