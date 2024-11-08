@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useState, useEffect } from "react";
 import LanguageSelector from "./selector-languages";
 import { Link } from "@/navigation";
@@ -21,9 +20,10 @@ export function Header(props: Props) {
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem("selectedLanguage");
-    if (savedLanguage) {
-      setSelectedLanguage(savedLanguage);
-    }
+    const savedLink = localStorage.getItem("selectedLink");
+
+    if (savedLanguage) setSelectedLanguage(savedLanguage);
+    if (savedLink) setSelectedLink(savedLink);
   }, []);
 
   const handleClick = (url: string) => {

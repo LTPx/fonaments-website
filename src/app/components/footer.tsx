@@ -46,10 +46,10 @@ export function Footer(props: FooterProps) {
       <div className="mx-auto container flex flex-col">
         {isMobile && (
           <div className="block lg:hidden pb-[30px]">
-            <p className="font-medium text-[20px] leading-[20px] pb-[31px]">
+            {/* <p className="font-medium text-[20px] leading-[20px] pb-[31px]">
               Nuestras oficinas
-            </p>
-            <div className="flex gap-[17px]">
+            </p> */}
+            <div className="flex pt-[40px] gap-[17px]">
               {btns.map((option, index) => (
                 <button
                   key={index}
@@ -67,15 +67,15 @@ export function Footer(props: FooterProps) {
           </div>
         )}
 
-        {!isMobile &&
+        {/* {!isMobile &&
           !["/es/contact", "/en/contact", "/de/contact"].includes(pathname) && (
             <label className="hidden lg:block lg:text-[20px] lg:leading-[20px] mb-[32px]">
               {`${t('footer.our-offices')}`}
             </label>
-          )}
+          )} */}
 
         <div
-          className={`grid ${
+          className={`grid lg:pt-[52px] ${
             isMobile ? "grid-cols-1" : "grid-cols-2"
           } gap-[20px] ${!isMobile && pathname !== "/es" ? "pb-[20px]" : ""}`}
         >

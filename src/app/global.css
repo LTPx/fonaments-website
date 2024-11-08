@@ -116,4 +116,17 @@ h2 {
     letter-spacing: -0.01em;
     font-family: "Montreal-Medium";
   }
+  div {
+    font-size: 42px;
+    line-height: 48px;
+    letter-spacing: -0.01em;
+    font-family: "Montreal-Medium";
+
+    p {
+      font-size: 42px;
+      line-height: 48px;
+      letter-spacing: -0.01em;
+      font-family: "Montreal-Medium";
+    }
+  }
 }
