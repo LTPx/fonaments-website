@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { getProjectBySlug, getAllProjects } from "@/app/_services/api";
 import ProjectDetails from "@/app/components/project-details";
+import { Link } from "@/navigation";
 
 async function ProjectSlugPage(nextParams: {
   params: { locale: "en" | "es" | "de"; slug: string };
@@ -27,21 +28,26 @@ async function ProjectSlugPage(nextParams: {
       ? allProjects[currentIndex + 1]
       : null;
 
-      const allCategories = Array.from(
-        new Set(
-          allProjects
-            .flatMap((project) => project._embedded?.["wp:term"]?.categories || [])
-            .map((category) => category.name)
-        )
-      );
-    
-      const currentCategories = allProjects
-        .find((project) => project.slug === slug)
-        ?._embedded?.["wp:term"]?.categories || [];
+  const allCategories = Array.from(
+    new Set(
+      allProjects
+        .flatMap((project) => project._embedded?.["wp:term"]?.categories || [])
+        .map((category) => category.name)
+    )
+  );
+
+  const currentCategories =
+    allProjects.find((project) => project.slug === slug)?._embedded?.["wp:term"]
+      ?.categories || [];
 
   return (
     <div className="container project-slug-page">
-      <h1 className="font-regular pt-[4px] lg:pt-[0px]">{title.rendered}</h1>
+      <div className="flex justify-between items-end">
+        <h1 className="font-regular pt-[4px] lg:pt-[0px]">{title.rendered}</h1>
+        <Link href={'/projects'}>
+          <p className="pb-[25px] underline text-[18px] leading-[28px]">volver</p>
+        </Link>
+      </div>
       <img
         src={cover_image_project.url}
         className="pt-[20px] lg:pt-[0px] h-[456px] lg:h-[800px] w-full object-cover"

@@ -13,7 +13,10 @@
   },
   "projectPage": {
     "all": "All",
-    "all-projects": "All projects"
+    "all-projects": "All projects",
+    "back": "back",
+    "read-more": "Read more",
+    "read-less": "Read less"
   },
   "footer": {
     "our-offices": "Our offices",

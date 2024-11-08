@@ -13,7 +13,6 @@ async function Projects(nextParams: {
   const { acf } = data;
   const { information, section } = acf;
   const allProjects = await getAllProjects(locale);
-  const btns = ["Todos", "Obra nueva", "Reforma", "Rústico"];
 
   return (
     <div className="container page-projects">

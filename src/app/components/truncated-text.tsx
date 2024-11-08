@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React, { useState, useEffect, useRef } from "react";
 
 interface TruncatedTextProps {
@@ -14,6 +15,7 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [isTruncated, setIsTruncated] = useState(false);
   const contentRef = useRef<HTMLParagraphElement>(null);
+  const t = useTranslations();
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
@@ -49,7 +51,7 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
             onClick={toggleExpand}
             className={`text-[16px] leading-[22px] lg:text-[14px] lg:leading-[14px] font-medium underline cursor-pointer`}
           >
-            {isExpanded ? "Leer menos" : "Leer más"}
+            {isExpanded ? `${t("projectPage.read-less")}` : `${t("projectPage.read-more")}`}
           </button>
         </div>
       )}
