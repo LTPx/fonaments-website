@@ -14,7 +14,10 @@ export function OurServices(props: OurServicesProps) {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col gap-[29px] lg:gap-[39px] z-30">
-        <h2 className="lg:w-[422px]">{title}</h2>
+        <div
+          className="info-projects"
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
         <div
           className="lg:w-[565px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]"
           dangerouslySetInnerHTML={{ __html: description }}

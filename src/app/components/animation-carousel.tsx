@@ -90,6 +90,9 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
     }
   }, [isLastSlide]);
 
+  const mousewheelConfig =
+    projects.length > 3 ? { forceToAxis: isLastSlide } : false;
+
   return (
     <div>
       <Swiper
@@ -101,9 +104,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
           position: "relative",
           zIndex: 10,
         }}
-        mousewheel={{
-          forceToAxis: isLastSlide,
-        }}
+        mousewheel={mousewheelConfig}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={handleSlideChange}
         breakpoints={{
