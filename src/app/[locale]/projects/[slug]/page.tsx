@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getProjectBySlug, getWordPressPage } from "@/app/_services/api";
+import { getProjectBySlug, getAllProjects } from "@/app/_services/api";
 import ProjectDetails from "@/app/components/project-details";
 
 async function ProjectSlugPage(nextParams: {
@@ -11,13 +11,33 @@ async function ProjectSlugPage(nextParams: {
 
   const data = await getProjectBySlug(locale, slug);
   const { acf, yoast_head_json, title } = data;
-
   const {
     cover_image_project,
     description_project,
     information_project,
     gallery_project,
   } = acf;
+  const allProjects = await getAllProjects(locale);
+  const currentIndex = allProjects.findIndex(
+    (project) => project.slug === slug
+  );
+  const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
+  const nextProject =
+    currentIndex < allProjects.length - 1
+      ? allProjects[currentIndex + 1]
+      : null;
+
+      const allCategories = Array.from(
+        new Set(
+          allProjects
+            .flatMap((project) => project._embedded?.["wp:term"]?.categories || [])
+            .map((category) => category.name)
+        )
+      );
+    
+      const currentCategories = allProjects
+        .find((project) => project.slug === slug)
+        ?._embedded?.["wp:term"]?.categories || [];
 
   return (
     <div className="container project-slug-page">
@@ -31,6 +51,10 @@ async function ProjectSlugPage(nextParams: {
           gallery_project={gallery_project}
           information_project={information_project}
           description_project={description_project}
+          prevProject={prevProject}
+          nextProject={nextProject}
+          allCategories={allCategories}
+          currentCategories={currentCategories}
         />
       </section>
     </div>

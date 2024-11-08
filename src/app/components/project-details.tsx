@@ -13,16 +13,30 @@ interface ProjectDetailsProps {
   description_project: string;
   information_project: InformationProjectWp;
   gallery_project: GalleryProjectWp[];
+  prevProject: { slug: string } | null;
+  nextProject: { slug: string } | null;
+  allCategories: string[];
+  currentCategories: { id: number; name: string; slug: string }[];
 }
 
 export function ProjectDetails(props: ProjectDetailsProps) {
-  const { description_project, information_project, gallery_project } = props;
-  const btns = ["Reforma", "Obra Nueva", "Rustico"];
-  const [selectedOption, setSelectedOption] = useState<string>(btns[0]);
+  const {
+    description_project,
+    information_project,
+    gallery_project,
+    prevProject,
+    nextProject,
+    allCategories,
+    currentCategories,
+  } = props;
+
+  const [selectedOption, setSelectedOption] = useState<string>(
+    currentCategories[0]?.name || ""
+  );
   const t = useTranslations();
 
-  const handleClick = (option: string) => {
-    setSelectedOption(option);
+  const handleClick = (categoryName: string) => {
+    setSelectedOption(categoryName);
   };
 
   return (
@@ -80,17 +94,17 @@ export function ProjectDetails(props: ProjectDetailsProps) {
             </div>
           </div>
           <div className="pt-[30px] lg:pt-[0px] flex gap-[14px]">
-            {btns.map((option, index) => (
+          {allCategories.map((category, index) => (
               <button
                 key={index}
-                onClick={() => handleClick(option)}
+                onClick={() => handleClick(category)}
                 className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
-                  selectedOption === option
+                  selectedOption === category
                     ? "bg-black text-white rounded-none"
                     : "text-black rounded-full"
                 }`}
               >
-                {option}
+                {category}
               </button>
             ))}
           </div>
@@ -110,7 +124,15 @@ export function ProjectDetails(props: ProjectDetailsProps) {
       <section className="pt-[20px] pb-[53px]">
         <div className="flex justify-between items-center">
           <div className="flex items-start">
-            <img className="cursor-pointer" src="/images/icons/left.svg" />
+            {prevProject && (
+              <Link href={`/projects/${prevProject.slug}`}>
+                <img
+                  className="cursor-pointer"
+                  src="/images/icons/left.svg"
+                  alt="Anterior proyecto"
+                />
+              </Link>
+            )}
           </div>
           <Link href={"/projects"}>
             <p className="flex items-start underline text-[20px] leading-[0px] cursor-pointer">
@@ -118,7 +140,15 @@ export function ProjectDetails(props: ProjectDetailsProps) {
             </p>
           </Link>
           <div className="flex items-start">
-            <img className="cursor-pointer" src="/images/icons/right.svg" />
+            {nextProject && (
+              <Link href={`/projects/${nextProject.slug}`}>
+                <img
+                  className="cursor-pointer"
+                  src="/images/icons/right.svg"
+                  alt="Siguiente proyecto"
+                />
+              </Link>
+            )}
           </div>
         </div>
       </section>
