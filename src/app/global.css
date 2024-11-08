@@ -108,3 +108,12 @@ h2 {
 .swiper-wrapper {
   z-index: 9 !important;
 }
+
+.info-projects {
+  p {
+    font-size: 42px;
+    line-height: 48px;
+    letter-spacing: -0.01em;
+    font-family: "Montreal-Medium";
+  }
+}
