@@ -17,76 +17,109 @@ export function Gallery({ gallery }: GalleryProps) {
     setIsOpen(true);
   };
 
-  const renderGroup = (startIndex: number) => (
-    <>
-      <div className="grid grid-cols-1 gap-3">
-        <button
-          type="button"
-          className="col-span-1"
-          onClick={() => openLightbox(startIndex)}
-        >
-          <img
-            src={gallery[startIndex].image.url}
-            className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] md:h-[500px] lg:h-[800px] w-full"
-            alt={`Gallery image ${startIndex + 1}`}
-            data-fancybox="gallery"
-          />
-        </button>
-      </div>
-
-      <div className="grid grid-cols-2 gap-3">
-        {gallery.slice(startIndex + 1, startIndex + 3).map((image, index) => (
-          <button
-            key={startIndex + index + 1}
-            type="button"
-            className="col-span-1"
-            onClick={() => openLightbox(startIndex + index + 1)}
-          >
-            <img
-              src={image.image.url}
-              className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
-              alt={`Gallery image ${startIndex + index + 2}`}
-              data-fancybox="gallery"
-            />
-          </button>
-        ))}
-      </div>
-    </>
-  );
+  const processedIds = new Set<number>();
 
   return (
     <section className="flex flex-col gap-3">
-      {renderGroup(0)}
-      {gallery.length > 3 && renderGroup(3)}
-      {gallery.length > 6 && renderGroup(6)}
+      {gallery.map((item, index) => {
+        const { layout, image } = item;
 
-      {gallery.length > 9 && (
-        <>
-          {gallery.slice(9).map((image, index) => (
-            <div key={index + 9} className="grid grid-cols-1 gap-3">
+        if (processedIds.has(image.ID)) {
+          return null;
+        }
+
+        if (layout === "full-width") {
+          processedIds.add(image.ID);
+          return (
+            <div key={image.ID} className="grid grid-cols-1 gap-3">
               <button
                 type="button"
                 className="col-span-1"
-                onClick={() => openLightbox(index + 9)}
+                onClick={() => openLightbox(index)}
               >
                 <img
-                  src={image.image.url}
+                  src={image.url}
                   className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[251px] md:h-[500px] lg:h-[800px] w-full"
-                  alt={`Gallery image ${index + 10}`}
+                  alt={`Gallery image ${index + 1}`}
                   data-fancybox="gallery"
                 />
               </button>
             </div>
-          ))}
-        </>
-      )}
+          );
+        }
 
-      {/* Lightbox para visualizar las imágenes */}
+        if (
+          layout === "half-width" &&
+          gallery[index + 1]?.layout === "half-width"
+        ) {
+          processedIds.add(image.ID);
+          processedIds.add(gallery[index + 1].image.ID);
+
+          return (
+            <div key={image.ID} className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                className="col-span-1"
+                onClick={() => openLightbox(index)}
+              >
+                <img
+                  src={image.url}
+                  className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
+                  alt={`Gallery image ${index + 1}`}
+                  data-fancybox="gallery"
+                />
+              </button>
+              <button
+                type="button"
+                className="col-span-1"
+                onClick={() => openLightbox(index + 1)}
+              >
+                <img
+                  src={gallery[index + 1].image.url}
+                  className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
+                  alt={`Gallery image ${index + 2}`}
+                  data-fancybox="gallery"
+                />
+              </button>
+            </div>
+          );
+        }
+
+        if (
+          layout === "half-width" &&
+          gallery[index + 1]?.layout !== "half-width"
+        ) {
+          processedIds.add(image.ID);
+          return (
+            <div key={image.ID} className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                className="col-span-1"
+                onClick={() => openLightbox(index)}
+              >
+                <img
+                  src={image.url}
+                  className="object-cover object-center rounded-[10px] lg:rounded-[0px] h-[250px] md:h-[500px] lg:h-[1001px] w-full"
+                  alt={`Gallery image ${index + 1}`}
+                  data-fancybox="gallery"
+                />
+              </button>
+              <div className="col-span-1"></div>
+            </div>
+          );
+        }
+
+        return null;
+      })}
+
       {isOpen && (
         <Lightbox
-          mainSrc={gallery[photoIndex].image.url} 
+          mainSrc={gallery[photoIndex].image.url}
           nextSrc={gallery[(photoIndex + 1) % gallery.length].image.url}
-          prevSrc={gallery[(photoIndex + gallery.length - 1) % gallery.length].image.url}
+          prevSrc={
+            gallery[(photoIndex + gallery.length - 1) % gallery.length].image
+              .url
+          }
           onCloseRequest={() => setIsOpen(false)}
           onMoveNextRequest={() =>
             setPhotoIndex((photoIndex + 1) % gallery.length)
