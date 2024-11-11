@@ -1,6 +1,5 @@
 import AppFooter from "../components/app-footer";
 import AppHeader from "../components/app-header";
-import AccessibilityOptions from "../components/accessibility-options";
 
 interface Props {
   children: any;
