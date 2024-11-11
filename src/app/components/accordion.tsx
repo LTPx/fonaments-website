@@ -51,12 +51,11 @@ export function Accordion(props: AccordionProps) {
   return (
     <div className="relative border border-t-[#000000] last:border-b-[#000000]">
       <button
-      className={`w-full flex items-center relative ${className}`}
-      style={{
-        position: "relative",
-        zIndex: 10,
-        transitionProperty: "opacity, transform"
-      }}
+        className={`w-full flex items-center relative ${className}`}
+        style={{
+          position: "relative",
+          transitionProperty: "opacity, transform",
+        }}
         // className="w-full flex items-center relative z-40"
         onClick={(e) => {
           e.preventDefault();
@@ -65,7 +64,10 @@ export function Accordion(props: AccordionProps) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <h1 className="font-regular text-[42px] leading-[45px] lg:text-[80px] lg:leading-[130px] py-[20px] lg:py-[0px] text-start">
+        <h1
+          className="tracking-[-0.01em] font-regular text-[42px] leading-[45px] lg:text-[80px] lg:leading-[130px] py-[20px] lg:py-[0px] text-start"
+          style={{ letterSpacing: "-0.01em" }}
+        >
           {title}
         </h1>
         {toggleContent}
@@ -79,7 +81,7 @@ export function Accordion(props: AccordionProps) {
           style={{
             position: "absolute",
             zIndex: 4,
-            transitionProperty: "opacity, transform"
+            transitionProperty: "opacity, transform",
           }}
         >
           <img

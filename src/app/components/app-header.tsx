@@ -12,14 +12,14 @@ function AppHeader() {
   const linksHeader = [
     { title: `${t('header.brand')}`, url: "/" },
     { title: `${t('header.projects')}`, url: `/projects` },
-    { title: `${t('header.study')}`, url: "/study" },
+    { title: `${t('header.study')}`, url: "/studio" },
     { title: `${t('header.contact')}`, url: "/contact" },
   ];
 
   const menuLinks = [
     { title: `${t('header.home')}`, url: "/" },
     { title: `${t('header.projects')}`, url: `/projects` },
-    { title: `${t('header.study')}`, url: "/study" },
+    { title: `${t('header.study')}`, url: "/studio" },
     { title: `${t('header.contact')}`, url: "/contact" },
   ];
 

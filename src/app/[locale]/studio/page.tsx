@@ -1,11 +1,11 @@
 import { getWordPressCustomPage } from "@/app/_services/api";
 import StudySection from "@/app/components/study-section";
 
-async function Study(nextParams: { params: { locale: "en" | "es" | "de" } }) {
+async function Studio(nextParams: { params: { locale: "en" | "es" | "de" } }) {
   const {
     params: { locale },
   } = nextParams;
-  const data = await getWordPressCustomPage(locale, "study");
+  const data = await getWordPressCustomPage(locale, "studio");
   const { acf } = data;
   const { team_section, services_section, information_section } = acf;
 
@@ -23,4 +23,4 @@ async function Study(nextParams: { params: { locale: "en" | "es" | "de" } }) {
   );
 }
 
-export default Study;
+export default Studio;

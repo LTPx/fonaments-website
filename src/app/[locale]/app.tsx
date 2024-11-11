@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-import { getWordPressPage } from "../_services/api";
 import AppFooter from "../components/app-footer";
 import AppHeader from "../components/app-header";
+import AccessibilityOptions from "../components/accessibility-options";
 
 interface Props {
   children: any;
@@ -14,12 +13,13 @@ async function App(props: Props) {
   return (
     <>
       <AppHeader />
+      {/* <AccessibilityOptions /> */}
       <div className="bg-body">{children}</div>
-      <AppFooter
+      {/* <AppFooter
         params={{
-          locale: "en",
+          locale: locale,
         }}
-      />
+      /> */}
     </>
   );
 }
