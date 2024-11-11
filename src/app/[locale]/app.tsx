@@ -14,11 +14,11 @@ async function App(props: Props) {
       <AppHeader />
       {/* <AccessibilityOptions /> */}
       <div className="bg-body">{children}</div>
-      {/* <AppFooter
+      <AppFooter
         params={{
           locale: locale,
         }}
-      /> */}
+      />
     </>
   );
 }
