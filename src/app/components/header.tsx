@@ -23,7 +23,6 @@ export function Header(props: Props) {
     en: isProjectRoute ? `/en/` : `/en/${currentSlug}`,
     de: isProjectRoute ? `/de/` : `/de/${currentSlug}`,
   }
-  console.log('linksSelector: ', linksSelector);
 
   return (
     <header className={`sticky hidden lg:block top-0 z-[1000] bg-white dark:bg-white high-contrast:bg-white transition-all duration-300`}>

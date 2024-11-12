@@ -1,8 +1,43 @@
-import { Suspense } from "react";
 import { getProjectBySlug, getAllProjects } from "@/app/_services/api";
 import ProjectDetails from "@/app/components/project-details";
 import { Link } from "@/navigation";
 import { getTranslations } from "next-intl/server";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: "es" | "en" | "de" };
+}): Promise<Metadata> {
+  const page = await getProjectBySlug(locale, locale);
+  if (page) {
+    const { yoast_head_json } = page;
+    const { og_title, og_description, og_type, og_site_name, og_image } =
+      yoast_head_json;
+    return {
+      title: `Fonaments ${page.title.rendered}`,
+      description: page.acf.description_project,
+      openGraph: {
+        title: og_title,
+        description: og_description,
+        type: og_type as "website",
+        siteName: og_site_name,
+        locale: locale,
+        images: [
+          {
+            url: og_image[0].url,
+            width: og_image[0].width,
+            height: og_image[0].height,
+          },
+        ],
+      },
+    };
+  } else {
+    return {
+      title: "Fonaments",
+    };
+  }
+}
 
 async function ProjectSlugPage(nextParams: {
   params: { locale: "en" | "es" | "de"; slug: string };
@@ -22,14 +57,15 @@ async function ProjectSlugPage(nextParams: {
   const allProjects = await getAllProjects(locale);
 
   const orderedProjects = allProjects.sort((a, b) => {
-    return a.id - b.id; 
+    return a.id - b.id;
   });
-  
+
   const currentIndex = orderedProjects.findIndex(
     (project) => project.slug === slug
   );
 
-  const prevProject = currentIndex > 0 ? orderedProjects[currentIndex - 1] : null;
+  const prevProject =
+    currentIndex > 0 ? orderedProjects[currentIndex - 1] : null;
   const nextProject =
     currentIndex < orderedProjects.length - 1
       ? orderedProjects[currentIndex + 1]
@@ -53,8 +89,10 @@ async function ProjectSlugPage(nextParams: {
     <div className="container project-slug-page">
       <div className="flex justify-between items-end">
         <h1 className="font-regular pt-[4px] lg:pt-[0px]">{title.rendered}</h1>
-        <Link href={'/projects'}>
-          <p className="pb-[25px] underline text-[1.125em] leading-[28px]">{`${t("projectPage.back")}`}</p>
+        <Link href={"/projects"}>
+          <p className="pb-[25px] underline text-[1.125em] leading-[28px]">{`${t(
+            "projectPage.back"
+          )}`}</p>
         </Link>
       </div>
       <img

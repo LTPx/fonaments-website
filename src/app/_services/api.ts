@@ -72,9 +72,8 @@ export async function getProjectBySlug(
       revalidate: 0,
     },
   });
-
   const posts = await response.json();
   if (!response.ok) throw new Error(posts.message);
-  const post = posts.length ? posts[0] : undefined;
+  const post = posts.length > 0 ? posts[0] : undefined;
   return post;
 }
