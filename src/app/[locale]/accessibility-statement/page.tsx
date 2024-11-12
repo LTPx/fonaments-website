@@ -1,5 +1,33 @@
 import { Suspense } from "react";
 import { getWordPressCustomPage } from "@/app/_services/api";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: "es" | "en" | "de" };
+}): Promise<Metadata> {
+  const page = await getWordPressCustomPage(locale, "accessibility-statement");
+  if (page) {
+    const { acf } = page;
+    const { information_page } = acf;
+    const title = `Fonaments - ${information_page.title}`
+    return {
+      title,
+      description: page.acf.description_project,
+      openGraph: {
+        title,
+        type: "website",
+        siteName: "Fonaments",
+        locale: locale,
+      },
+    };
+  } else {
+    return {
+      title: "Fonaments",
+    };
+  }
+}
 
 async function AccessibilityStatement(nextParams: {
   params: { locale: "en" | "es" | "de" };

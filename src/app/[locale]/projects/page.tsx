@@ -1,7 +1,41 @@
-import { Suspense } from "react";
-import { getAllProjects, getWordPressCustomPage, getWordPressPage } from "@/app/_services/api";
+import {
+  getAllProjects,
+  getWordPressCustomPage,
+} from "@/app/_services/api";
 import ProjectSection from "@/app/components/projects-section";
 import TruncatedText from "@/app/components/truncated-text";
+import { truncateTextHtml } from "@/app/utils";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: "es" | "en" | "de" };
+}): Promise<Metadata> {
+  const page = await getWordPressCustomPage(locale, "projects");
+  if (page) {
+    const { yoast_seo, acf } = page;
+    const { information } = acf;
+    const title = `Fonaments - ${information.title}`;
+    const description = truncateTextHtml(information.description)
+    const { yoast_desc } = yoast_seo;
+    return {
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        type: "website",
+        siteName: "Fonaments",
+        locale: locale,
+      },
+    };
+  } else {
+    return {
+      title: "Fonaments",
+    };
+  }
+}
 
 async function Projects(nextParams: {
   params: { locale: "en" | "es" | "de" };
@@ -17,12 +51,14 @@ async function Projects(nextParams: {
   return (
     <div className="container page-projects">
       <section className="flex flex-col lg:flex-row lg:justify-between">
-        <h1 className="font-regular pt-[4px] lg:pt-[0px]">{information.title}</h1>
+        <h1 className="font-regular pt-[4px] lg:pt-[0px]">
+          {information.title}
+        </h1>
         <div className="pt-[14px] lg:pt-[37px]">
-        <TruncatedText
-          className="text-[1em] leading-[22px] lg:text-[1.625em] lg:leading-[32px] lg:w-[550px] xl:w-[815px]"
-          content={information.description}
-        />
+          <TruncatedText
+            className="text-[1em] leading-[22px] lg:text-[1.625em] lg:leading-[32px] lg:w-[550px] xl:w-[815px]"
+            content={information.description}
+          />
         </div>
       </section>
       <section className="pt-[59px] lg:pt-[90px]">
@@ -35,7 +71,7 @@ async function Projects(nextParams: {
             className="project-info font-medium tracking-[-0.015em] text-[1em] lg:text-[1.125em] leading-[20px]"
             dangerouslySetInnerHTML={{ __html: section.description }}
           />
-          <div 
+          <div
             className="lg:leading-[46px] info-projects"
             dangerouslySetInnerHTML={{ __html: section.title }}
           />

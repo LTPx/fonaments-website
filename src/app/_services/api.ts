@@ -66,6 +66,7 @@ export async function getProjectBySlug(
 ): Promise<WordPressPost> {
   const WORDPRESS_API_URL = "https://www.staging.fonamentsarch.com/wp-json";
   const url = `${WORDPRESS_API_URL}/wp/v2/all_projects?slug=${slug}&acf_format=standard`;
+  console.log("url project slug: ", slug);
   console.log("url project: ", url);
   const response = await fetch(url, {
     next: {

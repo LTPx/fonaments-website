@@ -3,23 +3,25 @@ import ProjectDetails from "@/app/components/project-details";
 import { Link } from "@/navigation";
 import { getTranslations } from "next-intl/server";
 import { Metadata } from "next";
+import { truncateTextHtml } from "@/app/utils";
 
 export async function generateMetadata({
-  params: { locale },
+  params: { locale, slug },
 }: {
-  params: { locale: "es" | "en" | "de" };
+  params: { locale: "es" | "en" | "de"; slug: string };
 }): Promise<Metadata> {
-  const page = await getProjectBySlug(locale, locale);
+  const page = await getProjectBySlug(locale, slug);
   if (page) {
     const { yoast_head_json } = page;
-    const { og_title, og_description, og_type, og_site_name, og_image } =
-      yoast_head_json;
+    const { og_type, og_site_name, og_image } = yoast_head_json;
+    const title = `Fonaments - ${page.title.rendered}`;
+    const description = truncateTextHtml(page.acf.description_project);
     return {
-      title: `Fonaments ${page.title.rendered}`,
-      description: page.acf.description_project,
+      title,
+      description,
       openGraph: {
-        title: og_title,
-        description: og_description,
+        title,
+        description,
         type: og_type as "website",
         siteName: og_site_name,
         locale: locale,

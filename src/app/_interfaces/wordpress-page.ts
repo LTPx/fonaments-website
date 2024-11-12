@@ -43,6 +43,12 @@ export interface WordPressFrontendPage {
   parent: number;
   yoast_head: string;
   yoast_head_json: YoastHeadJSON;
+  yoast_seo: {
+    yoast_title: string;
+    yoast_desc: string;
+    yoast_canonical: string;
+    yoast_focus_kw: string;
+  }
   _links: Links;
   acf: AcfComponents;
 }

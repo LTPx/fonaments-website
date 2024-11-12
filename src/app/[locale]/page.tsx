@@ -2,6 +2,34 @@ import { Suspense } from "react";
 import { getAllProjects, getWordPressCustomPage } from "../_services/api";
 import Skeleton from "../components/skeleton-home";
 import Home from "./home";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: "es" | "en" | "de" };
+}): Promise<Metadata> {
+  const page = await getWordPressCustomPage(locale, "home");
+  if (page) {
+    const { yoast_seo } = page;
+    const { yoast_desc, yoast_title } = yoast_seo;
+    return {
+      title: `Fonaments`,
+      description: page.acf.description_project,
+      openGraph: {
+        title: "Fonaments",
+        description: yoast_desc,
+        type: "website",
+        siteName: "Fonaments",
+        locale: locale,
+      },
+    };
+  } else {
+    return {
+      title: "Fonaments",
+    };
+  }
+}
 
 export default async function Page(nextParams: {
   params: { locale: "en" | "es" | "de" };

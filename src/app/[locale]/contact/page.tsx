@@ -1,4 +1,34 @@
 import { getWordPressCustomPage } from "@/app/_services/api";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: "es" | "en" | "de" };
+}): Promise<Metadata> {
+  const page = await getWordPressCustomPage(locale, "contact");
+  if (page) {
+    const { yoast_seo, acf } = page;
+    const { contact } = acf;
+    const title = `Fonaments - ${contact.title}`;
+    const { yoast_desc } = yoast_seo;
+    return {
+      title,
+      description: page.acf.description_project,
+      openGraph: {
+        title,
+        description: yoast_desc,
+        type: "website",
+        siteName: "Fonaments",
+        locale: locale,
+      },
+    };
+  } else {
+    return {
+      title: "Fonaments",
+    };
+  }
+}
 
 async function Contact(nextParams: { params: { locale: "en" | "es" | "de" } }) {
   const {
