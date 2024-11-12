@@ -118,19 +118,19 @@ h2 {
 
 .info-projects {
   p {
-    font-size: 42px;
+    font-size: 2.625em;
     line-height: 48px;
     letter-spacing: -0.01em;
     font-family: "Montreal-Medium";
   }
   div {
-    font-size: 42px;
+    font-size: 2.625em;
     line-height: 48px;
     letter-spacing: -0.01em;
     font-family: "Montreal-Medium";
 
     p {
-      font-size: 42px;
+      font-size: 2.625em;
       line-height: 48px;
       letter-spacing: -0.01em;
       font-family: "Montreal-Medium";

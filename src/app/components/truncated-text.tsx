@@ -49,7 +49,7 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({
         <div className="flex items-center block mt-[32px]">
           <button
             onClick={toggleExpand}
-            className={`text-[16px] leading-[22px] lg:text-[14px] lg:leading-[14px] font-medium underline cursor-pointer`}
+            className={`text-[1em] leading-[22px] lg:text-[0.875em] lg:leading-[14px] font-medium underline cursor-pointer`}
           >
             {isExpanded ? `${t("projectPage.read-less")}` : `${t("projectPage.read-more")}`}
           </button>

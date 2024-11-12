@@ -1,5 +1,3 @@
-import { relative } from "path";
-
 interface ProjectCardProps {
   imageHover?: string;
   image?: string;
@@ -30,7 +28,7 @@ function ProjectCard(props: ProjectCardProps) {
           />
         )}
       </div>
-      <p className="font-medium text-[14px] leading-[26px] mt-2">{title}</p>
+      <p className="font-medium text-[0.875em] leading-[26px] mt-2">{title}</p>
       {/* <p className="font-medium text-[14px] leading-[26px] mt-2">
         {`(${index}/${totalProjects}) ${title}`}
       </p>  */}

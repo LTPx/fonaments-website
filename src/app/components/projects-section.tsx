@@ -34,7 +34,7 @@ export function ProjectSection(props: ProjectSectionProps) {
         <div className="flex gap-[14px] lg:gap-[11px] overflow-x-scroll no-scrollbar">
           <button
             onClick={() => handleClick(-1)}
-            className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
+            className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[1.125em] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
               selectedOption === -1
                 ? "bg-black text-white rounded-none"
                 : "text-black rounded-full"
@@ -46,7 +46,7 @@ export function ProjectSection(props: ProjectSectionProps) {
             <button
               key={index}
               onClick={() => handleClick(option.id)}
-              className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
+              className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[1.125em] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
                 selectedOption === option.id
                   ? "bg-black text-white rounded-none"
                   : "text-black rounded-full"

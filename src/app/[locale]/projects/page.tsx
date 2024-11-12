@@ -32,7 +32,7 @@ async function Projects(nextParams: {
         <hr className="border-t border-black border-1 mb-[10px]" />
         <div className="flex gap-[15px] lg:gap-[0px] flex-col lg:grid lg:grid-cols-2">
           <div
-            className="project-info font-medium tracking-[-0.015em] text-[16px] lg:text-[18px] leading-[20px]"
+            className="project-info font-medium tracking-[-0.015em] text-[1em] lg:text-[1.125em] leading-[20px]"
             dangerouslySetInnerHTML={{ __html: section.description }}
           />
           <div 
