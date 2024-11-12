@@ -24,8 +24,9 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     { code: "de", label: "DEU", href: urlsTranslate.de },
   ];
   const currentLanguage = languages.find((language) =>
-    currentPath.includes(language.code)
+    currentPath.includes(`/${language.code}`)
   );
+
   const otherLanguages = languages.filter(
     (language) => language.code !== currentLanguage?.code
   );

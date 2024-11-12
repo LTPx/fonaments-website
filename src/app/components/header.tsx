@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import LanguageSelector from "./selector-languages";
 import { Link } from "@/navigation";
 import { usePathname } from '@/navigation'
+import LanguageSelector from "./selector-languages";
 
 interface LinksHeader {
   title: string;
@@ -18,11 +17,13 @@ export function Header(props: Props) {
   const { links } = props;
   const currentPath = usePathname();
   const currentSlug = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  const isProjectRoute = /^\/projects\/.+$/.test(currentPath);
   const linksSelector = {
-    es: `/es/${currentSlug}`,
-    en: `/en/${currentSlug}`,
-    de: `/de/${currentSlug}`
+    es: isProjectRoute ? `/es/` : `/es/${currentSlug}`,
+    en: isProjectRoute ? `/en/` : `/en/${currentSlug}`,
+    de: isProjectRoute ? `/de/` : `/de/${currentSlug}`,
   }
+  console.log('linksSelector: ', linksSelector);
 
   return (
     <header className={`sticky hidden lg:block top-0 z-[1000] bg-white dark:bg-white high-contrast:bg-white transition-all duration-300`}>
