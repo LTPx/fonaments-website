@@ -18,10 +18,6 @@ export default async function Page(nextParams: {
 
   const projectsIdsSelected = feature_projects.map((item) => item.project.ID);
 
-  function isDefined<T>(value: T | undefined): value is T {
-    return value !== undefined;
-  }
-
   const projects = projectsIdsSelected
     .map((id) => allProjects.find((project) => project.id === id))
     .filter(isDefined);
@@ -36,4 +32,8 @@ export default async function Page(nextParams: {
       />
     </Suspense>
   );
+}
+
+function isDefined<T>(value: T | undefined): value is T {
+  return value !== undefined;
 }

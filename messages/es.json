@@ -18,6 +18,10 @@
     "read-more": "Leer más",
     "read-less": "Leer menos"
   },
+  "studioPage": {
+    "btn-team": "Equipo",
+    "btn-services": "Servicios"
+  },
   "footer": {
     "our-offices": "Nuestras oficinas",
     "see-location": "Ver localización",

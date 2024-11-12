@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import TeamSection from "./team-section";
 import ServiceSections from "./services-section";
 import {
@@ -20,12 +21,14 @@ interface StudySectionProps {
 
 export function StudySection(props: StudySectionProps) {
   const { teamSection, services, gallery, information_section } = props;
+  
+  const t = useTranslations("studioPage");
 
   useEffect(() => {
     const hash = window.location.hash;
     const params = new URLSearchParams(window.location.search);
-    if (hash === "#servicios" || params.get("section") === "servicios") {
-      setSelectedOption("Servicios");
+    if (hash === "#services" || params.get("section") === "services") {
+      setSelectedOption(t("btn-services"));
     }
   }, []);
 
@@ -33,14 +36,14 @@ export function StudySection(props: StudySectionProps) {
     setSelectedOption(option);
   };
 
-  const btns = ["Equipo", "Servicios"];
+  const btns = [t("btn-team"), t("btn-services")];
   const [selectedOption, setSelectedOption] = useState<string>(btns[0]);
 
   return (
     <div className="flex flex-col">
-      <section className="flex flex-col lg:flex-row lg:justify-between">
+      <section className="flex flex-col lg:gap-[20px] lg:flex-row lg:justify-between">
         <h1 className="font-regular pt-[4px] lg:pt-[0px]">
-          {selectedOption === "Equipo"
+          {selectedOption === t("btn-team")
             ? information_section.study_section.title
             : information_section.service_section.title}
         </h1>
@@ -48,7 +51,7 @@ export function StudySection(props: StudySectionProps) {
           <TruncatedText
             className="lg:w-[550px] xl:w-[803px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px]"
             content={
-              selectedOption === "Equipo"
+              selectedOption === t("btn-team")
                 ? information_section.study_section.description
                 : information_section.service_section.description
             }
@@ -70,7 +73,7 @@ export function StudySection(props: StudySectionProps) {
           </button>
         ))}
       </div>
-      {selectedOption === "Equipo" ? (
+      {selectedOption === t("btn-team") ? (
         <TeamSection
           coverImage={teamSection.image_cover.url}
           membersTeam={teamSection.members_team}

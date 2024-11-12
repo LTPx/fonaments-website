@@ -18,6 +18,10 @@
     "read-more": "Read more",
     "read-less": "Read less"
   },
+  "studioPage": {
+    "btn-team": "Team",
+    "btn-services": "Services"
+  },
   "footer": {
     "our-offices": "Our offices",
     "see-location": "See location",
