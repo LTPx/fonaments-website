@@ -37,7 +37,7 @@ export function Header(props: Props) {
   };
 
   return (
-    <header className={`sticky hidden lg:block top-0 z-[1000] bg-white transition-all duration-300`}>
+    <header className={`sticky hidden lg:block top-0 z-[1000] bg-white dark:bg-white high-contrast:bg-white transition-all duration-300`}>
       <div className="border-b border-black mx-auto flex items-center justify-between">
         <div className="flex">
           {links.map((link, index) => (
@@ -45,7 +45,7 @@ export function Header(props: Props) {
               key={index}
               href={link.url}
               className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out h-[40px] px-[30px] border-r border-black flex items-center justify-center cursor-pointer text-[18px] leading-[20px] first:border-l-0 ${
-                selectedLink === link.url ? "bg-black text-white" : "bg-white text-black"
+                selectedLink === link.url ? "bg-black text-white" : "text-black"
               }`}
               onClick={() => handleClick(link.url)}
             >

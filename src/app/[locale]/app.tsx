@@ -1,3 +1,4 @@
+import AccessibilityOptions from "../components/accessibility-options";
 import AppFooter from "../components/app-footer";
 import AppHeader from "../components/app-header";
 
@@ -12,8 +13,8 @@ async function App(props: Props) {
   return (
     <>
       <AppHeader />
-      {/* <AccessibilityOptions /> */}
-      <div className="bg-body">{children}</div>
+      <AccessibilityOptions />
+      <div className="content-wrapper bg-body">{children}</div>
       <AppFooter
         params={{
           locale: locale,

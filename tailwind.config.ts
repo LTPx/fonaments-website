@@ -40,11 +40,17 @@ const config: Config = {
           DEFAULT: '#ffffff',
           beige: '#F4F4F2',
           light: '#b9bdc4',
-          dark: '#888ea8',
+          dark: '#000',
         },
         body: {
           DEFAULT: '#EBE8E5'
-        }
+        },
+        dark: {
+          DEFAULT: '#121212',
+        },
+        highContrast: {
+          DEFAULT: '#000',
+        },
       },
       fontFamily: {
         medium: ['Montreal-Medium', 'sans-serif'],

@@ -130,3 +130,115 @@ h2 {
     }
   }
 }
+
+.accessibility-container {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 20000;
+  display: flex;
+  align-items: center;
+}
+
+.accessibility-icon {
+  background: #EBE8E5;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  z-index: 1100;
+}
+
+.accessibility-icon.icon-shift {
+  transform: translateX(200px);
+}
+
+.accessibility-options {
+  position: fixed;
+  top: 50%;
+  left: -200px;
+  /* width: 500px; */
+  /* max-width: 90%; */
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%);
+  transition: transform 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.accessibility-options.open {
+  transform: translate(200px, -50%);
+}
+
+/* ---------------------------------------------
+   High Contrast
+--------------------------------------------- */
+
+body.high-contrast .bg-body {
+  background-color: #000 !important;
+  color: #fff; 
+}
+
+body.high-contrast a {
+  color: #ffff00 !important;
+}
+
+body.high-contrast header {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.high-contrast .accessibility-options {
+  background-color: #000 !important;
+  color: #ffff00 !important;
+}
+
+body.high-contrast button {
+  /* background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #fff !important; */
+}
+
+body.high-contrast .accessibility-icon {
+  /* background-color: #000 !important; */
+}
+
+body.grayscale-custom .content-wrapper {
+  filter: grayscale(100%);
+}
+
+body.grayscale-custom footer {
+  filter: grayscale(100%);
+}
+
+body.light-background {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+body.light-background .bg-body {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+body.light-background header {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+body.light-background footer {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+
+
+
+
+
