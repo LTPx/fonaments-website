@@ -1,27 +1,37 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
 interface LanguageSelectorProps {
-  selectedLanguage: string;
-  onLanguageChange: (language: string) => void;
+  urlsTranslate: {
+    es: string;
+    en: string;
+    de: string;
+  };
 }
 
 export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
-  selectedLanguage,
-  onLanguageChange,
+  urlsTranslate,
 }) => {
   const [isLanguagePopupVisible, setIsLanguagePopupVisible] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
+  const currentPath = usePathname();
+  const languages = [
+    { code: "es", label: "ESP", href: urlsTranslate.es },
+    { code: "en", label: "ENG", href: urlsTranslate.en },
+    { code: "de", label: "DEU", href: urlsTranslate.de },
+  ];
+  const currentLanguage = languages.find((language) =>
+    currentPath.includes(language.code)
+  );
+  const otherLanguages = languages.filter(
+    (language) => language.code !== currentLanguage?.code
+  );
 
   const toggleLanguagePopup = () => {
     setIsLanguagePopupVisible(!isLanguagePopupVisible);
-  };
-
-  const handleLanguageChange = (language: string) => {
-    onLanguageChange(language);
-    setIsLanguagePopupVisible(false);
   };
 
   useEffect(() => {
@@ -37,16 +47,6 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const languages = [
-    { code: "ESP", label: "ESP", href: "/es" },
-    { code: "ENG", label: "ENG", href: "/en" },
-    { code: "DEU", label: "DEU", href: "/de" },
-  ];
-
-  const otherLanguages = languages.filter(
-    (language) => language.code !== selectedLanguage
-  );
-
   return (
     <div className="relative" ref={popupRef}>
       <button
@@ -54,21 +54,21 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         style={{ fontWeight: "400" }}
         className="font-medium h-[40px] pl-[35px] pr-[30px] flex items-center cursor-pointer text-[18px] leading-[26px]"
       >
-        {selectedLanguage}
+        {currentLanguage?.label}
       </button>
       {isLanguagePopupVisible && (
         <div className="absolute top-full right-0 bg-white border-t border-black">
           <div className="flex flex-col">
             {otherLanguages.map((language, index) => (
               <Link
-                key={language.code}
+                key={index}
                 href={language.href}
                 className={`h-[40px] pl-[35px] pr-[30px] font-medium flex items-center cursor-pointer text-[18px] leading-[26px] text-center  hover:bg-black hover:text-white ${
-                  index === otherLanguages.length - 1
+                  currentPath.includes(language.code)
                     ? "border-t border-black"
                     : ""
                 }`}
-                onClick={() => handleLanguageChange(language.code)}
+                onClick={() => setIsLanguagePopupVisible(false)}
               >
                 {language.label}
               </Link>

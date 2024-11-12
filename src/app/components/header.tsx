@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LanguageSelector from "./selector-languages";
 import { Link } from "@/navigation";
+import { usePathname } from '@/navigation'
 
 interface LinksHeader {
   title: string;
@@ -15,26 +16,13 @@ interface Props {
 
 export function Header(props: Props) {
   const { links } = props;
-  const [selectedLink, setSelectedLink] = useState<string>("");
-  const [selectedLanguage, setSelectedLanguage] = useState("ESP");
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem("selectedLanguage");
-    const savedLink = localStorage.getItem("selectedLink");
-
-    if (savedLanguage) setSelectedLanguage(savedLanguage);
-    if (savedLink) setSelectedLink(savedLink);
-  }, []);
-
-  const handleClick = (url: string) => {
-    setSelectedLink(url);
-    localStorage.setItem("selectedLink", url);
-  };
-
-  const handleLanguageChange = (language: string) => {
-    setSelectedLanguage(language);
-    localStorage.setItem("selectedLanguage", language);
-  };
+  const currentPath = usePathname();
+  const currentSlug = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  const linksSelector = {
+    es: `/es/${currentSlug}`,
+    en: `/en/${currentSlug}`,
+    de: `/de/${currentSlug}`
+  }
 
   return (
     <header className={`sticky hidden lg:block top-0 z-[1000] bg-white dark:bg-white high-contrast:bg-white transition-all duration-300`}>
@@ -45,9 +33,8 @@ export function Header(props: Props) {
               key={index}
               href={link.url}
               className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out h-[40px] px-[30px] border-r border-black flex items-center justify-center cursor-pointer text-[18px] leading-[20px] first:border-l-0 ${
-                selectedLink === link.url ? "bg-black text-white" : "text-black"
+                 currentPath === link.url ? "bg-black text-white" : "text-black"
               }`}
-              onClick={() => handleClick(link.url)}
             >
               {link.title}
             </Link>
@@ -61,8 +48,7 @@ export function Header(props: Props) {
             Local Architecture Studio.
           </Link>
           <LanguageSelector
-            selectedLanguage={selectedLanguage}
-            onLanguageChange={handleLanguageChange}
+            urlsTranslate={linksSelector}
           />
         </div>
       </div>
