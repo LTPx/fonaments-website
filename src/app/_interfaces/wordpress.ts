@@ -1,4 +1,4 @@
-import { AcfComponents } from "./wordpress-page";
+import { AcfComponents, YoastHeadJSON } from "./wordpress-page";
 
 export interface WordPressPost {
   id: number;
@@ -26,7 +26,7 @@ export interface WordPressPost {
   tags: number[];
   acf: AcfComponents;
   yoast_head: string;
-  yoast_head_json: TopLevelYoastHeadJSON;
+  yoast_head_json: YoastHeadJSON;
   _links: TopLevelLinks;
   _embedded: Embedded;
   featured_media_src_url: string;
