@@ -20,7 +20,7 @@ async function Projects(nextParams: {
         <h1 className="font-regular pt-[4px] lg:pt-[0px]">{information.title}</h1>
         <div className="pt-[14px] lg:pt-[37px]">
         <TruncatedText
-          className="text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px] lg:w-[550px] xl:w-[815px]"
+          className="text-[1em] leading-[22px] lg:text-[1.625em] lg:leading-[32px] lg:w-[550px] xl:w-[815px]"
           content={information.description}
         />
         </div>

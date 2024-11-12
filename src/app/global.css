@@ -1,6 +1,13 @@
 /* ---------------------------------------------
    Fonts
 --------------------------------------------- */
+:root {
+  --base-font-size: 1em; /* Start at 100% */
+}
+
+body {
+  font-size: var(--base-font-size);
+}
 
 @font-face {
   font-family: 'Montreal-Medium';
@@ -51,7 +58,7 @@ a {
 }
 
 h1 {
-  font-size: 80px;
+  font-size: 5em;
   line-height: 130px;
 }
 
@@ -239,6 +246,18 @@ body.light-background footer {
 
 .underline-links a {
   text-decoration: underline !important;
+}
+
+.readable-font {
+  font-family: Arial, sans-serif; /* or a more accessible font */
+  font-size: 1.1em; /* slightly larger than default */
+  line-height: 1.6; /* increased line spacing for readability */
+  letter-spacing: 0.5px; /* adds a bit of spacing between letters */
+}
+
+.text-large {
+  font-size: 1.2em; /* or any size that fits your design */
+  line-height: 1.6; /* increase line height for readability */
 }
 
 
