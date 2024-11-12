@@ -49,7 +49,7 @@ export function StudySection(props: StudySectionProps) {
         </h1>
         <div className="pt-[14px] lg:pt-[37px]">
           <TruncatedText
-            className="lg:w-[550px] xl:w-[803px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[32px]"
+            className="lg:w-[550px] xl:w-[803px] text-[1em] leading-[22px] lg:text-[1.625em] lg:leading-[32px]"
             content={
               selectedOption === t("btn-team")
                 ? information_section.study_section.description
@@ -63,7 +63,7 @@ export function StudySection(props: StudySectionProps) {
           <button
             key={index}
             onClick={() => handleClick(option)}
-            className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
+            className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[1.125em] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
               selectedOption === option
                 ? "bg-black text-white rounded-none"
                 : "text-black rounded-full"

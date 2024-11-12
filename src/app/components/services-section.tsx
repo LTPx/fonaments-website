@@ -25,7 +25,7 @@ export function ServiceSections(props: ServiceSectionsProps) {
           >
             <div>
               <div
-                className="lg:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"
+                className="lg:w-[1025px] text-[1em] leading-[22px] lg:text-[1.625em] lg:leading-[34px]"
                 dangerouslySetInnerHTML={{ __html: service.description }}
               />
               {service.image.url && (

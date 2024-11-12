@@ -52,7 +52,7 @@ export function HomeInformation(props: HomeInformationProps) {
       <div className="col-span-2 flex flex-col gap-[23px]">
         <h2 className="leading-[44px] xl:w-[719px]">{title}</h2>
         <div
-          className="xl:w-[692px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]"
+          className="xl:w-[692px] text-[1em] leading-[22px] lg:text-[1.25em] lg:leading-[28px]"
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>

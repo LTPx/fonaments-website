@@ -54,7 +54,7 @@ async function ProjectSlugPage(nextParams: {
       <div className="flex justify-between items-end">
         <h1 className="font-regular pt-[4px] lg:pt-[0px]">{title.rendered}</h1>
         <Link href={'/projects'}>
-          <p className="pb-[25px] underline text-[18px] leading-[28px]">{`${t("projectPage.back")}`}</p>
+          <p className="pb-[25px] underline text-[1.125em] leading-[28px]">{`${t("projectPage.back")}`}</p>
         </Link>
       </div>
       <img

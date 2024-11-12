@@ -21,7 +21,7 @@ export async function OurServices(props: OurServicesProps) {
           dangerouslySetInnerHTML={{ __html: title }}
         />
         <div
-          className="lg:w-[565px] text-[16px] leading-[22px] lg:text-[20px] lg:leading-[28px]"
+          className="lg:w-[565px] text-[1em] leading-[22px] lg:text-[1.25em] lg:leading-[28px]"
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
@@ -35,7 +35,7 @@ export async function OurServices(props: OurServicesProps) {
           >
             <div>
               <div
-                className="relative xl:w-[1025px] text-[16px] leading-[22px] lg:text-[26px] lg:leading-[34px]"
+                className="relative xl:w-[1025px] text-[1em] leading-[22px] lg:text-[1.625em] lg:leading-[34px]"
                 dangerouslySetInnerHTML={{ __html: item.description }}
               />
               {item.image && (
@@ -50,7 +50,7 @@ export async function OurServices(props: OurServicesProps) {
       </div>
       <div className="pt-[30px] z-30">
         <Link className="inline-block" href={"/studio#services"}>
-          <button className="inline-block hover:bg-black hover:text-white hover:rounded-none flex items-center justify-center font-medium text-[18px] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] rounded-full transition-colors duration-300 ease-in-out">
+          <button className="inline-block hover:bg-black hover:text-white hover:rounded-none flex items-center justify-center font-medium text-[1.125em] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] rounded-full transition-colors duration-300 ease-in-out">
             {`${t("HomePage.more-services")}`}
           </button>
         </Link>
