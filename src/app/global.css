@@ -237,6 +237,10 @@ body.light-background footer {
   color: #333;
 }
 
+.underline-links a {
+  text-decoration: underline !important;
+}
+
 
 
 

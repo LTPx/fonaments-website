@@ -8,6 +8,7 @@ const AccessibilityOptions = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [grayscale, setGrayscale] = useState(false);
   const [lightBackground, setLightBackground] = useState(false);
+  const [underlineLinks, setUnderlineLinks] = useState(false);
 
   const changeFontSize = (size: string) => {
     setFontSize(size);
@@ -37,11 +38,16 @@ const AccessibilityOptions = () => {
     }
   };
 
+  const toggleUnderlineLinks = () => {
+    setUnderlineLinks((prev) => !prev);
+  };
+
   useEffect(() => {
     document.body.classList.toggle("high-contrast", contrast);
     document.body.classList.toggle("grayscale-custom", grayscale);
     document.body.classList.toggle("light-background", lightBackground);
-  }, [contrast, grayscale, lightBackground]);
+    document.body.classList.toggle("underline-links", underlineLinks);
+  }, [contrast, grayscale, lightBackground, underlineLinks]);
 
   const handleMenuClick = (e: any) => {
     e.stopPropagation();
@@ -76,6 +82,9 @@ const AccessibilityOptions = () => {
           </button>
           <button onClick={toggleLightBackground} className="text-start">
             Fondo Claro
+          </button>
+          <button onClick={toggleUnderlineLinks} className="text-start">
+            Subrayar Enlaces
           </button>
         </div>
       </div>
