@@ -16,6 +16,17 @@ export async function generateMetadata({
     const { og_type, og_site_name, og_image } = yoast_head_json;
     const title = `Fonaments - ${page.title.rendered}`;
     const description = truncateTextHtml(page.acf.description_project);
+
+    const images = og_image?.length
+    ? [
+        {
+          url: og_image[0].url,
+          width: og_image[0].width,
+          height: og_image[0].height,
+        },
+      ]
+    : [];
+
     return {
       title,
       description,
@@ -25,13 +36,7 @@ export async function generateMetadata({
         type: og_type as "website",
         siteName: og_site_name,
         locale: locale,
-        images: [
-          {
-            url: og_image[0].url,
-            width: og_image[0].width,
-            height: og_image[0].height,
-          },
-        ],
+        images
       },
     };
   } else {
