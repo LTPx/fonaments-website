@@ -127,7 +127,7 @@ export function ProjectDetails(props: ProjectDetailsProps) {
             {prevProject && (
               <Link href={`/projects/${prevProject.slug}`}>
                 <img
-                  className="cursor-pointer"
+                  className="cursor-pointer invert-custom"
                   src="/images/icons/left.svg"
                   alt="Anterior proyecto"
                 />
@@ -143,7 +143,7 @@ export function ProjectDetails(props: ProjectDetailsProps) {
             {nextProject && (
               <Link href={`/projects/${nextProject.slug}`}>
                 <img
-                  className="cursor-pointer"
+                  className="cursor-pointer invert-custom"
                   src="/images/icons/right.svg"
                   alt="Siguiente proyecto"
                 />

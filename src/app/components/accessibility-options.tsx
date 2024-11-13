@@ -1,4 +1,5 @@
 "use client";
+
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
@@ -41,23 +42,18 @@ const AccessibilityOptions = () => {
 
   const toggleReadableFont = () => {
     setReadableFont((prev) => !prev);
-    setContrast(false);
-    setGrayscale(false);
-    setLightBackground(false);
   };
 
   const increaseTextSize = () => {
-    if (textSizeIncreaseCount < 4) {
-      setTextSizeIncreaseCount((prev) => prev + 1);
-      setTextSize((prev) => {
-        const newSize = Math.min(prev + 0.1, 2.0);
-        document.documentElement.style.setProperty(
-          "--base-font-size",
-          `${newSize}em`
-        );
-        return newSize;
-      });
-    }
+    setTextSizeIncreaseCount((prev) => prev + 1);
+    setTextSize((prev) => {
+      const newSize = Math.min(prev + 0.1, 2.0);
+      document.documentElement.style.setProperty(
+        "--base-font-size",
+        `${newSize}em`
+      );
+      return newSize;
+    });
   };
 
   const decreaseTextSize = () => {
@@ -109,37 +105,52 @@ const AccessibilityOptions = () => {
   const handleMenuClick = (e: any) => e.stopPropagation();
 
   const buttonOptions = [
-    { label: `${t("accessibility.increase-text")}`, onClick: increaseTextSize },
-    { label: `${t("accessibility.reduce-text")}`, onClick: decreaseTextSize },
+    {
+      label: `${t("accessibility.increase-text")}`,
+      onClick: increaseTextSize,
+      active: textSize > 1.0,
+      icon: "/images/icons/add-icon.svg", // Ruta del icono SVG
+    },
+    {
+      label: `${t("accessibility.reduce-text")}`,
+      onClick: decreaseTextSize,
+      disabled: textSize === 1.0,
+      icon: "/images/icons/less-icon.svg",
+    },
     {
       label: `${t("accessibility.high-contrast")}`,
       onClick: toggleContrast,
       active: contrast,
+      icon: "/images/icons/contrast.svg",
     },
     {
       label: `${t("accessibility.gray-scale")}`,
       onClick: toggleGrayscale,
       active: grayscale,
+      icon: "/images/icons/code.svg",
     },
     {
       label: `${t("accessibility.light-background")}`,
       onClick: toggleLightBackground,
       active: lightBackground,
+      icon: "/images/icons/bombilla.svg",
     },
     {
       label: `${t("accessibility.underline-links")}`,
       onClick: toggleUnderlineLinks,
       active: underlineLinks,
+      icon: "/images/icons/link.svg",
     },
-    // {
-    //   label: "Fuente Legible",
-    //   onClick: toggleReadableFont,
-    //   active: readableFont,
-    // },
+    {
+      label: `${t("accessibility.readable-font")}`,
+      onClick: toggleReadableFont,
+      active: readableFont,
+      icon: "/images/icons/font.svg",
+    },
     {
       label: `${t("accessibility.reset")}`,
       onClick: resetAllSettings,
-      style: "text-red-600",
+      icon: "/images/icons/reset.svg",
     },
   ];
 
@@ -157,23 +168,35 @@ const AccessibilityOptions = () => {
       </button>
 
       <div
-        className={`w-[200px] bg-white accessibility-options ${
+        className={`w-[200px] py-2 bg-white accessibility-options ${
           menuOpen ? "open" : ""
         }`}
         onClick={handleMenuClick}
       >
-        <h3 className="text-[18px] font-medium pl-[10px] title-contrast">
+        <h3 className="text-[18px] font-medium pl-[20px] title-contrast">
           {`${t("accessibility.accessibility-title")}`}
         </h3>
-        <div className="flex flex-col items-start text-start gap-2 mb-4">
+        <div className="flex flex-col items-start text-start gap-2">
           {buttonOptions.map((button, index) => (
             <button
               key={index}
               onClick={button.onClick}
-              className={`w-full pl-[10px] hover:bg-black hover:text-white font-regular text-[15px] text-start 
-                ${button.active ? "active-option" : ""} ${button.style || ""}`}
+              className={`w-full pl-[20px] hover:bg-black hover:text-white font-regular text-[15px] text-start 
+              ${button.active ? "active-option" : ""} ${
+                button.disabled ? "opacity-25 cursor-not-allowed" : ""
+              }`}
+              disabled={button.disabled}
             >
-              {button.label}
+              <div className="flex items-center gap-2 ">
+                <img
+                  src={button.icon}
+                  alt={button.label}
+                  className={`w-[10px] h-[10px] invert-custom
+                  ${button.active ? "invert-btns" : ""}
+                  hover:invert-btns`}
+                />
+                <span>{button.label}</span>
+              </div>
             </button>
           ))}
         </div>

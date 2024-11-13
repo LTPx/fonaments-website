@@ -150,10 +150,10 @@ h2 {
 
 .accessibility-icon {
   background: #EBE8E5;
-  border-radius: 50%;
+  border-radius: 100%;
   border: none;
   cursor: pointer;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease-in-out; /* Usamos el mismo tiempo de transición */
   z-index: 1100;
 }
 
@@ -165,12 +165,9 @@ h2 {
   position: fixed;
   top: 50%;
   left: -200px;
-  /* width: 500px; */
-  /* max-width: 90%; */
-  padding: 10px;
+  /* padding: 10px; */
   background-color: #ffffff;
   border: 1px solid #ccc;
-  /* border-radius: 8px; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-50%);
   transition: transform 0.5s ease-in-out;
@@ -183,6 +180,7 @@ h2 {
 .accessibility-options.open {
   transform: translate(200px, -50%);
 }
+
 
 /* ---------------------------------------------
    High Contrast
@@ -198,6 +196,10 @@ body.high-contrast .bg-page {
 }
 
 body.high-contrast .invert-custom {
+  filter: invert(1);
+}
+
+.invert-btns {
   filter: invert(1);
 }
 
@@ -324,16 +326,9 @@ body.light-background footer {
 }
 
 .readable-font {
-  font-family: Arial, sans-serif; /* or a more accessible font */
-  font-size: 1.1em; /* slightly larger than default */
-  line-height: 1.6; /* increased line spacing for readability */
-  letter-spacing: 0.5px; /* adds a bit of spacing between letters */
+  letter-spacing: 1px;
 }
 
-.text-large {
-  font-size: 1.2em; /* or any size that fits your design */
-  line-height: 1.6; /* increase line height for readability */
-}
 
 
 

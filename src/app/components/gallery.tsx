@@ -20,7 +20,7 @@ export function Gallery({ gallery }: GalleryProps) {
   const processedIds = new Set<number>();
 
   return (
-    <section className="flex flex-col gap-3">
+    <section className="content-wrapper flex flex-col gap-3">
       {gallery.map((item, index) => {
         const { layout, image } = item;
 
