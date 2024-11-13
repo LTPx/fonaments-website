@@ -63,9 +63,9 @@ export function StudySection(props: StudySectionProps) {
           <button
             key={index}
             onClick={() => handleClick(option)}
-            className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[1.125em] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
+            className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out font-medium text-[1.125em] leading-[18px] cursor-pointer border border-black h-[32px] px-[15px] ${
               selectedOption === option
-                ? "bg-black text-white rounded-none"
+                ? "select-option"
                 : "text-black rounded-full"
             }`}
           >

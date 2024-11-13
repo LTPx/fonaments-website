@@ -3,6 +3,16 @@
     "title": "Hello world!",
     "more-services": "More services"
   },
+  "accessibility": {
+    "accessibility-title": "Accessibility tools",
+    "increase-text": "Increase Text",
+    "reduce-text": "Reduce Text",
+    "high-contrast": "High Contrast",
+    "gray-scale": "Gray Scale",
+    "light-background": "Light Background",
+    "underline-links": "Underline Links",
+    "reset": "Reset"
+  },
   "header": {
     "home": "Home",
     "brand": "Fonaments",

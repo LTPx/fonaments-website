@@ -50,7 +50,7 @@ export async function OurServices(props: OurServicesProps) {
       </div>
       <div className="pt-[30px] z-30">
         <Link className="inline-block" href={"/studio#services"}>
-          <button className="inline-block hover:bg-black hover:text-white hover:rounded-none flex items-center justify-center font-medium text-[1.125em] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] rounded-full transition-colors duration-300 ease-in-out">
+          <button className="inline-block hover:bg-black hover:text-white hover:rounded-none flex items-center justify-center font-medium text-[1.125em] leading-[18px] cursor-pointer border border-black h-[32px] px-[15px] rounded-full transition-colors duration-300 ease-in-out">
             {`${t("HomePage.more-services")}`}
           </button>
         </Link>

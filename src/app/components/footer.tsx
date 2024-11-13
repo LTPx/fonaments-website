@@ -56,7 +56,7 @@ export function Footer(props: FooterProps) {
                   onClick={() => handleClick(option)}
                   className={`font-medium text-[18px] leading-[26px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
                     selectedOption === option
-                      ? "bg-black text-white rounded-none"
+                      ? "select-option"
                       : "text-black rounded-full"
                   }`}
                 >
@@ -187,11 +187,11 @@ export function Footer(props: FooterProps) {
           <div className="flex gap-[22px] justify-between lg:justify-start">
             <img
               src="/images/sponsors-footer.svg"
-              className="w-[298px] h-[42px]"
+              className="w-[298px] h-[42px] invert-custom"
             />
             <img
               src="/images/person-footer.svg"
-              className="w-[38.77px] h-[38.77px]"
+              className="w-[38.77px] h-[38.77px] invert-custom"
             />
           </div>
         </div>
@@ -201,7 +201,7 @@ export function Footer(props: FooterProps) {
             languages.includes(pathname) ? "lg:opacity-0" : ""
           }`}
         >
-          <img src="/images/logo-footer.svg" />
+          <img src="/images/logo-footer.svg" className="invert-custom" />
         </div>
       </div>
 

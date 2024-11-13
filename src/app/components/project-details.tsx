@@ -89,11 +89,12 @@ export function ProjectDetails(props: ProjectDetailsProps) {
               </div>
             </div>
           </div>
-          <div className="pt-[30px] lg:pt-[0px] flex gap-[14px]">
+          <div className="w-full overflow-hidden">
+          <div className="pt-[30px] lg:pt-[0px] flex gap-[14px] overflow-x-scroll no-scrollbar">
             {allCategories.map((category, index) => (
               <button
                 key={index}
-                className={`font-medium text-[1.125em] leading-[18px] cursor-pointer border border-[#000000] h-[32px] px-[15px] ${
+                className={`whitespace-nowrap font-medium text-[1.125em] leading-[18px] cursor-pointer border border-black h-[32px] px-[15px] ${
                   selectedOption === category
                     ? "bg-black text-white rounded-none"
                     : "text-black rounded-full opacity-20"
@@ -105,7 +106,8 @@ export function ProjectDetails(props: ProjectDetailsProps) {
                 {category}
               </button>
             ))}
-          </div>
+            </div>
+            </div>
         </div>
         <div>
           <div

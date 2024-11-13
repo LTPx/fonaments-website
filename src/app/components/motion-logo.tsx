@@ -44,7 +44,7 @@ export default function MotionLogo() {
           animationData={logoAnimation}
           loop={false}
           autoplay={true}
-          className="w-full h-auto"
+          className="w-full h-auto invert-custom"
         />
       </div>
     </div>

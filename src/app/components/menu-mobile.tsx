@@ -36,7 +36,7 @@ export function MenuMobile(props: MenuMobileProps) {
           </Link>
           <div className="border-l border-black h-[50px] flex justify-center items-center">
             <img
-              className="pl-[11px] cursor-pointer"
+              className="pl-[11px] cursor-pointer invert-custom"
               src="/images/icons/add.svg"
               onClick={() => setMenuOpen(true)}
             />
@@ -52,7 +52,7 @@ export function MenuMobile(props: MenuMobileProps) {
       )}
 
       <div
-        className={`fixed top-0 left-0 z-[2000] w-full h-full bg-[#D3C6B8] transition-transform transform ${
+        className={`fixed top-0 left-0 z-[2000] w-full h-full bg-body transition-transform transform ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -66,7 +66,7 @@ export function MenuMobile(props: MenuMobileProps) {
               </Link>
               <div className="border-l border-black h-[50px] flex justify-center items-center">
                 <img
-                  className="pl-[11px] cursor-pointer"
+                  className="pl-[11px] cursor-pointer invert-custom"
                   src="/images/icons/less.svg"
                   onClick={() => setMenuOpen(false)}
                 />
@@ -110,7 +110,7 @@ export function MenuMobile(props: MenuMobileProps) {
           </div>
           <div className="mt-auto flex container pb-[10px]">
             <img
-              className="cursor-pointer"
+              className="cursor-pointer invert-custom "
               src="/images/fonaments.svg"
               onClick={() => setMenuOpen(false)}
             />

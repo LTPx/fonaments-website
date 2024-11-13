@@ -11,6 +11,16 @@
     "contact": "Contacto",
     "slogan": "Local Architecture Studio."
   },
+  "accessibility": {
+    "accessibility-title": "Herramientas de accesibilidad",
+    "increase-text": "Aumentar texto",
+    "reduce-text": "Reducir texto",
+    "high-contrast": "Alto Contraste",
+    "gray-scale": "Escala de Grises",
+    "light-background": "Fondo Claro",
+    "underline-links": "Subrayar Enlaces",
+    "reset": "Reiniciar"
+  },
   "projectPage": {
     "all": "Todos",
     "all-projects": "Todos los proyectos",

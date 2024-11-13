@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
 const AccessibilityOptions = () => {
@@ -9,6 +10,8 @@ const AccessibilityOptions = () => {
   const [underlineLinks, setUnderlineLinks] = useState(false);
   const [readableFont, setReadableFont] = useState(false);
   const [textSize, setTextSize] = useState(1.0);
+  const [textSizeIncreaseCount, setTextSizeIncreaseCount] = useState(0);
+  const t = useTranslations();
 
   const toggleContrast = () => {
     setContrast((prev) => !prev);
@@ -34,9 +37,7 @@ const AccessibilityOptions = () => {
     }
   };
 
-  const toggleUnderlineLinks = () => {
-    setUnderlineLinks((prev) => !prev);
-  };
+  const toggleUnderlineLinks = () => setUnderlineLinks((prev) => !prev);
 
   const toggleReadableFont = () => {
     setReadableFont((prev) => !prev);
@@ -46,17 +47,27 @@ const AccessibilityOptions = () => {
   };
 
   const increaseTextSize = () => {
-    setTextSize((prev) => {
-      const newSize = Math.min(prev + 0.1, 2.0);
-      document.documentElement.style.setProperty("--base-font-size", `${newSize}em`);
-      return newSize;
-    });
+    if (textSizeIncreaseCount < 4) {
+      setTextSizeIncreaseCount((prev) => prev + 1);
+      setTextSize((prev) => {
+        const newSize = Math.min(prev + 0.1, 2.0);
+        document.documentElement.style.setProperty(
+          "--base-font-size",
+          `${newSize}em`
+        );
+        return newSize;
+      });
+    }
   };
 
   const decreaseTextSize = () => {
+    setTextSizeIncreaseCount(0);
     setTextSize((prev) => {
-      const newSize = Math.max(prev - 0.1, 0.5);
-      document.documentElement.style.setProperty("--base-font-size", `${newSize}em`);
+      const newSize = Math.max(prev - 0.1, 1.0);
+      document.documentElement.style.setProperty(
+        "--base-font-size",
+        `${newSize}em`
+      );
       return newSize;
     });
   };
@@ -68,6 +79,7 @@ const AccessibilityOptions = () => {
     setUnderlineLinks(false);
     setReadableFont(false);
     setTextSize(1.0);
+    setTextSizeIncreaseCount(0);
     document.documentElement.style.setProperty("--base-font-size", `1em`);
     document.body.classList.remove(
       "high-contrast",
@@ -85,11 +97,51 @@ const AccessibilityOptions = () => {
     document.body.classList.toggle("underline-links", underlineLinks);
     document.body.classList.toggle("readable-font", readableFont);
     document.body.style.fontSize = `${textSize}em`;
-  }, [contrast, grayscale, lightBackground, underlineLinks, readableFont, textSize]);
+  }, [
+    contrast,
+    grayscale,
+    lightBackground,
+    underlineLinks,
+    readableFont,
+    textSize,
+  ]);
 
-  const handleMenuClick = (e: any) => {
-    e.stopPropagation();
-  };
+  const handleMenuClick = (e: any) => e.stopPropagation();
+
+  const buttonOptions = [
+    { label: `${t("accessibility.increase-text")}`, onClick: increaseTextSize },
+    { label: `${t("accessibility.reduce-text")}`, onClick: decreaseTextSize },
+    {
+      label: `${t("accessibility.high-contrast")}`,
+      onClick: toggleContrast,
+      active: contrast,
+    },
+    {
+      label: `${t("accessibility.gray-scale")}`,
+      onClick: toggleGrayscale,
+      active: grayscale,
+    },
+    {
+      label: `${t("accessibility.light-background")}`,
+      onClick: toggleLightBackground,
+      active: lightBackground,
+    },
+    {
+      label: `${t("accessibility.underline-links")}`,
+      onClick: toggleUnderlineLinks,
+      active: underlineLinks,
+    },
+    // {
+    //   label: "Fuente Legible",
+    //   onClick: toggleReadableFont,
+    //   active: readableFont,
+    // },
+    {
+      label: `${t("accessibility.reset")}`,
+      onClick: resetAllSettings,
+      style: "text-red-600",
+    },
+  ];
 
   return (
     <div className="accessibility-container">
@@ -98,8 +150,8 @@ const AccessibilityOptions = () => {
         className={`accessibility-icon ${menuOpen ? "icon-shift" : ""}`}
       >
         <img
-          src="/images/person-footer.svg"
-          className="w-[38.77px] h-[38.77px]"
+          src="/images/icons/accessibility-logo.svg"
+          className="w-[38.77px] h-[38.77px] invert-custom"
           alt="Icono de accesibilidad"
         />
       </button>
@@ -110,32 +162,20 @@ const AccessibilityOptions = () => {
         }`}
         onClick={handleMenuClick}
       >
-        <h3>Accesibilidad</h3>
+        <h3 className="text-[18px] font-medium pl-[10px] title-contrast">
+          {`${t("accessibility.accessibility-title")}`}
+        </h3>
         <div className="flex flex-col items-start text-start gap-2 mb-4">
-          <button onClick={toggleContrast} className="text-start">
-            Alto Contraste
-          </button>
-          <button onClick={toggleGrayscale} className="text-start">
-            Escala de Grises
-          </button>
-          <button onClick={toggleLightBackground} className="text-start">
-            Fondo Claro
-          </button>
-          <button onClick={toggleUnderlineLinks} className="text-start">
-            Subrayar Enlaces
-          </button>
-          <button onClick={toggleReadableFont} className="text-start">
-            Fuente Legible
-          </button>
-          <button onClick={increaseTextSize} className="text-start">
-            Aumentar Tamaño de Texto
-          </button>
-          <button onClick={decreaseTextSize} className="text-start">
-            Reducir Tamaño de Texto
-          </button>
-          <button onClick={resetAllSettings} className="text-start text-red-600">
-            Restablecer Todo
-          </button>
+          {buttonOptions.map((button, index) => (
+            <button
+              key={index}
+              onClick={button.onClick}
+              className={`w-full pl-[10px] hover:bg-black hover:text-white font-regular text-[15px] text-start 
+                ${button.active ? "active-option" : ""} ${button.style || ""}`}
+            >
+              {button.label}
+            </button>
+          ))}
         </div>
       </div>
     </div>

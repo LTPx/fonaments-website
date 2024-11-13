@@ -33,7 +33,7 @@ export function Header(props: Props) {
               key={index}
               href={link.url}
               className={`hover:bg-black hover:text-white hover:rounded-none transition-colors duration-300 ease-in-out h-[40px] px-[30px] border-r border-black flex items-center justify-center cursor-pointer text-[18px] leading-[20px] first:border-l-0 ${
-                 currentPath === link.url ? "bg-black text-white" : "text-black"
+                 currentPath === link.url ? "select-option-header" : "text-black"
               }`}
             >
               {link.title}

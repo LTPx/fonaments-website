@@ -178,7 +178,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
           <button className="arrow-left arrow">
             <img
               src="/images/icons/arrow-left.svg"
-              className={`${
+              className={`invert-custom ${
                 isFirstSlide ? "opacity-25 cursor-not-allowed" : ""
               }`}
               style={{
@@ -198,7 +198,7 @@ export function AnimationCarousel(props: AnimationCarouselProps) {
             >
               <img
                 src="/images/icons/arrow-right.svg"
-                className={`${
+                className={`invert-custom ${
                   isLastSlide ? "opacity-25 cursor-not-allowed" : ""
                 }`}
                 style={{

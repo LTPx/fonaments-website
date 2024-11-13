@@ -150,6 +150,7 @@ h2 {
 
 .accessibility-icon {
   background: #EBE8E5;
+  border-radius: 50%;
   border: none;
   cursor: pointer;
   transition: transform 0.5s ease;
@@ -166,10 +167,10 @@ h2 {
   left: -200px;
   /* width: 500px; */
   /* max-width: 90%; */
-  padding: 20px;
+  padding: 10px;
   background-color: #ffffff;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-50%);
   transition: transform 0.5s ease-in-out;
@@ -192,8 +193,82 @@ body.high-contrast .bg-body {
   color: #fff; 
 }
 
+body.high-contrast .bg-page {
+  background-color: #000 !important;
+}
+
+body.high-contrast .invert-custom {
+  filter: invert(1);
+}
+
+body.high-contrast .border-black {
+  border-color: white !important;
+}
+
+body.high-contrast .text-black {
+  color: white;
+}
+
+.active-option {
+  color: white;
+  background-color: #000;
+}
+
+.select-option {
+  color: white;
+  background-color: #000;
+  border: none;
+}
+
+.select-option-header {
+  color: white;
+  background-color: #000;
+}
+
+body.high-contrast .select-option-header {
+  color: white !important;
+}
+
+body.high-contrast .select-option {
+  color: #ffff00;
+  border: 1px solid red !important;
+}
+
+body.high-contrast .active-option {
+  color: #ffff00;
+  border: 1px solid red;
+}
+
+/* body.high-contrast button {
+  color: #ffff00 !important;
+}
+
+body.high-contrast button:hover {
+  color: #ffffff !important;
+} */
+
+body.high-contrast hr {
+  border-color: white !important;
+}
+
+body.high-contrast .accessibility-icon {
+  background-color: #000;
+}
+
+body.high-contrast .bg-white {
+  background-color: #000 !important;
+}
+
+body.high-contrast .title-contrast {
+  color: white !important;
+}
+
 body.high-contrast a {
   color: #ffff00 !important;
+}
+
+body.high-contrast a:hover {
+  color: white !important;
 }
 
 body.high-contrast header {

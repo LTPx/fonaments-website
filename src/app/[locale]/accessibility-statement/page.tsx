@@ -47,7 +47,7 @@ async function AccessibilityStatement(nextParams: {
         </h2>
         <div className="pt-[14px] lg:pt-[41px]">
           <div
-            className="lg:w-[600px] xl:w-[841px] text-[16px] lg:leading-[28px] lg:text-[20px] leading-[20px]"
+            className="lg:w-[600px] xl:w-[841px] text-[1em] lg:leading-[28px] lg:text-[1.25em] leading-[20px]"
             dangerouslySetInnerHTML={{ __html: information_page.description }}
           />
         </div>
