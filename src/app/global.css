@@ -293,11 +293,7 @@ body.high-contrast .accessibility-icon {
   /* background-color: #000 !important; */
 }
 
-body.grayscale-custom .content-wrapper {
-  filter: grayscale(100%);
-}
-
-body.grayscale-custom footer {
+html.grayscale-custom {
   filter: grayscale(100%);
 }
 

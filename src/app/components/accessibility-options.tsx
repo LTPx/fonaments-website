@@ -87,8 +87,9 @@ const AccessibilityOptions = () => {
   };
 
   useEffect(() => {
+    const htmlElement = document.documentElement;
     document.body.classList.toggle("high-contrast", contrast);
-    document.body.classList.toggle("grayscale-custom", grayscale);
+    htmlElement.classList.toggle("grayscale-custom", grayscale);
     document.body.classList.toggle("light-background", lightBackground);
     document.body.classList.toggle("underline-links", underlineLinks);
     document.body.classList.toggle("readable-font", readableFont);
