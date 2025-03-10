@@ -15,6 +15,9 @@ export async function generateMetadata({
   return {
     title: "Fonaments",
     description: "New Site",
+    icons: {
+      icon: "/images/logo.png",
+    },
     // robots: seoData.robots,
     openGraph: {
       title: "Fonaments",
