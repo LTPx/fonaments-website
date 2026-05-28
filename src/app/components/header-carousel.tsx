@@ -1,5 +1,10 @@
+import dynamic from "next/dynamic";
 import { WordPressProject } from "../_interfaces/wordpress-project";
-import AnimationHome from "./animation-home";
+
+const AnimationHome = dynamic(
+  () => import("./animation-home"),
+  { ssr: false }
+);
 
 interface HeaderCarouselProps {
   projects: WordPressProject[];
@@ -7,12 +12,11 @@ interface HeaderCarouselProps {
   description: string;
 }
 
-export async function HeaderCarousel(props: HeaderCarouselProps) {
-  const { projects , title, description } = props;
-  
+export function HeaderCarousel(props: HeaderCarouselProps) {
+  const { projects, title, description } = props;
 
   return (
-    <AnimationHome projects={projects} title={title} description={description}/>
+    <AnimationHome projects={projects} title={title} description={description} />
   );
 }
 
